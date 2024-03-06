@@ -8,9 +8,11 @@ import com.natifedanilharitonov.hardskillsproject.core.UiEvent
 import com.natifedanilharitonov.hardskillsproject.core.UiState
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
 import com.natifedanilharitonov.hardskillsproject.presentation.navigation.Navigator
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 abstract class BaseViewModel<State : UiState, Event : UiEvent>(
     private val reducer: Reducer<State, Event>,
@@ -34,10 +36,6 @@ abstract class BaseViewModel<State : UiState, Event : UiEvent>(
 
     protected abstract fun createInitState(): State
 
-    protected fun addSpecialEvent(event: Event) {
-        caughtEvents.value.add(event)
-    }
-
     private fun createCaughtEvents(): MutableSet<Event> {
         return mutableSetOf()
     }
@@ -56,14 +54,14 @@ abstract class BaseViewModel<State : UiState, Event : UiEvent>(
 
     protected abstract fun handleCaughtEvent(event: Event)
 
-    fun handle(event: Event) {
+    protected fun handleEvent(event: Event) {
         _state.value = reducer.reduce(state = _state.value, event = event)
         if (caughtEvents.value.contains(event)) {
             handleCaughtEvent(event)
         }
         useCase.filter { it.canHandle(event) }.forEach { useCase ->
             viewModelScope.launch(Dispatchers.IO) {
-                val result = useCase.execute(uiState.value, event)
+                val result = useCase.execute(state.value, event)
                 withContext(Dispatchers.Main) {
                     handleEvent(result)
                 }
