@@ -14,7 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screens
-import com.natifedanilharitonov.hardskillsproject.presentation.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 import org.koin.android.ext.android.inject
 

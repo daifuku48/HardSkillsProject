@@ -7,7 +7,7 @@ import com.natifedanilharitonov.hardskillsproject.core.Reducer
 import com.natifedanilharitonov.hardskillsproject.core.UiEvent
 import com.natifedanilharitonov.hardskillsproject.core.UiState
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
-import com.natifedanilharitonov.hardskillsproject.presentation.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

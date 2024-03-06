@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830750144486",
+    "project_id": "hardskillsprojec",
+    "storage_bucket": "hardskillsprojec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830750144486:android:e507708d73930776934827",
+        "android_client_info": {
+          "package_name": "com.natifedanilharitonov.hardskillsproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEHvJpCSiv-Q8T5_kweAffQjpdzzNc8Vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

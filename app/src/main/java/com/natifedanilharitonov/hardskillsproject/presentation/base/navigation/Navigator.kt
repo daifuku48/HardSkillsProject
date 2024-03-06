@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.presentation.navigation
+package com.natifedanilharitonov.hardskillsproject.presentation.base.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
