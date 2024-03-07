@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.presentation.login.components
+package com.natifedanilharitonov.hardskillsproject.presentation.registration.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,24 +15,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseButton
-import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
+import com.natifedanilharitonov.hardskillsproject.presentation.login.components.AuthTextField
+import com.natifedanilharitonov.hardskillsproject.presentation.login.components.AuthTextTitle
 
 @Composable
-fun LoginContainer(
+fun RegistrationContainer(
+    nickname: String,
+    nicknameChanged: (String) -> Unit,
     email: String,
     emailChanged: (String) -> Unit,
     password: String,
     passwordChanged: (String) -> Unit,
     registerClick: () -> Unit,
     loginClick: () -> Unit,
+    nicknameLabel: String,
     emailLabel: String,
     passwordLabel: String,
     colorEmailLabel: Color,
-    colorPasswordLabel: Color
+    colorPasswordLabel: Color,
+    colorNicknameLabel: Color
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -55,8 +59,18 @@ fun LoginContainer(
         ) {
             Column {
                 AuthTextTitle(
-                    text = stringResource(R.string.login),
+                    text = stringResource(R.string.registration),
                     modifier = Modifier.padding(30.dp)
+                )
+
+                AuthTextField(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 10.dp, end = 10.dp),
+                    text = nickname,
+                    onTextChanged = { nickname -> nicknameChanged(nickname) },
+                    labelText = nicknameLabel,
+                    colorLabelText = colorNicknameLabel
                 )
 
                 AuthTextField(
@@ -85,9 +99,9 @@ fun LoginContainer(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(10.dp),
-                    onClick = loginClick,
-                    text = stringResource(R.string.login_btn),
-                    containerColor = Color.Black,
+                    onClick = registerClick,
+                    text = stringResource(R.string.register_btn),
+                    containerColor = Color.DarkGray,
                     textColor = Color.White
                 )
 
@@ -95,19 +109,12 @@ fun LoginContainer(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(10.dp),
-                    onClick = registerClick,
-                    text = stringResource(R.string.register_btn),
-                    containerColor = Color.DarkGray,
+                    onClick = loginClick,
+                    text = stringResource(R.string.login_btn),
+                    containerColor = Color.Black,
                     textColor = Color.White
                 )
             }
         }
     }
-}
-
-
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun LoginContainerPreview() {
-    LoginView()
 }

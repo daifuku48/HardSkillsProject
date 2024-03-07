@@ -54,7 +54,8 @@ dependencies {
     //Firebase
     implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
-
+    implementation("com.google.firebase:firebase-auth")
+    
     //Coroutines
     implementation(libs.kotlinx.coroutines.android)
 

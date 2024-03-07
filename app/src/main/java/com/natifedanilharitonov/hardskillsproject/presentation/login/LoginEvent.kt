@@ -1,5 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login
 
+import androidx.compose.ui.graphics.Color
 import com.natifedanilharitonov.hardskillsproject.core.UiEvent
 
 sealed class LoginEvent : UiEvent {
@@ -7,8 +8,10 @@ sealed class LoginEvent : UiEvent {
     data class PasswordChangedEvent(val password: String) : LoginEvent()
     data object LoginUserEvent : LoginEvent()
     data object UserHasLoggedEvent : LoginEvent()
-    data class EmailValidationEvent(val validation: Boolean) : LoginEvent()
-    data class PasswordValidationEvent(val validation: Boolean) : LoginEvent()
+    data object EmailValidationEvent : LoginEvent()
+    data class EmailValidationLabelReceived(val label: String, val color: Color) : LoginEvent()
+    data object PasswordValidationEvent : LoginEvent()
+    data class PasswordValidationLabelReceived(val label: String, val color: Color) : LoginEvent()
     data object ShowUserErrorLoginDialog : LoginEvent()
     data object HideUserErrorLoginDialog : LoginEvent()
     data object HideUserHasLoggedDialog : LoginEvent()

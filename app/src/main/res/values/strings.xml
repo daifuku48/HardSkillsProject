@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">HardSkillsProject</string>
     <string name="login">Login</string>
+
+    //Login
+    <string name="email_label">Email</string>
+    <string name="email_error_label">Not valid email</string>
+    <string name="password_label">Password</string>
+    <string name="password_error_label">Not valid password</string>
+    <string name="login_btn">Увійти</string>
+    <string name="register_btn">Зареєструватися</string>
+    <string name="registration">Registration</string>
+
+    //Registration
+    <string name="nickname_label">Nickname</string>
+    <string name="nickname_error_label">Not valid nickname</string>
 </resources>

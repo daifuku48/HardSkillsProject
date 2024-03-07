@@ -6,21 +6,28 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewMode
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 
-class LoginViewModelBase(
+class LoginViewModelImpl(
     reducer: Reducer<LoginState, LoginEvent>,
     useCases: Set<UseCase<LoginState, LoginEvent>>,
     navigator: Navigator
 ) : BaseViewModel<LoginState, LoginEvent>(reducer, useCases, navigator), LoginViewModel {
+    init {
+        handleEvent(LoginEvent.EmailValidationEvent)
+        handleEvent(LoginEvent.PasswordValidationEvent)
+    }
+
     override fun createInitState(): LoginState = LoginState()
 
     override fun handleCaughtEvent(event: LoginEvent) {}
 
     override fun onEmailChanged(email: String) {
         handleEvent(LoginEvent.EmailChangedEvent(email = email))
+        handleEvent(LoginEvent.EmailValidationEvent)
     }
 
     override fun onPasswordChanged(password: String) {
         handleEvent(LoginEvent.PasswordChangedEvent(password = password))
+        handleEvent(LoginEvent.PasswordValidationEvent)
     }
 
     override fun navigateToRegister() {
