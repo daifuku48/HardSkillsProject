@@ -21,4 +21,5 @@ sealed class LoginEvent : UiEvent {
     data object HideUserErrorLoginDialog : LoginEvent()
     data object HideUserHasLoggedDialog : LoginEvent()
     data object ErrorEvent : LoginEvent()
+    data object ClearTextFields : LoginEvent()
 }

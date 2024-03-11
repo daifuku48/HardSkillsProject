@@ -1,9 +1,16 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.registration
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseErrorDialog
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.PendingScreen
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.components.RegistrationContainer
+import com.natifedanilharitonov.hardskillsproject.presentation.registration.components.UserHasRegisteredDialog
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -24,5 +31,19 @@ fun RegistrationView(viewModel: RegistrationViewModelImpl = koinViewModel()) {
         registerButtonEnabled = state.registerButtonEnabled
     )
 
+    UserHasRegisteredDialog(
+        state = state.showUserHasLoggedDialog,
+        onConfirm = viewModel::onConfirmUserRegisteredDialog
+    )
 
+    BaseErrorDialog(
+        state = state.showUserErrorRegisterDialog,
+        onConfirm = viewModel::onConfirmErrorDialog
+    )
+
+    PendingScreen(
+        modifier = Modifier
+            .fillMaxSize(),
+        state = state.pending
+    )
 }

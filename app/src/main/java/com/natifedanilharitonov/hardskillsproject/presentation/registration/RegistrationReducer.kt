@@ -22,13 +22,17 @@ class RegistrationReducer : Reducer<RegistrationState, RegistrationEvent> {
 
             RegistrationEvent.NavigateToLoginUserEvent -> state
             is RegistrationEvent.PasswordChangedEvent -> state.copy(password = event.password)
-            RegistrationEvent.RegisterUserEvent -> state
+            RegistrationEvent.RegisterUserEvent -> state.copy(pending = true)
             RegistrationEvent.ShowUserErrorRegistrationDialog -> state.copy(
-                showUserErrorRegisterDialog = true
+                showUserErrorRegisterDialog = true,
+                pending = false
             )
 
-            RegistrationEvent.HideUserHasLoggedDialog -> state.copy(showUserHasLoggedDialog = true)
-            RegistrationEvent.ShowUserHasLoggedDialog -> state.copy(showUserHasLoggedDialog = false)
+            RegistrationEvent.HideUserHasRegisteredDialog -> state.copy(showUserHasLoggedDialog = false)
+            RegistrationEvent.ShowUserHasLoggedDialog -> state.copy(
+                showUserHasLoggedDialog = true,
+                pending = false
+            )
         }
     }
 }

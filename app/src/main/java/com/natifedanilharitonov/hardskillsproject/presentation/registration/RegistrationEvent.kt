@@ -20,7 +20,7 @@ sealed class RegistrationEvent : UiEvent {
     data object RegisterUserEvent : RegistrationEvent()
     data object NavigateToLoginUserEvent : RegistrationEvent()
     data object ShowUserHasLoggedDialog : RegistrationEvent()
-    data object HideUserHasLoggedDialog : RegistrationEvent()
+    data object HideUserHasRegisteredDialog : RegistrationEvent()
     data object ShowUserErrorRegistrationDialog : RegistrationEvent()
     data object HideUserErrorRegistrationDialog : RegistrationEvent()
     data object ErrorEvent : RegistrationEvent()

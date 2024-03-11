@@ -5,4 +5,6 @@ interface LoginViewModel {
     fun onPasswordChanged(password: String)
     fun navigateToRegister()
     fun login()
+    fun onConfirmUserHasLoggedDialog()
+    fun onConfirmErrorUserDialog()
 }

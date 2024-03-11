@@ -39,5 +39,21 @@ class LoginViewModelImpl(
     override fun login() {
         handleEvent(LoginEvent.LoginUserEvent)
     }
+
+    override fun onConfirmUserHasLoggedDialog() {
+        handleEvent(LoginEvent.HideUserHasLoggedDialog)
+        navigateToMainScreen()
+    }
+
+    override fun onConfirmErrorUserDialog() {
+        handleEvent(LoginEvent.HideUserErrorLoginDialog)
+        handleEvent(LoginEvent.ClearTextFields)
+    }
+
+    private fun navigateToMainScreen() {
+        val navOptions =
+            NavOptions.Builder().setPopUpTo(Screen.LoginScreen.route, inclusive = true).build()
+        navigate(Screen.MainScreen.route, navOptions)
+    }
 }
 

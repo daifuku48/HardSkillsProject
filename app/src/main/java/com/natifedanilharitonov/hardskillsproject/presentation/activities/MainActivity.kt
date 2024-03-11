@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -24,14 +26,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             HardSkillsProjectTheme {
-                Surface(
+                Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                    bottomBar = {
+
+                    }
+                ) { paddingValues ->
                     val navController = rememberNavController()
                     InitNavigation(navController = navController)
 
                     NavHost(
+                        modifier = Modifier.padding(paddingValues = paddingValues),
                         navController = navController,
                         startDestination = Screen.LoginScreen.route
                     ) {
@@ -51,7 +56,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun InitNavigation(navController: NavController){
+    private fun InitNavigation(navController: NavController) {
         navigator.attach(navController)
 
         DisposableEffect(Unit) {

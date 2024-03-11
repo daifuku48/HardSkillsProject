@@ -30,6 +30,11 @@ class LoginReducer : Reducer<LoginState, LoginEvent> {
                 passwordLabelColor = event.colorLabelPassword,
                 loginButtonEnabled = event.buttonEnabled
             )
+
+            is LoginEvent.ClearTextFields -> state.copy(
+                email = "",
+                password = ""
+            )
         }
     }
 }

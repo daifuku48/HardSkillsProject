@@ -17,7 +17,7 @@ class EmailPasswordLoginValidationUseCase(
             val emailLabel =
                 if (emailValidation || state.email.isEmpty()) resourcesRepository.getEmailLabel() else resourcesRepository.getEmailErrorLabel()
             val emailColor =
-                if (emailValidation || state.password.isEmpty()) Color.Black else Color.Red
+                if (emailValidation || state.email.isEmpty()) Color.Black else Color.Red
             val passwordValidation = validatePassword(state.password)
             val passwordLabel =
                 if (passwordValidation || state.password.isEmpty()) resourcesRepository.getPasswordLabel() else resourcesRepository.getPasswordErrorLabel()

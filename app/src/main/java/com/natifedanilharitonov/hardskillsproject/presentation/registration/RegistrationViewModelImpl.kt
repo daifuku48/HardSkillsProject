@@ -41,4 +41,16 @@ class RegistrationViewModelImpl(
                 .build()
         navigate(Screen.LoginScreen.route, navOptions)
     }
+
+    override fun onConfirmErrorDialog() {
+        handleEvent(RegistrationEvent.HideUserErrorRegistrationDialog)
+    }
+
+    override fun onConfirmUserRegisteredDialog() {
+        handleEvent(RegistrationEvent.HideUserHasRegisteredDialog)
+        val navOptions =
+            NavOptions.Builder().setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
+                .build()
+        navigate(Screen.MainScreen.route, navOptions)
+    }
 }

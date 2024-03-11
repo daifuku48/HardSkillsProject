@@ -5,4 +5,6 @@ interface RegistrationViewModel {
     fun passwordChanged(password: String)
     fun register()
     fun navigateToLogin()
+    fun onConfirmErrorDialog()
+    fun onConfirmUserRegisteredDialog()
 }

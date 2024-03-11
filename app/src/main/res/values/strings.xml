@@ -15,4 +15,10 @@
     <string name="nickname_label">Nickname</string>
     <string name="nickname_error_label">Not valid nickname</string>
     <string name="ok">OK</string>
+    <string name="user_has_logged">Користувач увійшов в систему</string>
+    <string name="user_has_registered">Користувач зареєстрований</string>
+    <string name="error_dialog">Відбулась помилка</string>
+    <string name="home">Home</string>
+    <string name="info">Info</string>
+    <string name="settings">Settings</string>
 </resources>

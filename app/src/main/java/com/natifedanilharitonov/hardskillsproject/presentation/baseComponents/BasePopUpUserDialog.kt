@@ -28,17 +28,15 @@ fun BasePopUpUserDialog(
     state: Boolean,
     text: String,
     buttonText: String,
-    onConfirm: () -> Unit,
-    onDismiss: () -> Unit
+    onConfirm: () -> Unit
 ) {
     if (state) {
         AlertDialog(
-            onDismissRequest = onDismiss,
-            modifier = modifier.size(180.dp)
+            onDismissRequest = onConfirm,
+            modifier = modifier
         ) {
             Box(
                 modifier = Modifier
-                    .size(180.dp)
                     .background(
                         color = Color.White,
                         shape = RoundedCornerShape(20.dp)
@@ -83,7 +81,6 @@ fun PreviewPopUp() {
             text = "Pop up here",
             buttonText = "Ok",
             onConfirm = {},
-            onDismiss = {}
         )
     }
 }
