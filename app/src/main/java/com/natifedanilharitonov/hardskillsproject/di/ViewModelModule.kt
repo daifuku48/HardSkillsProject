@@ -1,7 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.di
 
-import com.natifedanilharitonov.hardskillsproject.domain.login.EmailValidationUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.login.PasswordValidationUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.login.EmailPasswordLoginValidationUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.login.LoginUserUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.registration.EmailPasswordValidationRegistrationUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.registration.RegisterUserUseCase
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginReducer
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginViewModelImpl
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationReducer
@@ -13,8 +15,8 @@ val viewModelModule = module {
         LoginViewModelImpl(
             reducer = LoginReducer(),
             useCases = setOf(
-                get<EmailValidationUseCase>(),
-                get<PasswordValidationUseCase>()
+                get<EmailPasswordLoginValidationUseCase>(),
+                get<LoginUserUseCase>(),
             ),
             navigator = get()
         )
@@ -23,7 +25,10 @@ val viewModelModule = module {
     factory {
         RegistrationViewModelImpl(
             reducer = RegistrationReducer(),
-            useCases = setOf(),
+            useCases = setOf(
+                get<EmailPasswordValidationRegistrationUseCase>(),
+                get<RegisterUserUseCase>(),
+            ),
             navigator = get()
         )
     }

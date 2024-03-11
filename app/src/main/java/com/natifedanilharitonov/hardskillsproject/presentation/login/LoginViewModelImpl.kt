@@ -1,5 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login
 
+import androidx.navigation.NavOptions
 import com.natifedanilharitonov.hardskillsproject.core.Reducer
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
@@ -12,8 +13,7 @@ class LoginViewModelImpl(
     navigator: Navigator
 ) : BaseViewModel<LoginState, LoginEvent>(reducer, useCases, navigator), LoginViewModel {
     init {
-        handleEvent(LoginEvent.EmailValidationEvent)
-        handleEvent(LoginEvent.PasswordValidationEvent)
+        handleEvent(LoginEvent.ValidationEvent)
     }
 
     override fun createInitState(): LoginState = LoginState()
@@ -22,16 +22,18 @@ class LoginViewModelImpl(
 
     override fun onEmailChanged(email: String) {
         handleEvent(LoginEvent.EmailChangedEvent(email = email))
-        handleEvent(LoginEvent.EmailValidationEvent)
+        handleEvent(LoginEvent.ValidationEvent)
     }
 
     override fun onPasswordChanged(password: String) {
         handleEvent(LoginEvent.PasswordChangedEvent(password = password))
-        handleEvent(LoginEvent.PasswordValidationEvent)
+        handleEvent(LoginEvent.ValidationEvent)
     }
 
     override fun navigateToRegister() {
-        navigate(Screen.RegistrationScreen.route)
+        val navOptions =
+            NavOptions.Builder().setPopUpTo(Screen.LoginScreen.route, inclusive = true).build()
+        navigate(Screen.RegistrationScreen.route, navOptions)
     }
 
     override fun login() {

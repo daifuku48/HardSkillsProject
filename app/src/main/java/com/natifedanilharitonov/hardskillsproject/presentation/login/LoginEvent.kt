@@ -8,10 +8,15 @@ sealed class LoginEvent : UiEvent {
     data class PasswordChangedEvent(val password: String) : LoginEvent()
     data object LoginUserEvent : LoginEvent()
     data object UserHasLoggedEvent : LoginEvent()
-    data object EmailValidationEvent : LoginEvent()
-    data class EmailValidationLabelReceived(val label: String, val color: Color) : LoginEvent()
-    data object PasswordValidationEvent : LoginEvent()
-    data class PasswordValidationLabelReceived(val label: String, val color: Color) : LoginEvent()
+    data object ValidationEvent : LoginEvent()
+    data class EmailPasswordValidationEmail(
+        val labelEmail: String,
+        val colorLabelEmail: Color,
+        val labelPassword: String,
+        val colorLabelPassword: Color,
+        val buttonEnabled: Boolean
+    ) : LoginEvent()
+
     data object ShowUserErrorLoginDialog : LoginEvent()
     data object HideUserErrorLoginDialog : LoginEvent()
     data object HideUserHasLoggedDialog : LoginEvent()

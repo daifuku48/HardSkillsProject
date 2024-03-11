@@ -29,6 +29,7 @@ fun LoginContainer(
     passwordChanged: (String) -> Unit,
     registerClick: () -> Unit,
     loginClick: () -> Unit,
+    loginButtonEnabled: Boolean,
     emailLabel: String,
     passwordLabel: String,
     colorEmailLabel: Color,
@@ -85,6 +86,7 @@ fun LoginContainer(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(10.dp),
+                    enabled = loginButtonEnabled,
                     onClick = loginClick,
                     text = stringResource(R.string.login_btn),
                     containerColor = Color.Black,

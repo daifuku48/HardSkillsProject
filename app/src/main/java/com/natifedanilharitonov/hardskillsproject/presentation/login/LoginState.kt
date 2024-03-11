@@ -12,5 +12,6 @@ data class LoginState(
     val passwordLabelColor: Color = Color.Black,
     val pending: Boolean = false,
     val showUserHasLoggedDialog: Boolean = false,
-    val showUserErrorLoginDialog: Boolean = false
+    val showUserErrorLoginDialog: Boolean = false,
+    val loginButtonEnabled: Boolean = false
 ) : UiState

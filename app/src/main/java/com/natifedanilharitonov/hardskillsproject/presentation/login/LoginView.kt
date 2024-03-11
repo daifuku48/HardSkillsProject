@@ -19,6 +19,7 @@ fun LoginView(viewModel: LoginViewModelImpl = koinViewModel()) {
             viewModel.onPasswordChanged(password)
         },
         loginClick = viewModel::login,
+        loginButtonEnabled = state.loginButtonEnabled,
         registerClick = viewModel::navigateToRegister,
         emailLabel = state.emailLabel,
         passwordLabel = state.passwordLabel,

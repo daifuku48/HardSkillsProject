@@ -23,20 +23,17 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.components.
 
 @Composable
 fun RegistrationContainer(
-    nickname: String,
-    nicknameChanged: (String) -> Unit,
     email: String,
     emailChanged: (String) -> Unit,
     password: String,
     passwordChanged: (String) -> Unit,
     registerClick: () -> Unit,
     loginClick: () -> Unit,
-    nicknameLabel: String,
+    registerButtonEnabled: Boolean,
     emailLabel: String,
     passwordLabel: String,
     colorEmailLabel: Color,
     colorPasswordLabel: Color,
-    colorNicknameLabel: Color
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -67,16 +64,6 @@ fun RegistrationContainer(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 10.dp, end = 10.dp),
-                    text = nickname,
-                    onTextChanged = { nickname -> nicknameChanged(nickname) },
-                    labelText = nicknameLabel,
-                    colorLabelText = colorNicknameLabel
-                )
-
-                AuthTextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 10.dp, end = 10.dp),
                     text = email,
                     onTextChanged = { email -> emailChanged(email) },
                     labelText = emailLabel,
@@ -100,6 +87,7 @@ fun RegistrationContainer(
                         .fillMaxWidth()
                         .padding(10.dp),
                     onClick = registerClick,
+                    enabled = registerButtonEnabled,
                     text = stringResource(R.string.register_btn),
                     containerColor = Color.DarkGray,
                     textColor = Color.White

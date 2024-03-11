@@ -1,5 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.registration
 
+import androidx.navigation.NavOptions
 import com.natifedanilharitonov.hardskillsproject.core.Reducer
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
@@ -12,23 +13,22 @@ class RegistrationViewModelImpl(
     navigator: Navigator
 ) : BaseViewModel<RegistrationState, RegistrationEvent>(reducer, useCases, navigator),
     RegistrationViewModel {
+    init {
+        handleEvent(RegistrationEvent.ValidationEvent)
+    }
+
     override fun createInitState(): RegistrationState = RegistrationState()
 
     override fun handleCaughtEvent(event: RegistrationEvent) {}
 
-    override fun nicknameChanged(nickname: String) {
-        handleEvent(RegistrationEvent.NicknameChangedEvent(nickname))
-        handleEvent(RegistrationEvent.NicknameValidationEvent)
-    }
-
     override fun emailChanged(email: String) {
         handleEvent(RegistrationEvent.EmailChangedEvent(email))
-        handleEvent(RegistrationEvent.EmailValidationEvent)
+        handleEvent(RegistrationEvent.ValidationEvent)
     }
 
     override fun passwordChanged(password: String) {
         handleEvent(RegistrationEvent.PasswordChangedEvent(password))
-        handleEvent(RegistrationEvent.PasswordValidationEvent)
+        handleEvent(RegistrationEvent.ValidationEvent)
     }
 
     override fun register() {
@@ -36,6 +36,9 @@ class RegistrationViewModelImpl(
     }
 
     override fun navigateToLogin() {
-        navigate(Screen.LoginScreen.route)
+        val navOptions =
+            NavOptions.Builder().setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
+                .build()
+        navigate(Screen.LoginScreen.route, navOptions)
     }
 }
