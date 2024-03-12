@@ -19,7 +19,7 @@ data class BottomNavigationItems(private val context: Context) {
         ),
         BottomNavigationItem(
             label = context.getString(R.string.settings),
-            icon = R.drawable.home,
+            icon = R.drawable.settings,
             route = Screen.SettingsScreen.route
         )
     )
