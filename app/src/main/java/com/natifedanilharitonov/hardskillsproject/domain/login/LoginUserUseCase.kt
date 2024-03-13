@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.domain.login
 
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
-import com.natifedanilharitonov.hardskillsproject.data.repository.FirebaseUserRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.firebase.FirebaseUserRepository
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginEvent
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginState
 

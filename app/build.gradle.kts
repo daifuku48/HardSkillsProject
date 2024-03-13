@@ -51,11 +51,16 @@ android {
 }
 
 dependencies {
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.logging.interceptor)
+
     //Firebase
     implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
-    
+
     //Coroutines
     implementation(libs.kotlinx.coroutines.android)
 

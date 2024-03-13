@@ -24,15 +24,8 @@ abstract class BaseViewModel<State : UiState, Event : UiEvent>(
         createInitState()
     }
 
-    private val initCaughtEvents by lazy {
-        createCaughtEvents()
-    }
-
     private val _state: MutableStateFlow<State> = MutableStateFlow(initState)
     val state get() = _state.asStateFlow()
-
-    private val caughtEvents: MutableStateFlow<MutableSet<Event>> =
-        MutableStateFlow(initCaughtEvents)
 
     protected abstract fun createInitState(): State
 
@@ -40,9 +33,6 @@ abstract class BaseViewModel<State : UiState, Event : UiEvent>(
         return mutableSetOf()
     }
 
-    protected fun addCaughtEvent(event: Event) {
-        caughtEvents.value.add(event)
-    }
 
     protected fun navigate(route: String, navOptions: NavOptions? = null) {
         navigator.navigate(route, navOptions)
@@ -52,13 +42,8 @@ abstract class BaseViewModel<State : UiState, Event : UiEvent>(
         navigator.popBack()
     }
 
-    protected abstract fun handleCaughtEvent(event: Event)
-
     protected fun handleEvent(event: Event) {
         _state.value = reducer.reduce(state = _state.value, event = event)
-        if (caughtEvents.value.contains(event)) {
-            handleCaughtEvent(event)
-        }
         useCase.filter { it.canHandle(event) }.forEach { useCase ->
             viewModelScope.launch(Dispatchers.IO) {
                 val result = useCase.execute(state.value, event)

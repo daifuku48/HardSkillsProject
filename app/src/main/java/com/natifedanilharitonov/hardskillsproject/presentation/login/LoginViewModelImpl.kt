@@ -18,8 +18,6 @@ class LoginViewModelImpl(
 
     override fun createInitState(): LoginState = LoginState()
 
-    override fun handleCaughtEvent(event: LoginEvent) {}
-
     override fun onEmailChanged(email: String) {
         handleEvent(LoginEvent.EmailChangedEvent(email = email))
         handleEvent(LoginEvent.ValidationEvent)

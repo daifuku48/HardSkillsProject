@@ -1,17 +1,29 @@
 package com.natifedanilharitonov.hardskillsproject.di
 
-import com.natifedanilharitonov.hardskillsproject.data.repository.FirebaseUserRepository
-import com.natifedanilharitonov.hardskillsproject.data.repository.FirebaseUserRepositoryImpl
-import com.natifedanilharitonov.hardskillsproject.data.repository.ResourcesRepository
-import com.natifedanilharitonov.hardskillsproject.data.repository.ResourcesRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.firebase.FirebaseUserRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.firebase.FirebaseUserRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.random_images.RandomAnimeImageRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.random_images.RandomAnimeImageRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.RecoursesInfoRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.RecoursesInfoRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepositoryImpl
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    factory<ResourcesRepository> {
-        ResourcesRepositoryImpl(get())
+    factory<ResourcesAuthRepository> {
+        ResourcesAuthRepositoryImpl(get())
     }
 
     factory<FirebaseUserRepository> {
         FirebaseUserRepositoryImpl(get())
+    }
+
+    factory<RecoursesInfoRepository> {
+        RecoursesInfoRepositoryImpl(get())
+    }
+
+    factory<RandomAnimeImageRepository> {
+        RandomAnimeImageRepositoryImpl(get())
     }
 }

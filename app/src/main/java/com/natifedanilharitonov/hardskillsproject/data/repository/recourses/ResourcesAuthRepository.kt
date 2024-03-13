@@ -1,6 +1,6 @@
-package com.natifedanilharitonov.hardskillsproject.data.repository
+package com.natifedanilharitonov.hardskillsproject.data.repository.recourses
 
-interface ResourcesRepository {
+interface ResourcesAuthRepository {
     fun getEmailLabel(): String
     fun getEmailErrorLabel(): String
     fun getPasswordLabel(): String

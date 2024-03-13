@@ -1,8 +1,8 @@
-package com.natifedanilharitonov.hardskillsproject.data.network
+package com.natifedanilharitonov.hardskillsproject.data.repository.firebase
 
 import com.google.firebase.auth.FirebaseUser
 
-interface FirebaseUserSource {
+interface FirebaseUserRepository {
     suspend fun register(email: String, password: String): Boolean
     suspend fun login(email: String, password: String): Boolean
     suspend fun getUser(): FirebaseUser?

@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.presentation.activities.bottombar
+package com.natifedanilharitonov.hardskillsproject.presentation.activities.components.bottombar
 
 data class BottomNavigationItem(
     val label: String,

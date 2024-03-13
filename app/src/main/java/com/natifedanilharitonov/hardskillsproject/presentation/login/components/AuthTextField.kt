@@ -22,7 +22,9 @@ fun AuthTextField(
     TextField(
         modifier = modifier,
         value = text,
-        onValueChange = { value -> onTextChanged(value) },
+        onValueChange = { value ->
+            onTextChanged(value)
+        },
         singleLine = true,
         label = {
             Text(

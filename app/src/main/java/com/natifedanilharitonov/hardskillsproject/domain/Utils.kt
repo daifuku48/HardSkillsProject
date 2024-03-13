@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.domain
 
 object Utils {
+    const val ANIME_IMAGE_URL = "https://nekos.pro/api/"
     const val EMAIL_PATTERN = "^[\\w\\-\\.]+@([\\w-]+\\.)+[\\w-]{2,}\$"
     const val PASSWORD_PATTERN = "^[a-zA-Z0-9]{8,20}\$"
     const val SHOW_BOTTOM_STATE = true

@@ -21,4 +21,11 @@
     <string name="home">Home</string>
     <string name="info">Info</string>
     <string name="settings">Settings</string>
+    <string name="main_screen">Main Screen</string>
+    <string name="statistics">Statistics</string>
+    <string name="email">Email: %s</string>
+    <string name="onboarding">Onboarding</string>
+    <string name="users">Users</string>
+    <string name="unauthorized_user">Unauthorized user</string>
+    <string name="next_screen">Next Screen</string>
 </resources>

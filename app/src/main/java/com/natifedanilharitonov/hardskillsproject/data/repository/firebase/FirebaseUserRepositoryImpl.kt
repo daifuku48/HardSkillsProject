@@ -1,7 +1,7 @@
-package com.natifedanilharitonov.hardskillsproject.data.repository
+package com.natifedanilharitonov.hardskillsproject.data.repository.firebase
 
 import com.google.firebase.auth.FirebaseUser
-import com.natifedanilharitonov.hardskillsproject.data.network.FirebaseUserSource
+import com.natifedanilharitonov.hardskillsproject.data.network.firebase.FirebaseUserSource
 
 class FirebaseUserRepositoryImpl(
     private val source: FirebaseUserSource

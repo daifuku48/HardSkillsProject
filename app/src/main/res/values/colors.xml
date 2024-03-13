@@ -10,4 +10,5 @@
     <color name="authCardBackground">#F2EFE5</color>
     <color name="authBorderCard">#747264</color>
     <color name="light_blue">#B5C0D0</color>
+    <color name="black_top_bar">#222831</color>
 </resources>

@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.domain.main_activity
 
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
-import com.natifedanilharitonov.hardskillsproject.data.repository.FirebaseUserRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.firebase.FirebaseUserRepository
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.MainActivityEvent
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.MainActivityState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen

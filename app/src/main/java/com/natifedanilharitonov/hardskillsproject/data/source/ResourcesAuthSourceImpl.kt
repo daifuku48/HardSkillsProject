@@ -3,9 +3,9 @@ package com.natifedanilharitonov.hardskillsproject.data.source
 import android.content.Context
 import com.natifedanilharitonov.hardskillsproject.R
 
-class ResourcesSourceImpl(
+class ResourcesAuthSourceImpl(
     private val context: Context
-) : ResourcesSource {
+) : ResourcesAuthSource {
     override fun getNicknameLabel(): String {
         return context.getString(R.string.nickname_label)
     }

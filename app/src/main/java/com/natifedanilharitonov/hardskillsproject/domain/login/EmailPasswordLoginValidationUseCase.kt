@@ -2,14 +2,14 @@ package com.natifedanilharitonov.hardskillsproject.domain.login
 
 import androidx.compose.ui.graphics.Color
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
-import com.natifedanilharitonov.hardskillsproject.data.repository.ResourcesRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepository
 import com.natifedanilharitonov.hardskillsproject.domain.Utils.EMAIL_PATTERN
 import com.natifedanilharitonov.hardskillsproject.domain.Utils.PASSWORD_PATTERN
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginEvent
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginState
 
 class EmailPasswordLoginValidationUseCase(
-    private val resourcesRepository: ResourcesRepository
+    private val resourcesRepository: ResourcesAuthRepository
 ) : UseCase<LoginState, LoginEvent> {
     override suspend fun execute(state: LoginState, event: LoginEvent): LoginEvent {
         return if (event is LoginEvent.ValidationEvent) {

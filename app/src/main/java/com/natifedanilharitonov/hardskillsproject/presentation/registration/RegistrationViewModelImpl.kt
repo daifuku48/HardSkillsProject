@@ -19,7 +19,6 @@ class RegistrationViewModelImpl(
 
     override fun createInitState(): RegistrationState = RegistrationState()
 
-    override fun handleCaughtEvent(event: RegistrationEvent) {}
 
     override fun emailChanged(email: String) {
         handleEvent(RegistrationEvent.EmailChangedEvent(email))

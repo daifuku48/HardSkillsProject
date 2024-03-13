@@ -1,6 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.data.source
 
-interface ResourcesSource {
+interface ResourcesAuthSource {
     fun getNicknameLabel(): String
     fun getNicknameErrorLabel(): String
     fun getEmailLabel(): String

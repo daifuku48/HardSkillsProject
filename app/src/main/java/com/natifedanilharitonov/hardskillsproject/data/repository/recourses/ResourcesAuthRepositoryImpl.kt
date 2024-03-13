@@ -1,10 +1,10 @@
-package com.natifedanilharitonov.hardskillsproject.data.repository
+package com.natifedanilharitonov.hardskillsproject.data.repository.recourses
 
-import com.natifedanilharitonov.hardskillsproject.data.source.ResourcesSource
+import com.natifedanilharitonov.hardskillsproject.data.source.ResourcesAuthSource
 
-class ResourcesRepositoryImpl(
-    private val resourcesSource: ResourcesSource
-) : ResourcesRepository {
+class ResourcesAuthRepositoryImpl(
+    private val resourcesSource: ResourcesAuthSource
+) : ResourcesAuthRepository {
     override fun getEmailLabel(): String {
         return resourcesSource.getEmailLabel()
     }

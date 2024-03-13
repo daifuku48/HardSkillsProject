@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.data.network
+package com.natifedanilharitonov.hardskillsproject.data.network.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

@@ -2,13 +2,13 @@ package com.natifedanilharitonov.hardskillsproject.domain.registration
 
 import androidx.compose.ui.graphics.Color
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
-import com.natifedanilharitonov.hardskillsproject.data.repository.ResourcesRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepository
 import com.natifedanilharitonov.hardskillsproject.domain.Utils
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationEvent
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationState
 
 class EmailPasswordValidationRegistrationUseCase(
-    private val resourcesRepository: ResourcesRepository
+    private val resourcesRepository: ResourcesAuthRepository
 ) : UseCase<RegistrationState, RegistrationEvent> {
     override suspend fun execute(
         state: RegistrationState,

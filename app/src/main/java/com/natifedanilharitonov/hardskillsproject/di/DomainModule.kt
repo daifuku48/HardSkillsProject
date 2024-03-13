@@ -1,5 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.di
 
+import com.natifedanilharitonov.hardskillsproject.domain.info.GetUserInfoUseCase
 import com.natifedanilharitonov.hardskillsproject.domain.login.EmailPasswordLoginValidationUseCase
 import com.natifedanilharitonov.hardskillsproject.domain.login.LoginUserUseCase
 import com.natifedanilharitonov.hardskillsproject.domain.main_activity.GetStartDestinationUseCase
@@ -26,5 +27,9 @@ val domainModule = module {
 
     factory {
         GetStartDestinationUseCase(get())
+    }
+
+    factory {
+        GetUserInfoUseCase(get(), get())
     }
 }

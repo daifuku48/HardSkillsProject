@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.domain.registration
 
 import com.natifedanilharitonov.hardskillsproject.core.UseCase
-import com.natifedanilharitonov.hardskillsproject.data.repository.FirebaseUserRepository
+import com.natifedanilharitonov.hardskillsproject.data.repository.firebase.FirebaseUserRepository
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationEvent
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationState
 

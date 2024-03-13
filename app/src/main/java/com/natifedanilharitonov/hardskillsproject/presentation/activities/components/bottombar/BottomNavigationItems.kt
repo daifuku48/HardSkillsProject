@@ -1,11 +1,11 @@
-package com.natifedanilharitonov.hardskillsproject.presentation.activities.bottombar
+package com.natifedanilharitonov.hardskillsproject.presentation.activities.components.bottombar
 
 import android.content.Context
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 import kotlinx.collections.immutable.persistentListOf
 
-data class BottomNavigationItems(private val context: Context) {
+class BottomNavigationItems(context: Context) {
     val bottomItems = persistentListOf(
         BottomNavigationItem(
             label = context.getString(R.string.home),
