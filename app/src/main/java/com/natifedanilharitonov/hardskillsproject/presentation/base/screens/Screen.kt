@@ -11,7 +11,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_imag
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationView
 import com.natifedanilharitonov.hardskillsproject.presentation.settings.SettingsView
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.StatisticsView
-import com.natifedanilharitonov.hardskillsproject.presentation.users.UsersView
+import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserListView
 
 
 interface Screen {
@@ -141,7 +141,7 @@ interface Screen {
             with(navGraphBuilder) {
                 composable(route = USERS_ROUTE) {
                     showBottomState(bottomState)
-                    UsersView()
+                    UserListView()
                 }
             }
         }

@@ -51,6 +51,9 @@ android {
 }
 
 dependencies {
+    //Coil
+    implementation(libs.coil.compose)
+
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
@@ -72,8 +75,10 @@ dependencies {
 
     //Koin
     implementation(libs.koin.android)
-    implementation(libs.androidx.core.splashscreen)
     implementation(libs.koin.androidx.compose)
+
+    //Splash Screen
+    implementation(libs.androidx.core.splashscreen)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

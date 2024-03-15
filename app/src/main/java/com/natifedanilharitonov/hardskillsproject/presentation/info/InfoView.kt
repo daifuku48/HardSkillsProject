@@ -41,7 +41,7 @@ fun InfoView(viewModel: InfoViewModelImpl = koinViewModel()) {
             contentDescription = null,
             modifier = Modifier
                 .size(120.dp)
-                .clip(CircleShape) // You can customize the shape as needed
+                .clip(CircleShape)
                 .background(MaterialTheme.colorScheme.primary)
                 .padding(8.dp)
         )

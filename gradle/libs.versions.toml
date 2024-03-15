@@ -1,9 +1,9 @@
 [versions]
 agp = "8.3.0"
+coil = "2.6.0"
 converterGsonVersion = "2.9.0"
 coreSplashscreen = "1.0.1"
 firebaseBom = "32.7.4"
-gson = "2.10.1"
 koinAndroid = "3.6.0-wasm-alpha2"
 koinAndroidxCompose = "3.6.0-wasm-alpha2"
 kotlin = "1.9.0"
@@ -19,13 +19,15 @@ composeBom = "2023.08.00"
 loggingInterceptor = "4.12.0"
 navigationCompose = "2.7.7"
 retrofit = "2.9.0"
+roomRuntime = "2.6.1"
+roomCompiler = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

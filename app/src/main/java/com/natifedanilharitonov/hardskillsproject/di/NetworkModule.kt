@@ -2,16 +2,18 @@ package com.natifedanilharitonov.hardskillsproject.di
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.natifedanilharitonov.hardskillsproject.data.network.anime_image_source.AnimeRetrofitInstance
-import com.natifedanilharitonov.hardskillsproject.data.network.anime_image_source.model.AnimeImageNetwork
+import com.natifedanilharitonov.hardskillsproject.data.network.users.UsersRetrofitInstance
 import com.natifedanilharitonov.hardskillsproject.domain.Utils
+import com.natifedanilharitonov.hardskillsproject.domain.Utils.ANIME_API
+import com.natifedanilharitonov.hardskillsproject.domain.Utils.USERS_API
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 val networkModule = module {
     single {
@@ -24,7 +26,7 @@ val networkModule = module {
             .build()
     }
 
-    single {
+    single(named(ANIME_API)) {
         Retrofit.Builder()
             .baseUrl(Utils.ANIME_IMAGE_URL)
             .client(get())
@@ -32,7 +34,19 @@ val networkModule = module {
             .build()
     }
 
+    single(named(USERS_API)) {
+        Retrofit.Builder()
+            .baseUrl(Utils.USERS_API_URL)
+            .client(get())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
     single<AnimeRetrofitInstance> {
-        get<Retrofit>().create(AnimeRetrofitInstance::class.java)
+        get<Retrofit>(named(ANIME_API)).create()
+    }
+
+    single<UsersRetrofitInstance> {
+        get<Retrofit>(named(USERS_API)).create()
     }
 }

@@ -4,6 +4,8 @@ import com.natifedanilharitonov.hardskillsproject.data.network.anime_image_sourc
 import com.natifedanilharitonov.hardskillsproject.data.network.anime_image_source.RandomAnimeImageSourceImpl
 import com.natifedanilharitonov.hardskillsproject.data.network.firebase.FirebaseUserSource
 import com.natifedanilharitonov.hardskillsproject.data.network.firebase.FirebaseUserSourceImpl
+import com.natifedanilharitonov.hardskillsproject.data.network.users.UsersSource
+import com.natifedanilharitonov.hardskillsproject.data.network.users.UsersSourceImpl
 import com.natifedanilharitonov.hardskillsproject.data.source.ResourcesAuthSource
 import com.natifedanilharitonov.hardskillsproject.data.source.ResourcesAuthSourceImpl
 import com.natifedanilharitonov.hardskillsproject.data.source.ResourcesInfoSource
@@ -13,11 +15,11 @@ import org.koin.dsl.module
 
 val sourceModule = module {
     factory<ResourcesAuthSource> {
-        ResourcesAuthSourceImpl(androidApplication().applicationContext)
+        ResourcesAuthSourceImpl(androidApplication())
     }
 
     factory<ResourcesInfoSource> {
-        ResourcesInfoSourceImpl(androidApplication().applicationContext)
+        ResourcesInfoSourceImpl(androidApplication())
     }
 
     factory<FirebaseUserSource> {
@@ -25,6 +27,10 @@ val sourceModule = module {
     }
 
     factory<RandomAnimeImageSource> {
-        RandomAnimeImageSourceImpl(get())
+        RandomAnimeImageSourceImpl(get(), androidApplication())
+    }
+
+    factory<UsersSource> {
+        UsersSourceImpl(get())
     }
 }

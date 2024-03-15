@@ -5,5 +5,5 @@ import com.natifedanilharitonov.hardskillsproject.core.UiEvent
 sealed class RandomAnimeImageEvent : UiEvent {
     data object ErrorEvent : RandomAnimeImageEvent()
     data object GetRandomImageEvent : RandomAnimeImageEvent()
-    data class RandomImageIsReceived(val url: String) : RandomAnimeImageEvent()
+    data class RandomImageIsReceived(val animeImage: AnimeImage) : RandomAnimeImageEvent()
 }

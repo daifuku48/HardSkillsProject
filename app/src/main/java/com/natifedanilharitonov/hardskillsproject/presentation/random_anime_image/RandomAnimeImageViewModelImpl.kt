@@ -11,5 +11,16 @@ class RandomAnimeImageViewModelImpl(
     navigator: Navigator
 ) : BaseViewModel<RandomAnimeImageState, RandomAnimeImageEvent>(reducer, useCases, navigator),
     RandomAnimeImageViewModel {
+    init {
+        handleEvent(RandomAnimeImageEvent.GetRandomImageEvent)
+    }
+
     override fun createInitState(): RandomAnimeImageState = RandomAnimeImageState()
+    override fun navigateToNextScreen() {
+
+    }
+
+    override fun refreshImage() {
+        handleEvent(RandomAnimeImageEvent.GetRandomImageEvent)
+    }
 }

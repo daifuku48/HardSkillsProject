@@ -4,6 +4,6 @@ import com.natifedanilharitonov.hardskillsproject.data.network.anime_image_sourc
 import retrofit2.http.GET
 
 interface AnimeRetrofitInstance {
-    @GET("/neko")
+    @GET("neko")
     suspend fun getRandomImage(): AnimeImageNetwork
 }

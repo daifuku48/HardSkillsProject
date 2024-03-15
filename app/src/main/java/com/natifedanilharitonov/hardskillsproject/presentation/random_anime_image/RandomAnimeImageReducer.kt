@@ -9,8 +9,8 @@ class RandomAnimeImageReducer : Reducer<RandomAnimeImageState, RandomAnimeImageE
     ): RandomAnimeImageState {
         return when (event) {
             is RandomAnimeImageEvent.ErrorEvent -> state
-            is RandomAnimeImageEvent.GetRandomImageEvent -> state
-            is RandomAnimeImageEvent.RandomImageIsReceived -> state.copy(urlImage = event.url)
+            is RandomAnimeImageEvent.GetRandomImageEvent -> state.copy(image = AnimeImage.ImagePending)
+            is RandomAnimeImageEvent.RandomImageIsReceived -> state.copy(image = event.animeImage)
         }
     }
 }

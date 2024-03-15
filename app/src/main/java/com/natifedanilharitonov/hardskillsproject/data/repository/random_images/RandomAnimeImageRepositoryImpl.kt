@@ -1,9 +1,12 @@
 package com.natifedanilharitonov.hardskillsproject.data.repository.random_images
 
+import android.graphics.Bitmap
+import com.natifedanilharitonov.hardskillsproject.data.network.anime_image_source.RandomAnimeImageSource
+
 class RandomAnimeImageRepositoryImpl(
-    private val randomAnimeImageRepository: RandomAnimeImageRepository
+    private val source: RandomAnimeImageSource
 ) : RandomAnimeImageRepository {
-    override suspend fun getImage(): String {
-        return randomAnimeImageRepository.getImage()
+    override suspend fun getImage(): Bitmap? {
+        return source.getAnimeImage()
     }
 }

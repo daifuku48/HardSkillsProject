@@ -8,6 +8,8 @@ import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.Reco
 import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.RecoursesInfoRepositoryImpl
 import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepository
 import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.users.UserRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.users.UsersRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {
@@ -25,5 +27,9 @@ val repositoryModule = module {
 
     factory<RandomAnimeImageRepository> {
         RandomAnimeImageRepositoryImpl(get())
+    }
+
+    factory<UsersRepository> {
+        UserRepositoryImpl(get())
     }
 }
