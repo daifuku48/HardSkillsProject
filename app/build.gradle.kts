@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
     id("com.google.gms.google-services")
+    id("dev.shreyaspatil.compose-compiler-report-generator")
 }
 
 android {
@@ -51,6 +53,16 @@ android {
 }
 
 dependencies {
+    //Vico Charts
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m3)
+
+    //Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt(libs.androidx.room.compiler)
+
     //Coil
     implementation(libs.coil.compose)
 

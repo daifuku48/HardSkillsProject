@@ -35,4 +35,14 @@
     //User List
     <string name="user_full_name">%s %s %s</string>
     <string name="error_users_is_not_exist">Oups, something went wrong, users are not existing</string>
+    <string name="network_error">Network error</string>
+    <string name="main_screen_">Main Screen</string>
+    <string name="main_first_screen">Main First Screen</string>
+    <string name="back_to_start">Повернутися в початок</string>
+    <string name="back_to_main">Back to main</string>
+    <string name="main_second_screen">Main Second Screen</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="settings_first_screen">Settings First Screen</string>
+    <string name="second_settings_screen">Second Settings Screen</string>
+    <string name="back_to_main_settings">Back to Main Settings</string>
 </resources>

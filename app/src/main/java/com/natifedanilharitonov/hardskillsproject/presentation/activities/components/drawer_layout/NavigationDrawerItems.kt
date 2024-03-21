@@ -3,9 +3,10 @@ package com.natifedanilharitonov.hardskillsproject.presentation.activities.compo
 import android.content.Context
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+import kotlinx.collections.immutable.persistentListOf
 
 class NavigationDrawerItems(context: Context) {
-    val items = listOf(
+    val items = persistentListOf(
         NavigationDrawerItem(
             route = Screen.StatisticsScreen.route,
             title = context.getString(R.string.statistics),

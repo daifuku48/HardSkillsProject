@@ -35,7 +35,9 @@ fun BottomNavigationBar(
                         )
                     },
                     onClick = {
-                        navigate(item.route, index)
+                        if (index != navigationSelectedItem){
+                            navigate(item.route, index)
+                        }
                     }
                 )
             }

@@ -11,4 +11,6 @@
     <color name="authBorderCard">#747264</color>
     <color name="light_blue">#B5C0D0</color>
     <color name="black_top_bar">#222831</color>
+    <color name="blue">#00224D</color>
+    <color name="red">#FF204E</color>
 </resources>

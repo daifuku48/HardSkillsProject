@@ -2,6 +2,7 @@ package com.natifedanilharitonov.hardskillsproject.data.repository.firebase
 
 import com.google.firebase.auth.FirebaseUser
 import com.natifedanilharitonov.hardskillsproject.data.network.firebase.FirebaseUserSource
+import com.natifedanilharitonov.hardskillsproject.domain.repository.FirebaseUserRepository
 
 class FirebaseUserRepositoryImpl(
     private val source: FirebaseUserSource
@@ -16,5 +17,9 @@ class FirebaseUserRepositoryImpl(
 
     override suspend fun getUser(): FirebaseUser? {
         return source.getUser()
+    }
+
+    override fun signOut() {
+        source.signOut()
     }
 }

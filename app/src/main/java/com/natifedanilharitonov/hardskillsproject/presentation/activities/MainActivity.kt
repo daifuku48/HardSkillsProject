@@ -9,7 +9,6 @@ import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.rememberDrawerState
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -17,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.bottombar.BottomNavigationBar
@@ -41,7 +39,13 @@ class MainActivity : ComponentActivity() {
                 val context = LocalContext.current
                 val scope = rememberCoroutineScope()
                 val navController = rememberNavController()
-                InitNavigation(navController = navController)
+                navigator.attach(navController)
+
+                DisposableEffect(Unit) {
+                    onDispose {
+                        navigator.detach()
+                    }
+                }
 
                 val viewModel: MainActivityViewModelImpl by remember {
                     inject()
@@ -57,30 +61,29 @@ class MainActivity : ComponentActivity() {
                                 scope.launch {
                                     drawerState.close()
                                 }
-                            })
+                            },
+                            closeDrawer = {
+                                scope.launch { drawerState.close() }
+                            },
+                            currentRoute = navController.currentDestination?.route
+                        )
                     },
                     drawerState = drawerState,
                     gesturesEnabled = drawerState.isOpen
                 ) {
-                    Scaffold(
-                        modifier = Modifier.fillMaxSize(),
-                        topBar = {
-                            TopBar(onNavigationDrawerClick = {
-                                scope.launch {
-                                    drawerState.open()
-                                }
+                    Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+                        TopBar(onNavigationDrawerClick = {
+                            scope.launch {
+                                drawerState.open()
+                            }
+                        })
+                    }, bottomBar = {
+                        BottomNavigationBar(bottomState = state.bottomState,
+                            navigationSelectedItem = state.bottomNavigationSelectedItem,
+                            navigate = { item, index ->
+                                viewModel.navigateBottomBarMenu(item, index)
                             })
-                        },
-                        bottomBar = {
-                            BottomNavigationBar(
-                                bottomState = state.bottomState,
-                                navigationSelectedItem = state.bottomNavigationSelectedItem,
-                                navigate = { item, index ->
-                                    viewModel.navigateBottomBarMenu(item, index)
-                                }
-                            )
-                        }
-                    ) { paddingValues ->
+                    }) { paddingValues ->
                         state.startDestination?.let { destination ->
                             NavHost(
                                 modifier = Modifier.padding(paddingValues = paddingValues),
@@ -92,33 +95,23 @@ class MainActivity : ComponentActivity() {
                                         Screen.LoginScreen,
                                         Screen.RegistrationScreen,
                                         Screen.MainScreen,
+                                        Screen.MainFirstMockScreen,
+                                        Screen.MainSecondMockScreen,
                                         Screen.SettingsScreen,
+                                        Screen.SettingFirstScreen,
+                                        Screen.SettingsSecondScreen,
                                         Screen.InfoScreen,
                                         Screen.RandomAnimeImage,
                                         Screen.StatisticsScreen,
-                                        Screen.UsersScreen
+                                        Screen.UsersScreen,
                                     )
-                                ).show(
-                                    navGraphBuilder = this,
-                                    showBottomState = { bottomState ->
-                                        viewModel.changeBottomState(bottomState)
-                                    }
-                                )
+                                ).show(navGraphBuilder = this, showBottomState = { bottomState ->
+                                    viewModel.changeBottomState(bottomState)
+                                })
                             }
                         }
                     }
                 }
-            }
-        }
-    }
-
-    @Composable
-    private fun InitNavigation(navController: NavController) {
-        navigator.attach(navController)
-
-        DisposableEffect(Unit) {
-            onDispose {
-                navigator.detach()
             }
         }
     }

@@ -38,4 +38,8 @@ class FirebaseUserSourceImpl(
     override suspend fun getUser(): FirebaseUser? {
         return auth.currentUser
     }
+
+    override fun signOut() {
+        auth.signOut()
+    }
 }

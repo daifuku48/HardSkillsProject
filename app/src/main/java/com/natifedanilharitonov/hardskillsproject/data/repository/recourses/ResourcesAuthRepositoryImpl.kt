@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.data.repository.recourses
 
-import com.natifedanilharitonov.hardskillsproject.data.source.ResourcesAuthSource
+import com.natifedanilharitonov.hardskillsproject.data.source.auth.ResourcesAuthSource
+import com.natifedanilharitonov.hardskillsproject.domain.repository.ResourcesAuthRepository
 
 class ResourcesAuthRepositoryImpl(
     private val resourcesSource: ResourcesAuthSource
