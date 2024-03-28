@@ -45,4 +45,6 @@
     <string name="settings_first_screen">Settings First Screen</string>
     <string name="second_settings_screen">Second Settings Screen</string>
     <string name="back_to_main_settings">Back to Main Settings</string>
+    <string name="error_stats_model">Error stats model</string>
+    <string name="back_to_main_chart">Back to main chart</string>
 </resources>

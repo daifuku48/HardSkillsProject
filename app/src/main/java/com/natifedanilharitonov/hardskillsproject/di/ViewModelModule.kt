@@ -13,6 +13,9 @@ import com.natifedanilharitonov.hardskillsproject.domain.use_cases.registration.
 import com.natifedanilharitonov.hardskillsproject.domain.use_cases.settings.SignOutUseCase
 import com.natifedanilharitonov.hardskillsproject.domain.use_cases.settings_first.GetTextSettingsFirstUseCase
 import com.natifedanilharitonov.hardskillsproject.domain.use_cases.settings_second.GetTextSettingsSecondUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.use_cases.statistics.GetModelStatsStatisticsUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.use_cases.statistics_first.GetModelDataStatFirstUseCase
+import com.natifedanilharitonov.hardskillsproject.domain.use_cases.statistics_second.GetModelToSecondChartUseCase
 import com.natifedanilharitonov.hardskillsproject.domain.use_cases.user_list.GetUsersUseCase
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.MainActivityReducer
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.MainActivityViewModelImpl
@@ -36,6 +39,12 @@ import com.natifedanilharitonov.hardskillsproject.presentation.settings_first.Se
 import com.natifedanilharitonov.hardskillsproject.presentation.settings_first.SettingsFirstViewModelImpl
 import com.natifedanilharitonov.hardskillsproject.presentation.settings_second.SettingsSecondReducer
 import com.natifedanilharitonov.hardskillsproject.presentation.settings_second.SettingsSecondViewModelImpl
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics.StatisticsReducer
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics.StatisticsViewModelImpl
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_first.StatisticsFirstReducer
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_first.StatisticsFirstViewModelImpl
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.StatisticsSecondReducer
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.StatisticsSecondViewModelImpl
 import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserListReducer
 import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserListViewModelImpl
 import org.koin.dsl.module
@@ -158,6 +167,36 @@ val viewModelModule = module {
             reducer = SettingsSecondReducer(),
             useCases = setOf(
                 get<GetTextSettingsSecondUseCase>()
+            ),
+            navigator = get()
+        )
+    }
+
+    factory {
+        StatisticsViewModelImpl(
+            reducer = StatisticsReducer(),
+            useCases = setOf(
+                get<GetModelStatsStatisticsUseCase>()
+            ),
+            navigator = get()
+        )
+    }
+
+    factory {
+        StatisticsFirstViewModelImpl(
+            reducer = StatisticsFirstReducer(),
+            useCases = setOf(
+                get<GetModelDataStatFirstUseCase>()
+            ),
+            navigator = get()
+        )
+    }
+
+    factory {
+        StatisticsSecondViewModelImpl(
+            reducer = StatisticsSecondReducer(),
+            useCases = setOf(
+                GetModelToSecondChartUseCase(get())
             ),
             navigator = get()
         )

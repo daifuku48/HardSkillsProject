@@ -5,10 +5,12 @@ import com.natifedanilharitonov.hardskillsproject.data.repository.mock_text.Mock
 import com.natifedanilharitonov.hardskillsproject.data.repository.random_images.RandomAnimeImageRepositoryImpl
 import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.RecoursesInfoRepositoryImpl
 import com.natifedanilharitonov.hardskillsproject.data.repository.recourses.ResourcesAuthRepositoryImpl
+import com.natifedanilharitonov.hardskillsproject.data.repository.stats.RandomStatsRepositoryImpl
 import com.natifedanilharitonov.hardskillsproject.data.repository.users.UserRepositoryImpl
 import com.natifedanilharitonov.hardskillsproject.domain.repository.FirebaseUserRepository
 import com.natifedanilharitonov.hardskillsproject.domain.repository.MockTextRepository
 import com.natifedanilharitonov.hardskillsproject.domain.repository.RandomAnimeImageRepository
+import com.natifedanilharitonov.hardskillsproject.domain.repository.RandomStatsRepository
 import com.natifedanilharitonov.hardskillsproject.domain.repository.RecoursesInfoRepository
 import com.natifedanilharitonov.hardskillsproject.domain.repository.ResourcesAuthRepository
 import com.natifedanilharitonov.hardskillsproject.domain.repository.UsersRepository
@@ -37,5 +39,9 @@ val repositoryModule = module {
 
     factory<MockTextRepository> {
         MockTextRepositoryImpl(get())
+    }
+
+    factory<RandomStatsRepository> {
+        RandomStatsRepositoryImpl(get())
     }
 }

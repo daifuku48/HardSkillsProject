@@ -56,12 +56,8 @@ dependencies {
     //Vico Charts
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m3)
-
-    //Room
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    //noinspection KaptUsageInsteadOfKsp
-    kapt(libs.androidx.room.compiler)
+    implementation(libs.vico.core)
+    implementation("com.patrykandpatrick.vico:views:2.0.0-alpha.12")
 
     //Coil
     implementation(libs.coil.compose)

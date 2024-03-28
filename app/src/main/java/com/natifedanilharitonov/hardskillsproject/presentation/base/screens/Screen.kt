@@ -2,8 +2,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.base.screens
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.HIDE_BOTTOM_STATE
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.SHOW_BOTTOM_STATE
+import com.natifedanilharitonov.hardskillsproject.domain.Utils.HIDE_NAV_STATE
+import com.natifedanilharitonov.hardskillsproject.domain.Utils.SHOW_NAV_STATE
 import com.natifedanilharitonov.hardskillsproject.presentation.info.InfoView
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
 import com.natifedanilharitonov.hardskillsproject.presentation.main.MainView
@@ -15,55 +15,82 @@ import com.natifedanilharitonov.hardskillsproject.presentation.settings.Settings
 import com.natifedanilharitonov.hardskillsproject.presentation.settings_first.SettingsFirstView
 import com.natifedanilharitonov.hardskillsproject.presentation.settings_second.SettingsSecondView
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.StatisticsView
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_first.StatisticsFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.StatisticsSecondView
 import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserListView
 
 
-interface Screen {
-    val route: String
-    val bottomState: Boolean
-    fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit)
+abstract class Screen {
+    abstract val route: String
+    protected abstract val bottomState: Boolean
+    protected abstract val drawerState: Boolean
+    abstract fun show(
+        navGraphBuilder: NavGraphBuilder,
+        showBottomState: (Boolean) -> Unit,
+        showDrawerState: (Boolean) -> Unit
+    )
 
-    object LoginScreen : Screen {
+    object LoginScreen : Screen() {
         override val route: String = LOGIN_ROUTE
         override val bottomState: Boolean
-            get() = HIDE_BOTTOM_STATE
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = HIDE_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = LOGIN_ROUTE) {
                     showBottomState(bottomState)
+                    showDrawerState(drawerState)
                     LoginView()
                 }
             }
         }
     }
 
-    object RegistrationScreen : Screen {
+    object RegistrationScreen : Screen() {
         override val route: String
             get() = REGISTRATION_ROUTE
         override val bottomState: Boolean
-            get() = HIDE_BOTTOM_STATE
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = HIDE_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
-
                 composable(route = REGISTRATION_ROUTE) {
                     showBottomState(bottomState)
+                    showDrawerState(drawerState)
                     RegistrationView()
                 }
             }
         }
     }
 
-    object MainScreen : Screen {
+    object MainScreen : Screen() {
         override val route: String
             get() = MAIN_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = MAIN_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     MainView()
                 }
@@ -71,15 +98,22 @@ interface Screen {
         }
     }
 
-    object MainFirstMockScreen : Screen {
+    object MainFirstMockScreen : Screen() {
         override val route: String
             get() = MAIN_FIRST_MOCK_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = MAIN_FIRST_MOCK_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     MainFirstView()
                 }
@@ -87,16 +121,23 @@ interface Screen {
         }
     }
 
-    object MainSecondMockScreen : Screen {
+    object MainSecondMockScreen : Screen() {
         override val route: String
             get() = MAIN_SECOND_MOCK_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = MAIN_SECOND_MOCK_ROUTE) {
-                    showBottomState(MainFirstMockScreen.bottomState)
+                    showDrawerState(drawerState)
+                    showBottomState(bottomState)
                     MainSecondMockView()
                 }
             }
@@ -104,15 +145,22 @@ interface Screen {
 
     }
 
-    object SettingsScreen : Screen {
+    object SettingsScreen : Screen() {
         override val route: String
             get() = SETTINGS_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = SETTINGS_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     SettingsView()
                 }
@@ -120,15 +168,22 @@ interface Screen {
         }
     }
 
-    object SettingFirstScreen : Screen {
+    object SettingFirstScreen : Screen() {
         override val route: String
             get() = SETTINGS_FIRST_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = SETTINGS_FIRST_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     SettingsFirstView()
                 }
@@ -137,15 +192,22 @@ interface Screen {
 
     }
 
-    object SettingsSecondScreen : Screen {
+    object SettingsSecondScreen : Screen() {
         override val route: String
             get() = SETTINGS_SECOND_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = SETTINGS_SECOND_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     SettingsSecondView()
                 }
@@ -154,15 +216,22 @@ interface Screen {
 
     }
 
-    object InfoScreen : Screen {
+    object InfoScreen : Screen() {
         override val route: String
             get() = INFO_ROUTE
         override val bottomState: Boolean
-            get() = SHOW_BOTTOM_STATE
+            get() = SHOW_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = INFO_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     InfoView()
                 }
@@ -170,15 +239,22 @@ interface Screen {
         }
     }
 
-    object RandomAnimeImage : Screen {
+    object RandomAnimeImage : Screen() {
         override val route: String
             get() = ONBOARDING_ROUTE
         override val bottomState: Boolean
-            get() = HIDE_BOTTOM_STATE
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = ONBOARDING_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     RandomAnimeImageView()
                 }
@@ -186,15 +262,22 @@ interface Screen {
         }
     }
 
-    object StatisticsScreen : Screen {
+    object StatisticsScreen : Screen() {
         override val route: String
             get() = STATISTICS_ROUTE
         override val bottomState: Boolean
-            get() = HIDE_BOTTOM_STATE
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = STATISTICS_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     StatisticsView()
                 }
@@ -202,17 +285,70 @@ interface Screen {
         }
     }
 
-    object UsersScreen : Screen {
+    object UsersScreen : Screen() {
         override val route: String
             get() = USERS_ROUTE
         override val bottomState: Boolean
-            get() = HIDE_BOTTOM_STATE
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
 
-        override fun show(navGraphBuilder: NavGraphBuilder, showBottomState: (Boolean) -> Unit) {
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
             with(navGraphBuilder) {
                 composable(route = USERS_ROUTE) {
+                    showDrawerState(drawerState)
                     showBottomState(bottomState)
                     UserListView()
+                }
+            }
+        }
+    }
+
+    object StatisticsFirstScreen : Screen() {
+        override val route: String
+            get() = STATISTICS_FIRST_ROUTE
+        override val bottomState: Boolean
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
+
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
+            with(navGraphBuilder) {
+                composable(route = STATISTICS_FIRST_ROUTE) {
+                    showDrawerState(drawerState)
+                    showBottomState(bottomState)
+                    StatisticsFirstView()
+                }
+            }
+        }
+    }
+
+    object StatisticsSecondScreen : Screen() {
+        override val route: String
+            get() = STATISTICS_SECOND_ROUTE
+        override val bottomState: Boolean
+            get() = HIDE_NAV_STATE
+        override val drawerState: Boolean
+            get() = SHOW_NAV_STATE
+
+        override fun show(
+            navGraphBuilder: NavGraphBuilder,
+            showBottomState: (Boolean) -> Unit,
+            showDrawerState: (Boolean) -> Unit
+        ) {
+            with(navGraphBuilder) {
+                composable(route = STATISTICS_SECOND_ROUTE) {
+                    showDrawerState(drawerState)
+                    showBottomState(bottomState)
+                    StatisticsSecondView()
                 }
             }
         }
@@ -230,6 +366,8 @@ interface Screen {
         private const val INFO_ROUTE = "INFO_ROUTE"
         private const val ONBOARDING_ROUTE = "ONBOARDING_ROUTE"
         private const val STATISTICS_ROUTE = "STATISTICS_ROUTE"
+        private const val STATISTICS_FIRST_ROUTE = "STATISTICS_FIRST_ROUTE"
+        private const val STATISTICS_SECOND_ROUTE = "STATISTICS_SECOND_ROUTE"
         private const val USERS_ROUTE = "USERS_ROUTE"
     }
 }

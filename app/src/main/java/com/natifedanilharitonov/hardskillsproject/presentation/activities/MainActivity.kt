@@ -55,6 +55,7 @@ class MainActivity : ComponentActivity() {
                 ModalNavigationDrawer(
                     drawerContent = {
                         NavigationDrawer(
+                            drawerState = state.drawerState,
                             menuItems = remember { NavigationDrawerItems(context).items },
                             navigate = { route ->
                                 viewModel.navigateDrawerMenu(route)
@@ -104,9 +105,13 @@ class MainActivity : ComponentActivity() {
                                         Screen.RandomAnimeImage,
                                         Screen.StatisticsScreen,
                                         Screen.UsersScreen,
+                                        Screen.StatisticsFirstScreen,
+                                        Screen.StatisticsSecondScreen
                                     )
                                 ).show(navGraphBuilder = this, showBottomState = { bottomState ->
                                     viewModel.changeBottomState(bottomState)
+                                }, showDrawerState = { drawerState ->
+                                    viewModel.changeDrawerState(drawerState)
                                 })
                             }
                         }

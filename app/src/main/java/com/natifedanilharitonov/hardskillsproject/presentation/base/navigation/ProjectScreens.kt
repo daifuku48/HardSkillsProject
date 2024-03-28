@@ -7,5 +7,6 @@ interface ProjectScreens {
     fun show(
         navGraphBuilder: NavGraphBuilder,
         showBottomState: (Boolean) -> Unit,
+        showDrawerState: (Boolean) -> Unit
     )
 }

@@ -16,6 +16,7 @@ class MainActivityReducer : Reducer<MainActivityState, MainActivityEvent> {
             )
 
             is MainActivityEvent.ChangeBottomStateEvent -> state.copy(bottomState = event.bottomState)
+            is MainActivityEvent.ChangeDrawerStateEvent -> state.copy(drawerState = event.drawerState)
         }
     }
 }

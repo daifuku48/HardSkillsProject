@@ -2,15 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="LoginContainerPreview (1)">
-        <State />
-      </entry>
-      <entry key="PreviewChart">
-        <State />
-      </entry>
-      <entry key="PreviewPopUp">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>

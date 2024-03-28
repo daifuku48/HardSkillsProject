@@ -20,6 +20,8 @@ import org.koin.androidx.compose.koinViewModel
 fun RandomAnimeImageView(viewModel: RandomAnimeImageViewModelImpl = koinViewModel()) {
     val state by viewModel.state.collectAsState()
 
+    AnimeScreenButton(onClick = viewModel::navigateToNextScreen)
+
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column {
             ImageContainer(animeImage = state.image)
@@ -27,6 +29,4 @@ fun RandomAnimeImageView(viewModel: RandomAnimeImageViewModelImpl = koinViewMode
             RefreshButton(onClick = viewModel::refreshImage)
         }
     }
-
-    AnimeScreenButton(onClick = viewModel::navigateToNextScreen)
 }

@@ -38,4 +38,8 @@ class MainActivityViewModelImpl(
     override fun navigateDrawerMenu(route: String) {
         navigate(route)
     }
+
+    fun changeDrawerState(drawerState: Boolean) {
+        handleEvent(MainActivityEvent.ChangeDrawerStateEvent(drawerState))
+    }
 }

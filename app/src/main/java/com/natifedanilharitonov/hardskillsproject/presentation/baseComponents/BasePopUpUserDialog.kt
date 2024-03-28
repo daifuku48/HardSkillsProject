@@ -7,9 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,7 +30,7 @@ fun BasePopUpUserDialog(
     onConfirm: () -> Unit
 ) {
     if (state) {
-        AlertDialog(
+        BasicAlertDialog(
             onDismissRequest = onConfirm,
             modifier = modifier
         ) {
@@ -45,7 +44,8 @@ fun BasePopUpUserDialog(
                         color = Color.DarkGray,
                         width = 1.dp,
                         shape = RoundedCornerShape(20.dp)
-                    ),
+                    )
+                    .padding(20.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Column {
