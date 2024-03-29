@@ -23,14 +23,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.domain.model.DomainName
+import com.natifedanilharitonov.hardskillsproject.presentation.user_list.model.UiName
 
 
 @Composable
 fun UserCard(
     modifier: Modifier = Modifier,
     image: String?,
-    name: DomainName
+    name: UiName
 ) {
     Card(
         modifier = modifier

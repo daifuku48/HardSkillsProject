@@ -23,11 +23,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.presentation.info.components.getText
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun InfoView(viewModel: InfoViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
 
     Column(
         modifier = Modifier
@@ -47,7 +48,7 @@ fun InfoView(viewModel: InfoViewModelImpl = koinViewModel()) {
         )
 
         Text(
-            text = stringResource(id = R.string.email, state.email),
+            text = stringResource(id = R.string.email, state.email.getText()),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
             modifier = Modifier
@@ -67,3 +68,4 @@ fun InfoView(viewModel: InfoViewModelImpl = koinViewModel()) {
         }
     }
 }
+

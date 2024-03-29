@@ -12,7 +12,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainSecondMockView(viewModel: MainSecondViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
     MainTitle(text = stringResource(R.string.main_second_screen))
 
     MainText(text = state.text)

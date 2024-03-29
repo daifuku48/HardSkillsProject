@@ -8,8 +8,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.natifedanilharitonov.hardskillsproject.domain.Utils
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.AXIS_ITEM_COUNT
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.AXIS_ITEM_COUNT
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MAX_X
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MAX_Y
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MIN_X
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.CartesianChartHost
 import com.patrykandpatrick.vico.compose.chart.layer.rememberLineCartesianLayer
@@ -53,10 +55,10 @@ fun Stats(model: PersistentList<Pair<Float, Float>>) {
         rememberCartesianChart(
             rememberLineCartesianLayer(
                 axisValueOverrider = AxisValueOverrider.fixed(
-                    Utils.MIN_X,
-                    Utils.MAX_X,
+                    MIN_X,
+                    MAX_X,
                     MIN_Y_MAIN_CHART,
-                    Utils.MAX_Y
+                    MAX_Y
                 ),
                 lines = listOf(
                     rememberLineSpec(

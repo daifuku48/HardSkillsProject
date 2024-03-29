@@ -13,12 +13,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 
 @Composable
-fun MainText(text: StateText) {
+fun MainText(text: StateTextUiModel) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         when (text) {
-            is StateText.ErrorText -> {
+            is StateTextUiModel.ErrorText -> {
                 Text(
                     text = stringResource(R.string.network_error),
                     modifier = Modifier
@@ -27,11 +28,11 @@ fun MainText(text: StateText) {
                 )
             }
 
-            is StateText.Pending -> {
+            is StateTextUiModel.Pending -> {
                 CircularProgressIndicator()
             }
 
-            is StateText.Text -> {
+            is StateTextUiModel.Text -> {
                 Text(text = text.text, modifier = Modifier.padding(30.dp))
             }
         }

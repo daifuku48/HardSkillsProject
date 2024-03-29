@@ -9,7 +9,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun StatisticsSecondView(viewModel: StatisticsSecondViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
 
     StatsSecondContainer(
         popToMain = viewModel::navigateToMainChart,

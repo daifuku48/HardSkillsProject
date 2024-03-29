@@ -1,22 +1,27 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login
 
 import androidx.navigation.NavOptions
-import com.natifedanilharitonov.hardskillsproject.core.Reducer
-import com.natifedanilharitonov.hardskillsproject.core.UseCase
+import com.natifedanilharitonov.core.Reducer
+import com.natifedanilharitonov.core.UseCase
+import com.natifedanilharitonov.domain.use_cases.login.LoginEvent
+import com.natifedanilharitonov.domain.use_cases.login.LoginState
+
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 
 class LoginViewModelImpl(
-    reducer: Reducer<LoginState, LoginEvent>,
+    reducer: Reducer<LoginState, LoginEvent, LoginUiState>,
     useCases: Set<UseCase<LoginState, LoginEvent>>,
     navigator: Navigator
-) : BaseViewModel<LoginState, LoginEvent>(reducer, useCases, navigator), LoginViewModel {
+) : BaseViewModel<LoginState, LoginEvent, LoginUiState>(reducer, useCases, navigator),
+    LoginViewModel {
     init {
         handleEvent(LoginEvent.ValidationEvent)
     }
 
-    override fun createInitState(): LoginState = LoginState()
+    override fun createInitState(): LoginState =
+        LoginState()
 
     override fun onEmailChanged(email: String) {
         handleEvent(LoginEvent.EmailChangedEvent(email = email))

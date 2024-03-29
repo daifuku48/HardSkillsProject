@@ -2,11 +2,12 @@ package com.natifedanilharitonov.hardskillsproject.app
 
 import android.app.Application
 import com.google.firebase.FirebaseApp
-import com.natifedanilharitonov.hardskillsproject.di.domainModule
+import com.natifedanilharitonov.data.di.networkModule
+import com.natifedanilharitonov.data.di.repositoryModule
+import com.natifedanilharitonov.data.di.sourceModule
+import com.natifedanilharitonov.domain.di.domainModule
+import com.natifedanilharitonov.hardskillsproject.di.mapperModule
 import com.natifedanilharitonov.hardskillsproject.di.navigationModule
-import com.natifedanilharitonov.hardskillsproject.di.networkModule
-import com.natifedanilharitonov.hardskillsproject.di.repositoryModule
-import com.natifedanilharitonov.hardskillsproject.di.sourceModule
 import com.natifedanilharitonov.hardskillsproject.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -27,7 +28,8 @@ class App : Application() {
                 domainModule,
                 repositoryModule,
                 viewModelModule,
-                sourceModule
+                sourceModule,
+                mapperModule
             )
         }
     }

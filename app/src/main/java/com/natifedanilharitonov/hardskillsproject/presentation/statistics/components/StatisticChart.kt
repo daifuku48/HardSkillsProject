@@ -1,19 +1,20 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics.components
 
 import androidx.compose.runtime.Composable
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
 
 @Composable
-fun StatisticChart(modelState: StatModel) {
+fun StatisticChart(modelState: StatUiModel) {
     when (modelState) {
-        is StatModel.Error -> {
+        is StatUiModel.Error -> {
             ErrorStatistic()
         }
 
-        is StatModel.Model -> {
+        is StatUiModel.Model -> {
             Stats(modelState.model)
         }
 
-        is StatModel.Pending -> {
+        is StatUiModel.Pending -> {
             PendingStats()
         }
     }

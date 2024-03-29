@@ -1,22 +1,22 @@
 package com.natifedanilharitonov.hardskillsproject.di
 
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.info.GetUserInfoUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.login.EmailPasswordLoginValidationUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.login.LoginUserUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.main.GetMainTextUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.main_activity.GetStartDestinationUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.main_first.GetTextFirstMainUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.main_second.GetTextSecondMainUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.random_anime_image.GetAnimeImageUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.registration.EmailPasswordValidationRegistrationUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.registration.RegisterUserUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.settings.SignOutUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.settings_first.GetTextSettingsFirstUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.settings_second.GetTextSettingsSecondUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.statistics.GetModelStatsStatisticsUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.statistics_first.GetModelDataStatFirstUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.statistics_second.GetModelToSecondChartUseCase
-import com.natifedanilharitonov.hardskillsproject.domain.use_cases.user_list.GetUsersUseCase
+import com.natifedanilharitonov.domain.use_cases.info.GetUserInfoUseCase
+import com.natifedanilharitonov.domain.use_cases.login.EmailPasswordLoginValidationUseCase
+import com.natifedanilharitonov.domain.use_cases.login.LoginUserUseCase
+import com.natifedanilharitonov.domain.use_cases.main.GetMainTextUseCase
+import com.natifedanilharitonov.domain.use_cases.main_activity.GetStartDestinationUseCase
+import com.natifedanilharitonov.domain.use_cases.main_first.GetTextFirstMainUseCase
+import com.natifedanilharitonov.domain.use_cases.main_second.GetTextSecondMainUseCase
+import com.natifedanilharitonov.domain.use_cases.random_anime_image.GetAnimeImageUseCase
+import com.natifedanilharitonov.domain.use_cases.registration.EmailPasswordValidationRegistrationUseCase
+import com.natifedanilharitonov.domain.use_cases.registration.RegisterUserUseCase
+import com.natifedanilharitonov.domain.use_cases.settings.SignOutUseCase
+import com.natifedanilharitonov.domain.use_cases.settings_first.GetTextSettingsFirstUseCase
+import com.natifedanilharitonov.domain.use_cases.settings_second.GetTextSettingsSecondUseCase
+import com.natifedanilharitonov.domain.use_cases.statistics.GetModelStatsStatisticsUseCase
+import com.natifedanilharitonov.domain.use_cases.statistics_first.GetModelDataStatFirstUseCase
+import com.natifedanilharitonov.domain.use_cases.statistics_second.GetModelToSecondChartUseCase
+import com.natifedanilharitonov.domain.use_cases.user_list.GetUsersUseCase
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.MainActivityReducer
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.MainActivityViewModelImpl
 import com.natifedanilharitonov.hardskillsproject.presentation.info.InfoReducer
@@ -52,7 +52,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     factory {
         LoginViewModelImpl(
-            reducer = LoginReducer(),
+            reducer = LoginReducer(get(), get()),
             useCases = setOf(
                 get<EmailPasswordLoginValidationUseCase>(),
                 get<LoginUserUseCase>(),
@@ -63,7 +63,7 @@ val viewModelModule = module {
 
     factory {
         RegistrationViewModelImpl(
-            reducer = RegistrationReducer(),
+            reducer = RegistrationReducer(get(), get()),
             useCases = setOf(
                 get<EmailPasswordValidationRegistrationUseCase>(),
                 get<RegisterUserUseCase>(),
@@ -74,7 +74,7 @@ val viewModelModule = module {
 
     factory {
         MainActivityViewModelImpl(
-            reducer = MainActivityReducer(),
+            reducer = MainActivityReducer(get()),
             useCases = setOf(
                 get<GetStartDestinationUseCase>()
             ),
@@ -84,7 +84,7 @@ val viewModelModule = module {
 
     factory {
         MainViewModelImpl(
-            reducer = MainReducer(),
+            reducer = MainReducer(get()),
             useCases = setOf(
                 get<GetMainTextUseCase>()
             ),
@@ -94,7 +94,7 @@ val viewModelModule = module {
 
     factory {
         MainFirstViewModelImpl(
-            reducer = MainFirstReducer(),
+            reducer = MainFirstReducer(get()),
             useCases = setOf(
                 get<GetTextFirstMainUseCase>()
             ),
@@ -104,7 +104,7 @@ val viewModelModule = module {
 
     factory {
         MainSecondViewModelImpl(
-            reducer = MainSecondReducer(),
+            reducer = MainSecondReducer(get()),
             useCases = setOf(
                 get<GetTextSecondMainUseCase>()
             ),
@@ -114,7 +114,7 @@ val viewModelModule = module {
 
     factory {
         InfoViewModelImpl(
-            reducer = InfoReducer(),
+            reducer = InfoReducer(get()),
             useCases = setOf(
                 get<GetUserInfoUseCase>()
             ),
@@ -124,7 +124,7 @@ val viewModelModule = module {
 
     factory {
         RandomAnimeImageViewModelImpl(
-            reducer = RandomAnimeImageReducer(),
+            reducer = RandomAnimeImageReducer(get()),
             useCases = setOf(
                 get<GetAnimeImageUseCase>()
             ),
@@ -134,7 +134,7 @@ val viewModelModule = module {
 
     factory {
         UserListViewModelImpl(
-            reducer = UserListReducer(),
+            reducer = UserListReducer(get()),
             useCases = setOf(
                 get<GetUsersUseCase>()
             ),
@@ -154,7 +154,7 @@ val viewModelModule = module {
 
     factory {
         SettingsFirstViewModelImpl(
-            reducer = SettingsFirstReducer(),
+            reducer = SettingsFirstReducer(get()),
             useCases = setOf(
                 get<GetTextSettingsFirstUseCase>()
             ),
@@ -174,7 +174,7 @@ val viewModelModule = module {
 
     factory {
         StatisticsViewModelImpl(
-            reducer = StatisticsReducer(),
+            reducer = StatisticsReducer(get()),
             useCases = setOf(
                 get<GetModelStatsStatisticsUseCase>()
             ),
@@ -184,7 +184,7 @@ val viewModelModule = module {
 
     factory {
         StatisticsFirstViewModelImpl(
-            reducer = StatisticsFirstReducer(),
+            reducer = StatisticsFirstReducer(get()),
             useCases = setOf(
                 get<GetModelDataStatFirstUseCase>()
             ),
@@ -194,7 +194,7 @@ val viewModelModule = module {
 
     factory {
         StatisticsSecondViewModelImpl(
-            reducer = StatisticsSecondReducer(),
+            reducer = StatisticsSecondReducer(get()),
             useCases = setOf(
                 GetModelToSecondChartUseCase(get())
             ),

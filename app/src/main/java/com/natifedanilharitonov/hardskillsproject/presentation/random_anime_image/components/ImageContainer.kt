@@ -13,13 +13,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image.AnimeImage
+import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image.model.AnimeImageUiModel
 
 
 @Composable
 fun ImageContainer(
     modifier: Modifier = Modifier,
-    animeImage: AnimeImage
+    animeImage: AnimeImageUiModel
 ) {
     Box(
         modifier = modifier
@@ -27,7 +27,7 @@ fun ImageContainer(
             .padding(start = 30.dp, top = 30.dp, end = 30.dp), contentAlignment = Alignment.Center
     ) {
         when (animeImage) {
-            is AnimeImage.ImageAccess -> {
+            is AnimeImageUiModel.ImageAccess -> {
                 AsyncImage(
                     model = animeImage.image,
                     contentDescription = "Image",
@@ -35,11 +35,11 @@ fun ImageContainer(
                 )
             }
 
-            is AnimeImage.ImageError -> {
+            is AnimeImageUiModel.ImageError -> {
                 Text(text = stringResource(id = R.string.error_loading_image))
             }
 
-            is AnimeImage.ImagePending -> {
+            is AnimeImageUiModel.ImagePending -> {
                 CircularProgressIndicator()
             }
         }

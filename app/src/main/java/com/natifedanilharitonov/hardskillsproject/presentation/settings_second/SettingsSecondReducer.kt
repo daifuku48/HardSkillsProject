@@ -1,8 +1,11 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settings_second
 
-import com.natifedanilharitonov.hardskillsproject.core.Reducer
+import com.natifedanilharitonov.core.Reducer
+import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondEvent
+import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondState
 
-class SettingsSecondReducer : Reducer<SettingsSecondState, SettingsSecondEvent> {
+class SettingsSecondReducer :
+    Reducer<SettingsSecondState, SettingsSecondEvent, SettingsSecondUiState> {
     override fun reduce(
         state: SettingsSecondState,
         event: SettingsSecondEvent
@@ -12,5 +15,11 @@ class SettingsSecondReducer : Reducer<SettingsSecondState, SettingsSecondEvent> 
             is SettingsSecondEvent.GetTextEvent -> state
             is SettingsSecondEvent.TextIsReceived -> state.copy(text = event.text)
         }
+    }
+
+    override fun mapToUiModel(state: SettingsSecondState): SettingsSecondUiState {
+        return SettingsSecondUiState(
+            text = state.text
+        )
     }
 }

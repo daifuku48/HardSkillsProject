@@ -8,7 +8,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun UserListView(viewModel: UserListViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
 
     UserListContainer(userList = state.userList)
 }

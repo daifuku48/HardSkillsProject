@@ -13,7 +13,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun LoginView(viewModel: LoginViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
     LoginContainer(
         email = state.email,
         password = state.password,
@@ -27,9 +27,7 @@ fun LoginView(viewModel: LoginViewModelImpl = koinViewModel()) {
         loginButtonEnabled = state.loginButtonEnabled,
         registerClick = viewModel::navigateToRegister,
         emailLabel = state.emailLabel,
-        passwordLabel = state.passwordLabel,
-        colorEmailLabel = state.emailLabelColor,
-        colorPasswordLabel = state.passwordLabelColor
+        passwordLabel = state.passwordLabel
     )
 
     UserHasLoggedDialog(

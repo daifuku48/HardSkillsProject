@@ -1,20 +1,20 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.user_list.components
 
 import androidx.compose.runtime.Composable
-import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserList
+import com.natifedanilharitonov.hardskillsproject.presentation.user_list.model.UserListUiModel
 
 @Composable
-fun UserListContainer(userList: UserList) {
+fun UserListContainer(userList: UserListUiModel) {
     when (userList) {
-        UserList.ErrorList -> {
+        UserListUiModel.ErrorList -> {
             ErrorListScreen()
         }
 
-        is UserList.List -> {
+        is UserListUiModel.List -> {
             UserListColumn(userList = userList.userList)
         }
 
-        UserList.Pending -> {
+        UserListUiModel.Pending -> {
             PendingListScreen()
         }
     }

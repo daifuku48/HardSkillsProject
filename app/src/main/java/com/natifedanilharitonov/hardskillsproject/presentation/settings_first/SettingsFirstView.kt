@@ -12,7 +12,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SettingsFirstView(viewModel: SettingsFirstViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
 
     MainTitle(text = stringResource(R.string.settings_first_screen))
 

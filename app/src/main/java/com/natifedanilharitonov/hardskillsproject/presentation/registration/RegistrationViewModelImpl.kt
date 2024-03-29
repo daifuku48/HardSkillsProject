@@ -1,23 +1,30 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.registration
 
 import androidx.navigation.NavOptions
-import com.natifedanilharitonov.hardskillsproject.core.Reducer
-import com.natifedanilharitonov.hardskillsproject.core.UseCase
+import com.natifedanilharitonov.core.Reducer
+import com.natifedanilharitonov.core.UseCase
+import com.natifedanilharitonov.domain.use_cases.registration.RegistrationEvent
+import com.natifedanilharitonov.domain.use_cases.registration.RegistrationState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 
 class RegistrationViewModelImpl(
-    reducer: Reducer<RegistrationState, RegistrationEvent>,
+    reducer: Reducer<RegistrationState, RegistrationEvent, RegistrationUiState>,
     useCases: Set<UseCase<RegistrationState, RegistrationEvent>>,
     navigator: Navigator
-) : BaseViewModel<RegistrationState, RegistrationEvent>(reducer, useCases, navigator),
+) : BaseViewModel<RegistrationState, RegistrationEvent, RegistrationUiState>(
+    reducer,
+    useCases,
+    navigator
+),
     RegistrationViewModel {
     init {
         handleEvent(RegistrationEvent.ValidationEvent)
     }
 
-    override fun createInitState(): RegistrationState = RegistrationState()
+    override fun createInitState(): RegistrationState =
+        RegistrationState()
 
 
     override fun emailChanged(email: String) {

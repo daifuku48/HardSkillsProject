@@ -22,6 +22,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.activities.compon
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.NavigationDrawer
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.NavigationDrawerItems
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.TopBar
+import com.natifedanilharitonov.hardskillsproject.presentation.activities.model.getDestination
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screens
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
                 val viewModel: MainActivityViewModelImpl by remember {
                     inject()
                 }
-                val state by viewModel.state.collectAsState()
+                val state by viewModel.uiState.collectAsState()
 
                 ModalNavigationDrawer(
                     drawerContent = {
@@ -89,7 +90,7 @@ class MainActivity : ComponentActivity() {
                             NavHost(
                                 modifier = Modifier.padding(paddingValues = paddingValues),
                                 navController = navController,
-                                startDestination = destination
+                                startDestination = destination.getDestination()
                             ) {
                                 Screens(
                                     listOf(
@@ -121,3 +122,5 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+

@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseButton
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
+import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
+import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 
 @Composable
 fun LoginContainer(
@@ -30,10 +32,8 @@ fun LoginContainer(
     registerClick: () -> Unit,
     loginClick: () -> Unit,
     loginButtonEnabled: Boolean,
-    emailLabel: String,
-    passwordLabel: String,
-    colorEmailLabel: Color,
-    colorPasswordLabel: Color
+    emailLabel: EmailLabelState,
+    passwordLabel: PasswordLabelState
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -66,8 +66,8 @@ fun LoginContainer(
                         .padding(start = 10.dp, end = 10.dp),
                     text = email,
                     onTextChanged = { email -> emailChanged(email) },
-                    labelText = emailLabel,
-                    colorLabelText = colorEmailLabel
+                    labelText = emailLabel.getLabel(),
+                    colorLabelText = emailLabel.getColor()
                 )
 
                 Spacer(modifier = Modifier.padding(10.dp))
@@ -78,8 +78,8 @@ fun LoginContainer(
                         .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
                     text = password,
                     onTextChanged = { password -> passwordChanged(password) },
-                    labelText = passwordLabel,
-                    colorLabelText = colorPasswordLabel
+                    labelText = passwordLabel.getLabel(),
+                    colorLabelText = passwordLabel.getColor()
                 )
 
                 BaseButton(

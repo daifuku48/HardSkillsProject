@@ -2,8 +2,6 @@ package com.natifedanilharitonov.hardskillsproject.presentation.base.screens
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.HIDE_NAV_STATE
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.SHOW_NAV_STATE
 import com.natifedanilharitonov.hardskillsproject.presentation.info.InfoView
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
 import com.natifedanilharitonov.hardskillsproject.presentation.main.MainView
@@ -18,6 +16,8 @@ import com.natifedanilharitonov.hardskillsproject.presentation.statistics.Statis
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics_first.StatisticsFirstView
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.StatisticsSecondView
 import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserListView
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.HIDE_NAV_STATE
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.SHOW_NAV_STATE
 
 
 abstract class Screen {

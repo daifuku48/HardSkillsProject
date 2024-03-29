@@ -3,20 +3,20 @@ package com.natifedanilharitonov.hardskillsproject.presentation.statistics_first
 import androidx.compose.runtime.Composable
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.ErrorStatistic
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.PendingStats
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.StatModel
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
 
 @Composable
-fun StatisticsFirstContainer(model: StatModel, getStats: () -> Unit) {
+fun StatisticsFirstContainer(model: StatUiModel, getStats: () -> Unit) {
     when (model) {
-        is StatModel.Error -> {
+        is StatUiModel.Error -> {
             ErrorStatistic()
         }
 
-        is StatModel.Model -> {
+        is StatUiModel.Model -> {
             StatChartFirst(model = model.model, getStats = getStats)
         }
 
-        is StatModel.Pending -> {
+        is StatUiModel.Pending -> {
             PendingStats()
         }
     }

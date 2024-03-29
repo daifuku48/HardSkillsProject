@@ -53,33 +53,32 @@ android {
 }
 
 dependencies {
-    //Vico Charts
-    implementation(libs.vico.compose)
-    implementation(libs.vico.compose.m3)
-    implementation(libs.vico.core)
-    implementation("com.patrykandpatrick.vico:views:2.0.0-alpha.12")
+    implementation(project(":core"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
 
-    //Coil
-    implementation(libs.coil.compose)
-
-    //Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.retrofit2.converter.gson)
-    implementation(libs.logging.interceptor)
+    //Immutable Collection
+    implementation(libs.kotlinx.collections.immutable)
 
     //Firebase
     implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
+    //Vico Charts
+    implementation(libs.vico.compose)
+    implementation(libs.vico.compose.m3)
+    implementation(libs.vico.core)
+    implementation("com.patrykandpatrick.vico:views:2.0.0-alpha.12")
+
     //Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
-    //Immutable Collection
-    implementation(libs.kotlinx.collections.immutable)
-
     //Navigation Compose
     implementation(libs.androidx.navigation.compose)
+
+    //Coil
+    implementation(libs.coil.compose)
 
     //Koin
     implementation(libs.koin.android)

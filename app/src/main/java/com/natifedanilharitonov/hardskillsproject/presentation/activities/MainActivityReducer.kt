@@ -1,8 +1,14 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.activities
 
-import com.natifedanilharitonov.hardskillsproject.core.Reducer
+import com.natifedanilharitonov.core.Reducer
+import com.natifedanilharitonov.domain.use_cases.main_activity.MainActivityEvent
+import com.natifedanilharitonov.domain.use_cases.main_activity.MainActivityState
+import com.natifedanilharitonov.domain.use_cases.main_activity.StartDestinationResult
+import com.natifedanilharitonov.hardskillsproject.presentation.activities.model.StartDestinationUiModel
 
-class MainActivityReducer : Reducer<MainActivityState, MainActivityEvent> {
+class MainActivityReducer(
+    private val mapper: StartDestinationResult.Mapper<StartDestinationUiModel>
+) : Reducer<MainActivityState, MainActivityEvent, MainActivityUiState> {
     override fun reduce(state: MainActivityState, event: MainActivityEvent): MainActivityState {
         return when (event) {
             is MainActivityEvent.ErrorEvent -> state
@@ -18,5 +24,14 @@ class MainActivityReducer : Reducer<MainActivityState, MainActivityEvent> {
             is MainActivityEvent.ChangeBottomStateEvent -> state.copy(bottomState = event.bottomState)
             is MainActivityEvent.ChangeDrawerStateEvent -> state.copy(drawerState = event.drawerState)
         }
+    }
+
+    override fun mapToUiModel(state: MainActivityState): MainActivityUiState {
+        return MainActivityUiState(
+            bottomState = state.bottomState,
+            drawerState = state.drawerState,
+            startDestination = state.startDestination?.map(mapper),
+            bottomNavigationSelectedItem = state.bottomNavigationSelectedItem
+        )
     }
 }

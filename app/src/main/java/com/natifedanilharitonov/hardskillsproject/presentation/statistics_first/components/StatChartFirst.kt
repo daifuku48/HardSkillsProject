@@ -9,10 +9,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.MAX_X
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.MAX_Y
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.MIN_X
-import com.natifedanilharitonov.hardskillsproject.domain.Utils.MIN_Y
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MAX_X
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MAX_Y
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MIN_X
+import com.natifedanilharitonov.hardskillsproject.utils.Contants.MIN_Y
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.rememberAxisLabelComponent
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis

@@ -18,7 +18,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RandomAnimeImageView(viewModel: RandomAnimeImageViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
 
     AnimeScreenButton(onClick = viewModel::navigateToNextScreen)
 

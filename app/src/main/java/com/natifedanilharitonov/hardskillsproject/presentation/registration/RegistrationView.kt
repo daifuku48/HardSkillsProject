@@ -1,12 +1,10 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.registration
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseErrorDialog
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.PendingScreen
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.components.RegistrationContainer
@@ -16,7 +14,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun RegistrationView(viewModel: RegistrationViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
     RegistrationContainer(
         email = state.email,
         emailChanged = { email -> viewModel.emailChanged(email) },
@@ -26,8 +24,6 @@ fun RegistrationView(viewModel: RegistrationViewModelImpl = koinViewModel()) {
         loginClick = { viewModel.navigateToLogin() },
         emailLabel = state.emailLabel,
         passwordLabel = state.passwordLabel,
-        colorEmailLabel = state.emailLabelColor,
-        colorPasswordLabel = state.passwordLabelColor,
         registerButtonEnabled = state.registerButtonEnabled
     )
 
