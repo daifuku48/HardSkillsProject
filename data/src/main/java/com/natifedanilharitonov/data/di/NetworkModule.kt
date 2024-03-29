@@ -4,9 +4,10 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.natifedanilharitonov.data.network.anime_image_source.AnimeRetrofitInstance
 import com.natifedanilharitonov.data.network.users.UsersRetrofitInstance
-import com.natifedanilharitonov.domain.Utils
-import com.natifedanilharitonov.domain.Utils.ANIME_API
-import com.natifedanilharitonov.domain.Utils.USERS_API
+import com.natifedanilharitonov.data.source.Utils.ANIME_API
+import com.natifedanilharitonov.data.source.Utils.ANIME_IMAGE_URL
+import com.natifedanilharitonov.data.source.Utils.USERS_API
+import com.natifedanilharitonov.data.source.Utils.USERS_API_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
@@ -28,7 +29,7 @@ val networkModule = module {
 
     single(named(ANIME_API)) {
         Retrofit.Builder()
-            .baseUrl(Utils.ANIME_IMAGE_URL)
+            .baseUrl(ANIME_IMAGE_URL)
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -36,7 +37,7 @@ val networkModule = module {
 
     single(named(USERS_API)) {
         Retrofit.Builder()
-            .baseUrl(Utils.USERS_API_URL)
+            .baseUrl(USERS_API_URL)
             .client(get())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

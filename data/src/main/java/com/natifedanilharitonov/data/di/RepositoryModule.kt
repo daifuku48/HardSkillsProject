@@ -12,7 +12,6 @@ import com.natifedanilharitonov.domain.repository.RandomStatsRepository
 import com.natifedanilharitonov.domain.repository.UsersRepository
 import org.koin.dsl.module
 
-
 val repositoryModule = module {
     factory<FirebaseUserRepository> {
         FirebaseUserRepositoryImpl(get())

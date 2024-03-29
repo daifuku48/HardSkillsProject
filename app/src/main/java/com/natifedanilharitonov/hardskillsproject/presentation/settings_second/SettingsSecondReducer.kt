@@ -1,10 +1,14 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settings_second
 
 import com.natifedanilharitonov.core.Reducer
+import com.natifedanilharitonov.domain.use_cases.main.StateText
 import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondEvent
 import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondState
+import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 
-class SettingsSecondReducer :
+class SettingsSecondReducer(
+    private val textMapper: StateText.Mapper<StateTextUiModel>
+) :
     Reducer<SettingsSecondState, SettingsSecondEvent, SettingsSecondUiState> {
     override fun reduce(
         state: SettingsSecondState,
@@ -19,7 +23,7 @@ class SettingsSecondReducer :
 
     override fun mapToUiModel(state: SettingsSecondState): SettingsSecondUiState {
         return SettingsSecondUiState(
-            text = state.text
+            text = state.text.map(textMapper)
         )
     }
 }

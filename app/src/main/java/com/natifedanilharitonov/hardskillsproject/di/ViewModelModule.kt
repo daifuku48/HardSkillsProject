@@ -164,7 +164,7 @@ val viewModelModule = module {
 
     factory {
         SettingsSecondViewModelImpl(
-            reducer = SettingsSecondReducer(),
+            reducer = SettingsSecondReducer(get()),
             useCases = setOf(
                 get<GetTextSettingsSecondUseCase>()
             ),

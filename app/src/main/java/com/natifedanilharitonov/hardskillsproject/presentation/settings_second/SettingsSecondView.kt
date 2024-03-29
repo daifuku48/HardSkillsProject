@@ -13,7 +13,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun SettingsSecondView(viewModel: SettingsSecondViewModelImpl = koinViewModel()) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.uiState.collectAsState()
 
     MainTitle(text = stringResource(R.string.second_settings_screen))
 

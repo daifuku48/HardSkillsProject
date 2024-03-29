@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation(project(":data"))
     implementation(project(":core"))
     //Firebase
     implementation(platform(libs.firebase.bom))
