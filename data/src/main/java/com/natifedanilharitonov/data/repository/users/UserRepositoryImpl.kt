@@ -7,10 +7,14 @@ import com.natifedanilharitonov.domain.repository.UsersRepository
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
 
-class UserRepositoryImpl(
+internal class UserRepositoryImpl(
     private val source: UsersSource
 ) : UsersRepository {
     override suspend fun getUsers(): PersistentList<DomainUser> {
         return source.getUsers().map { it.toDomain() }.toPersistentList()
+    }
+
+    override suspend fun getUser(): DomainUser? {
+        return source.getUser()?.toDomain()
     }
 }

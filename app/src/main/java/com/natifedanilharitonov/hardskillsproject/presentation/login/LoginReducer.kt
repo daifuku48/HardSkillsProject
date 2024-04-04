@@ -1,10 +1,10 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.login.LoginEvent
-import com.natifedanilharitonov.domain.use_cases.login.LoginState
-import com.natifedanilharitonov.domain.use_cases.login.model.EmailValidationResult
-import com.natifedanilharitonov.domain.use_cases.login.model.PasswordValidationResult
+import com.natifedanilharitonov.domain.features.login.LoginEvent
+import com.natifedanilharitonov.domain.features.login.LoginState
+import com.natifedanilharitonov.domain.features.login.model.EmailValidationResult
+import com.natifedanilharitonov.domain.features.login.model.PasswordValidationResult
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 
@@ -28,7 +28,7 @@ class LoginReducer(
             )
 
             is LoginEvent.PasswordChangedEvent -> state.copy(
-                emailText = event.password
+                passwordText = event.password
             )
 
             is LoginEvent.UserHasLoggedEvent -> state.copy(

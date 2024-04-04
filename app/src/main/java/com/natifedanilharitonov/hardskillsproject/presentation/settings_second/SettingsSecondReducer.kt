@@ -1,9 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settings_second
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.main.StateText
-import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondEvent
-import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondState
+import com.natifedanilharitonov.domain.features.main.StateText
+import com.natifedanilharitonov.domain.features.settings_second.SettingsSecondEvent
+import com.natifedanilharitonov.domain.features.settings_second.SettingsSecondState
 import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 
 class SettingsSecondReducer(

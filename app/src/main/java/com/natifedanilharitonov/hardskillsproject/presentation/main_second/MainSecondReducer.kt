@@ -1,9 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.main_second
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.main.StateText
-import com.natifedanilharitonov.domain.use_cases.main_second.MainSecondEvent
-import com.natifedanilharitonov.domain.use_cases.main_second.MainSecondState
+import com.natifedanilharitonov.domain.features.main.StateText
+import com.natifedanilharitonov.domain.features.main_second.MainSecondEvent
+import com.natifedanilharitonov.domain.features.main_second.MainSecondState
 import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 
 class MainSecondReducer(

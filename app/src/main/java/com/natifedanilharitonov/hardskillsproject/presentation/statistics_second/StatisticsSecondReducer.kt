@@ -1,13 +1,13 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics_second
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.statistics_second.StatisticsSecondEvent
-import com.natifedanilharitonov.domain.use_cases.statistics_second.StatisticsSecondState
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.model.DoubleStatUiMapper
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.model.StatisticsSecondUiState
+import com.natifedanilharitonov.domain.features.statistics_second.DoubleStatModel
+import com.natifedanilharitonov.domain.features.statistics_second.StatisticsSecondEvent
+import com.natifedanilharitonov.domain.features.statistics_second.StatisticsSecondState
+import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.model.DoubleStatUiModel
 
 class StatisticsSecondReducer(
-    private val mapper: DoubleStatUiMapper
+    private val mapper: DoubleStatModel.Mapper<DoubleStatUiModel>
 ) : Reducer<StatisticsSecondState, StatisticsSecondEvent, StatisticsSecondUiState> {
     override fun reduce(
         state: StatisticsSecondState,

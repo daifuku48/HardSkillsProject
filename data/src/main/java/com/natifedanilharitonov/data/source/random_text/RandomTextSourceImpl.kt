@@ -3,7 +3,7 @@ package com.natifedanilharitonov.data.source.random_text
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-class RandomTextSourceImpl : RandomTextSource {
+internal class RandomTextSourceImpl : RandomTextSource {
     private val textList = listOf(
         "Be at miss or each good play home they. It leave taste mr in it fancy. She son lose does fond bred gave lady get. Sir her company conduct expense bed any. Sister depend change off piqued one. Contented continued any happiness instantly objection yet her allowance. Use correct day new brought tedious. By come this been in. Kept easy or sons my it done.",
         "And produce say the ten moments parties. Simple innate summer fat appear basket his desire joy. Outward clothes promise at gravity do excited. Sufficient particular impossible by reasonable oh expression is. Yet preference connection unpleasant yet melancholy but end appearance. And excellence partiality estimating terminated day everything.",

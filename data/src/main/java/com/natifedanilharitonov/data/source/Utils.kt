@@ -6,4 +6,5 @@ object Utils {
     const val USERS_API_URL = "https://randomuser.me/"
     const val USERS_API = "USERS_API"
     const val DEFAULT_USER_COUNT = "20"
+    const val USER = "1"
 }

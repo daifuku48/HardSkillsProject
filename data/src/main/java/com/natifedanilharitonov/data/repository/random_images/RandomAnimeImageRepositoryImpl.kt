@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import com.natifedanilharitonov.data.network.anime_image_source.RandomAnimeImageSource
 import com.natifedanilharitonov.domain.repository.RandomAnimeImageRepository
 
-class RandomAnimeImageRepositoryImpl(
+internal class RandomAnimeImageRepositoryImpl(
     private val source: RandomAnimeImageSource
 ) : RandomAnimeImageRepository {
     override suspend fun getImage(): Bitmap? {

@@ -1,6 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.model
 
-import com.natifedanilharitonov.domain.use_cases.statistics_second.DoubleStatModel
+import com.natifedanilharitonov.domain.features.statistics_second.DoubleStatModel
 import kotlinx.collections.immutable.PersistentList
 
 class DoubleStatUiMapper : DoubleStatModel.Mapper<DoubleStatUiModel> {

@@ -3,8 +3,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.registration
 import androidx.navigation.NavOptions
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.registration.RegistrationEvent
-import com.natifedanilharitonov.domain.use_cases.registration.RegistrationState
+import com.natifedanilharitonov.domain.features.registration.RegistrationEvent
+import com.natifedanilharitonov.domain.features.registration.RegistrationState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
@@ -44,7 +44,7 @@ class RegistrationViewModelImpl(
     override fun navigateToLogin() {
         val navOptions =
             NavOptions.Builder().setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
-                .build()
+                .setLaunchSingleTop(true).build()
         navigate(Screen.LoginScreen.route, navOptions)
     }
 

@@ -45,6 +45,7 @@ dependencies {
     //Immutable Collection
     implementation(libs.kotlinx.collections.immutable)
 
+    testImplementation(libs.mockito.core)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

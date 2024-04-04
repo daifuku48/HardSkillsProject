@@ -47,4 +47,16 @@
     <string name="back_to_main_settings">Back to Main Settings</string>
     <string name="error_stats_model">Error stats model</string>
     <string name="back_to_main_chart">Back to main chart</string>
+    <string name="main_anime_page">Main Anime Page</string>
+    <string name="first_anime_page">First Anime Page</string>
+    <string name="second_anime_page">Second Anime Page</string>
+    <string name="info_first_screen">Info First Screen</string>
+    <string name="back_to_main_info">Back to main info</string>
+    <string name="info_second_screen">Info second screen</string>
+
+    <string name="name">Name</string>
+    <string name="full_name">%s. %s %s</string>
+    <string name="email_text">Email</string>
+    <string name="gender">Gender</string>
+    <string name="phone_number">Phone number</string>
 </resources>

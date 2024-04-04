@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -23,6 +24,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginContainer(
     email: String,
@@ -72,7 +74,7 @@ fun LoginContainer(
 
                 Spacer(modifier = Modifier.padding(10.dp))
 
-                AuthTextField(
+                PasswordTextField(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),

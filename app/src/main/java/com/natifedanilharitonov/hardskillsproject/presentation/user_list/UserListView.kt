@@ -10,5 +10,11 @@ import org.koin.androidx.compose.koinViewModel
 fun UserListView(viewModel: UserListViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
 
-    UserListContainer(userList = state.userList)
+    UserListContainer(
+        userList = state.userList,
+        addUsers = viewModel::addUsers,
+        backToMain = viewModel::backToMain,
+        pagingValue = state.canPaging,
+        pagingState = state.pagingState
+    )
 }

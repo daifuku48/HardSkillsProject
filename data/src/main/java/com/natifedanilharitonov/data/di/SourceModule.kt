@@ -4,6 +4,8 @@ import com.natifedanilharitonov.data.network.anime_image_source.RandomAnimeImage
 import com.natifedanilharitonov.data.network.anime_image_source.RandomAnimeImageSourceImpl
 import com.natifedanilharitonov.data.network.firebase.FirebaseUserSource
 import com.natifedanilharitonov.data.network.firebase.FirebaseUserSourceImpl
+import com.natifedanilharitonov.data.network.image_downloader.ImageDownloaderSource
+import com.natifedanilharitonov.data.network.image_downloader.ImageDownloaderSourceImpl
 import com.natifedanilharitonov.data.network.users.UsersSource
 import com.natifedanilharitonov.data.network.users.UsersSourceImpl
 import com.natifedanilharitonov.data.source.random_text.RandomTextSource
@@ -26,7 +28,7 @@ val sourceModule = module {
     }
 
     factory<UsersSource> {
-        UsersSourceImpl(get())
+        UsersSourceImpl(get(), get())
     }
 
     factory<RandomTextSource> {
@@ -35,5 +37,9 @@ val sourceModule = module {
 
     factory<RandomStatsSource> {
         RandomStatsSourceImpl()
+    }
+
+    factory<ImageDownloaderSource> {
+        ImageDownloaderSourceImpl(androidApplication())
     }
 }

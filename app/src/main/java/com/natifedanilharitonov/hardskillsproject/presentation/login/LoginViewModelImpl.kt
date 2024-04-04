@@ -3,8 +3,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.login
 import androidx.navigation.NavOptions
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.login.LoginEvent
-import com.natifedanilharitonov.domain.use_cases.login.LoginState
+import com.natifedanilharitonov.domain.features.login.LoginEvent
+import com.natifedanilharitonov.domain.features.login.LoginState
 
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
@@ -55,7 +55,8 @@ class LoginViewModelImpl(
 
     private fun navigateToMainScreen() {
         val navOptions =
-            NavOptions.Builder().setPopUpTo(Screen.LoginScreen.route, inclusive = true).build()
+            NavOptions.Builder().setPopUpTo(Screen.LoginScreen.route, inclusive = true)
+                .setLaunchSingleTop(true).build()
         navigate(Screen.MainScreen.route, navOptions)
     }
 }

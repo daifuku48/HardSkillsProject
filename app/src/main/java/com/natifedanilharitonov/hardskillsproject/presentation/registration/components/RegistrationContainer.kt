@@ -20,6 +20,7 @@ import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseButton
 import com.natifedanilharitonov.hardskillsproject.presentation.login.components.AuthTextField
 import com.natifedanilharitonov.hardskillsproject.presentation.login.components.AuthTextTitle
+import com.natifedanilharitonov.hardskillsproject.presentation.login.components.PasswordTextField
 import com.natifedanilharitonov.hardskillsproject.presentation.login.components.getColor
 import com.natifedanilharitonov.hardskillsproject.presentation.login.components.getLabel
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
@@ -74,7 +75,7 @@ fun RegistrationContainer(
 
                 Spacer(modifier = Modifier.padding(10.dp))
 
-                AuthTextField(
+                PasswordTextField(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),

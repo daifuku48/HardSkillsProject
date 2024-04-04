@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login.model
 
-import com.natifedanilharitonov.domain.use_cases.login.model.PasswordValidationResult
+
+import com.natifedanilharitonov.domain.features.login.model.PasswordValidationResult
 
 class PasswordLabelMapper : PasswordValidationResult.Mapper<PasswordLabelState> {
     override fun mapValid(): PasswordLabelState {

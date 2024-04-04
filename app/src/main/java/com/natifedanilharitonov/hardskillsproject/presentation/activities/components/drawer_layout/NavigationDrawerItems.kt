@@ -13,12 +13,12 @@ class NavigationDrawerItems(context: Context) {
             icon = R.drawable.stats
         ),
         NavigationDrawerItem(
-            route = Screen.RandomAnimeImage.route,
+            route = Screen.RandomAnimeImageScreen.route,
             title = context.getString(R.string.random_anime_image),
             icon = R.drawable.onboarding
         ),
         NavigationDrawerItem(
-            route = Screen.UsersScreen.route,
+            route = Screen.RandomUserFirstScreen.route,
             title = context.getString(R.string.users),
             icon = R.drawable.users
         )

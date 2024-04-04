@@ -1,9 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.activities
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.main_activity.MainActivityEvent
-import com.natifedanilharitonov.domain.use_cases.main_activity.MainActivityState
-import com.natifedanilharitonov.domain.use_cases.main_activity.StartDestinationResult
+import com.natifedanilharitonov.domain.features.main_activity.StartDestinationResult
+import com.natifedanilharitonov.domain.features.main_activity.MainActivityState
+import com.natifedanilharitonov.domain.features.main_activity.MainActivityEvent
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.model.StartDestinationUiModel
 
 class MainActivityReducer(

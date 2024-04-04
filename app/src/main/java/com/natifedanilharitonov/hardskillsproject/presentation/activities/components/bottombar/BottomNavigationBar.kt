@@ -9,22 +9,24 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.vectorResource
+import androidx.navigation.NavBackStackEntry
 import com.natifedanilharitonov.hardskillsproject.R
 
 @Composable
 fun BottomNavigationBar(
     bottomState: Boolean,
     navigationSelectedItem: Int,
-    navigate: (String, Int) -> Unit
+    navigate: (String, Int) -> Unit,
+    backStackEntry: NavBackStackEntry?
 ) {
     val context = LocalContext.current
-    if (bottomState){
+    if (bottomState) {
         NavigationBar(
             containerColor = colorResource(id = R.color.light_blue)
         ) {
             BottomNavigationItems(context).bottomItems.forEachIndexed() { index, item ->
                 NavigationBarItem(
-                    selected = index == navigationSelectedItem,
+                    selected = item.route == backStackEntry?.destination?.route,
                     label = {
                         Text(item.label)
                     },
@@ -35,7 +37,7 @@ fun BottomNavigationBar(
                         )
                     },
                     onClick = {
-                        if (index != navigationSelectedItem){
+                        if (backStackEntry?.destination?.route != item.route) {
                             navigate(item.route, index)
                         }
                     }

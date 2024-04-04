@@ -4,7 +4,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.natifedanilharitonov.data.network.firebase.FirebaseUserSource
 import com.natifedanilharitonov.domain.repository.FirebaseUserRepository
 
-class FirebaseUserRepositoryImpl(
+internal class FirebaseUserRepositoryImpl(
     private val source: FirebaseUserSource
 ) : FirebaseUserRepository {
     override suspend fun register(email: String, password: String): Boolean {

@@ -5,7 +5,7 @@ import com.google.firebase.auth.FirebaseUser
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class FirebaseUserSourceImpl(
+internal class FirebaseUserSourceImpl(
     private val auth: FirebaseAuth
 ) : FirebaseUserSource {
     override suspend fun register(

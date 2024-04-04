@@ -5,7 +5,7 @@ import com.natifedanilharitonov.domain.repository.RandomStatsRepository
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
 
-class RandomStatsRepositoryImpl(
+internal class RandomStatsRepositoryImpl(
     private val source: RandomStatsSource
 ) : RandomStatsRepository {
     override suspend fun getRandomStats(): PersistentList<Pair<Float, Float>>? {

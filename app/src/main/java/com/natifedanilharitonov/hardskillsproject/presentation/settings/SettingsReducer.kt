@@ -1,8 +1,8 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settings
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.settings.SettingsEvent
-import com.natifedanilharitonov.domain.use_cases.settings.SettingsState
+import com.natifedanilharitonov.domain.features.settings.SettingsEvent
+import com.natifedanilharitonov.domain.features.settings.SettingsState
 
 class SettingsReducer : Reducer<SettingsState, SettingsEvent, SettingsUiState> {
     override fun reduce(state: SettingsState, event: SettingsEvent): SettingsState {

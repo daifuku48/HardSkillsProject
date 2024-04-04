@@ -16,7 +16,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.bottombar.BottomNavigationBar
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.NavigationDrawer
@@ -34,6 +36,7 @@ class MainActivity : ComponentActivity() {
     private val navigator: Navigator by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContent {
             HardSkillsProjectTheme {
                 val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -52,6 +55,7 @@ class MainActivity : ComponentActivity() {
                     inject()
                 }
                 val state by viewModel.uiState.collectAsState()
+                val navBackStackEntry by navController.currentBackStackEntryAsState()
 
                 ModalNavigationDrawer(
                     drawerContent = {
@@ -74,17 +78,20 @@ class MainActivity : ComponentActivity() {
                     gesturesEnabled = drawerState.isOpen
                 ) {
                     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
-                        TopBar(onNavigationDrawerClick = {
+                        TopBar(drawerState = state.drawerState, onNavigationDrawerClick = {
                             scope.launch {
                                 drawerState.open()
                             }
                         })
                     }, bottomBar = {
-                        BottomNavigationBar(bottomState = state.bottomState,
+                        BottomNavigationBar(
+                            bottomState = state.bottomState,
                             navigationSelectedItem = state.bottomNavigationSelectedItem,
                             navigate = { item, index ->
                                 viewModel.navigateBottomBarMenu(item, index)
-                            })
+                            },
+                            backStackEntry = navBackStackEntry
+                        )
                     }) { paddingValues ->
                         state.startDestination?.let { destination ->
                             NavHost(
@@ -103,11 +110,17 @@ class MainActivity : ComponentActivity() {
                                         Screen.SettingFirstScreen,
                                         Screen.SettingsSecondScreen,
                                         Screen.InfoScreen,
-                                        Screen.RandomAnimeImage,
+                                        Screen.InfoFirstScreen,
+                                        Screen.InfoSecondScreen,
+                                        Screen.RandomAnimeImageScreen,
+                                        Screen.RandomAnimeImageFirstScreen,
+                                        Screen.RandomAnimeImageSecondScreen,
                                         Screen.StatisticsScreen,
-                                        Screen.UsersScreen,
                                         Screen.StatisticsFirstScreen,
-                                        Screen.StatisticsSecondScreen
+                                        Screen.StatisticsSecondScreen,
+                                        Screen.RandomUserFirstScreen,
+                                        Screen.RandomUserSecondScreen,
+                                        Screen.UsersScreen,
                                     )
                                 ).show(navGraphBuilder = this, showBottomState = { bottomState ->
                                     viewModel.changeBottomState(bottomState)

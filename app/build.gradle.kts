@@ -56,6 +56,9 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":domain"))
     implementation(project(":data"))
+    //Lottie
+    implementation(libs.lottie.compose)
+
     //Immutable Collection
     implementation(libs.kotlinx.collections.immutable)
 

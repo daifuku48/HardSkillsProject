@@ -3,8 +3,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.settings
 import androidx.navigation.NavOptions
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.settings.SettingsEvent
-import com.natifedanilharitonov.domain.use_cases.settings.SettingsState
+import com.natifedanilharitonov.domain.features.settings.SettingsEvent
+import com.natifedanilharitonov.domain.features.settings.SettingsState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
@@ -29,7 +29,8 @@ class SettingsViewModelImpl(
     override fun navigateToLogin() {
         val navOptions = NavOptions
             .Builder()
-            .setPopUpTo(Screen.SettingsScreen.route, true)
+            .setPopUpTo(Screen.SettingsScreen.route, inclusive = true)
+            .setLaunchSingleTop(true)
             .build()
         navigate(Screen.LoginScreen.route, navOptions)
     }

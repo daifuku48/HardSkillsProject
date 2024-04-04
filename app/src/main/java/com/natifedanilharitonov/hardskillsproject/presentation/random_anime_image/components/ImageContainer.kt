@@ -2,8 +2,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.random_anime_ima
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.LottieProgress
 import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image.model.AnimeImageUiModel
 
 
@@ -24,6 +25,7 @@ fun ImageContainer(
     Box(
         modifier = modifier
             .fillMaxWidth()
+            .height(400.dp)
             .padding(start = 30.dp, top = 30.dp, end = 30.dp), contentAlignment = Alignment.Center
     ) {
         when (animeImage) {
@@ -40,7 +42,7 @@ fun ImageContainer(
             }
 
             is AnimeImageUiModel.ImagePending -> {
-                CircularProgressIndicator()
+                LottieProgress()
             }
         }
     }

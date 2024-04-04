@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.info.model
 
-import com.natifedanilharitonov.domain.use_cases.info.model.InfoEmailResult
+
+import com.natifedanilharitonov.domain.features.info.model.InfoEmailResult
 
 class InfoEmailMapper : InfoEmailResult.Mapper<InfoEmailUiState> {
     override fun mapPending(): InfoEmailUiState {

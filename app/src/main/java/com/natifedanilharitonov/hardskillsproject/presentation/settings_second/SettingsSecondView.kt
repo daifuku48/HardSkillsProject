@@ -7,7 +7,7 @@ import androidx.compose.ui.res.stringResource
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainText
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainTitle
+import com.natifedanilharitonov.hardskillsproject.presentation.main.components.PageTitle
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -15,7 +15,7 @@ import org.koin.androidx.compose.koinViewModel
 fun SettingsSecondView(viewModel: SettingsSecondViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
 
-    MainTitle(text = stringResource(R.string.second_settings_screen))
+    PageTitle(text = stringResource(R.string.second_settings_screen))
 
     MainText(text = state.text)
 

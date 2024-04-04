@@ -3,8 +3,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.activities
 import androidx.navigation.NavOptions
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.main_activity.MainActivityEvent
-import com.natifedanilharitonov.domain.use_cases.main_activity.MainActivityState
+import com.natifedanilharitonov.domain.features.main_activity.MainActivityEvent
+import com.natifedanilharitonov.domain.features.main_activity.MainActivityState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 
@@ -31,7 +31,6 @@ class MainActivityViewModelImpl(
             .Builder()
             .setLaunchSingleTop(true)
             .setPopUpTo(
-                saveState = true,
                 route = route,
                 inclusive = true
             )

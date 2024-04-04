@@ -10,8 +10,8 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.model.Passw
 @Composable
 fun PasswordLabelState.getLabel(): String {
     return when (this) {
-        is PasswordLabelState.ValidPassword -> stringResource(id = R.string.email_label)
-        is PasswordLabelState.ErrorPassword -> stringResource(id = R.string.email_error_label)
+        is PasswordLabelState.ValidPassword -> stringResource(id = R.string.password_label)
+        is PasswordLabelState.ErrorPassword -> stringResource(id = R.string.password_error_label)
         else -> {
             ""
         }

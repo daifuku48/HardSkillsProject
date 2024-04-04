@@ -13,4 +13,5 @@
     <color name="black_top_bar">#222831</color>
     <color name="blue">#00224D</color>
     <color name="red">#FF204E</color>
+    <color name="splash_background">#5F374B</color>
 </resources>

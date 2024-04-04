@@ -1,6 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics.model
 
-import com.natifedanilharitonov.domain.use_cases.statistics.StatModel
+import com.natifedanilharitonov.domain.features.statistics.StatModel
 import kotlinx.collections.immutable.PersistentList
 
 class StatUiModelMapper : StatModel.Mapper<StatUiModel> {

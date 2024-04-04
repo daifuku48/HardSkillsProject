@@ -2,11 +2,11 @@ package com.natifedanilharitonov.hardskillsproject.presentation.random_anime_ima
 
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.random_anime_image.RandomAnimeImageEvent
-import com.natifedanilharitonov.domain.use_cases.random_anime_image.RandomAnimeImageState
+import com.natifedanilharitonov.domain.features.random_anime_image.RandomAnimeImageEvent
+import com.natifedanilharitonov.domain.features.random_anime_image.RandomAnimeImageState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image.model.RandomAnimeImageUiState
+import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 
 class RandomAnimeImageViewModelImpl(
     reducer: Reducer<RandomAnimeImageState, RandomAnimeImageEvent, RandomAnimeImageUiState>,
@@ -26,7 +26,7 @@ class RandomAnimeImageViewModelImpl(
         RandomAnimeImageState()
 
     override fun navigateToNextScreen() {
-
+        navigate(Screen.RandomAnimeImageFirstScreen.route)
     }
 
     override fun refreshImage() {

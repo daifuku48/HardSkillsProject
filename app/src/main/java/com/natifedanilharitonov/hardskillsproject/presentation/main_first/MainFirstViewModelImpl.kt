@@ -2,8 +2,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.main_first
 
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.main_first.MainFirstEvent
-import com.natifedanilharitonov.domain.use_cases.main_first.MainFirstState
+import com.natifedanilharitonov.domain.features.main_first.MainFirstEvent
+import com.natifedanilharitonov.domain.features.main_first.MainFirstState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen

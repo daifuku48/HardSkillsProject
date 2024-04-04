@@ -1,7 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.activities.model
 
+import androidx.compose.runtime.Stable
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 
+@Stable
 interface StartDestinationUiModel {
     data object MainScreenDestination : StartDestinationUiModel
     data object LoginScreenDestination : StartDestinationUiModel

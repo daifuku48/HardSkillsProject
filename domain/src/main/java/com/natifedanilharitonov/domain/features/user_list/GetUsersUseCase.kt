@@ -1,0 +1,27 @@
+package com.natifedanilharitonov.domain.features.user_list
+
+import com.natifedanilharitonov.core.UseCase
+import com.natifedanilharitonov.domain.Utils.PAGING_VALUE
+import com.natifedanilharitonov.domain.repository.UsersRepository
+
+class GetUsersUseCase(
+    private val repository: UsersRepository
+) : UseCase<UserListState, UserListEvent> {
+    override suspend fun execute(state: UserListState, event: UserListEvent): UserListEvent {
+        return if (event is UserListEvent.GetUsersEvent) {
+            val userList = repository.getUsers()
+            if (userList.isEmpty()) {
+                UserListEvent.UsersIsReceived(UserListResult.ErrorList, 0)
+            } else {
+                UserListEvent.UsersIsReceived(
+                    UserListResult.List(userList),
+                    pagingValue = userList.size - PAGING_VALUE
+                )
+            }
+        } else UserListEvent.ErrorEvent
+    }
+
+    override fun canHandle(event: UserListEvent): Boolean {
+        return event is UserListEvent.GetUsersEvent
+    }
+}

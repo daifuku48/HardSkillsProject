@@ -1,10 +1,10 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.registration
 
 import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.domain.use_cases.login.model.EmailValidationResult
-import com.natifedanilharitonov.domain.use_cases.login.model.PasswordValidationResult
-import com.natifedanilharitonov.domain.use_cases.registration.RegistrationEvent
-import com.natifedanilharitonov.domain.use_cases.registration.RegistrationState
+import com.natifedanilharitonov.domain.features.login.model.EmailValidationResult
+import com.natifedanilharitonov.domain.features.login.model.PasswordValidationResult
+import com.natifedanilharitonov.domain.features.registration.RegistrationEvent
+import com.natifedanilharitonov.domain.features.registration.RegistrationState
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 

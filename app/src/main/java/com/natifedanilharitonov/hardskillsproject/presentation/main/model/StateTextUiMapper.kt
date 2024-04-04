@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.main.model
 
-import com.natifedanilharitonov.domain.use_cases.main.StateText
+
+import com.natifedanilharitonov.domain.features.main.StateText
 
 class StateTextUiMapper : StateText.Mapper<StateTextUiModel> {
     override fun mapPending(): StateTextUiModel {

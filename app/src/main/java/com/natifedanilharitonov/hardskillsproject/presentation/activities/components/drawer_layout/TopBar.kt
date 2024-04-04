@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -19,27 +18,30 @@ import com.natifedanilharitonov.hardskillsproject.R
 @Composable
 fun TopBar(
     modifier: Modifier = Modifier,
+    drawerState: Boolean,
     onNavigationDrawerClick: () -> Unit
 ) {
-    TopAppBar(
-        modifier = modifier,
-        title = {
-            Text(text = stringResource(id = R.string.app_name))
-        },
-        navigationIcon = {
-            IconButton(
-                content = {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(id = R.drawable.menu),
-                        contentDescription = "Menu"
-                    )
-                },
-                onClick = onNavigationDrawerClick
+    if (drawerState) {
+        TopAppBar(
+            modifier = modifier,
+            title = {
+                Text(text = stringResource(id = R.string.app_name))
+            },
+            navigationIcon = {
+                IconButton(
+                    content = {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(id = R.drawable.menu),
+                            contentDescription = "Menu"
+                        )
+                    },
+                    onClick = onNavigationDrawerClick
+                )
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                containerColor = colorResource(id = R.color.black_top_bar),
+                titleContentColor = colorResource(id = R.color.white)
             )
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = colorResource(id = R.color.black_top_bar),
-            titleContentColor = colorResource(id = R.color.white)
         )
-    )
+    }
 }

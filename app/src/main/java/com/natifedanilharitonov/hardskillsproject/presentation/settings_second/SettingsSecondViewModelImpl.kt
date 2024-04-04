@@ -3,8 +3,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.settings_second
 import androidx.navigation.NavOptions
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondEvent
-import com.natifedanilharitonov.domain.use_cases.settings_second.SettingsSecondState
+import com.natifedanilharitonov.domain.features.settings_second.SettingsSecondEvent
+import com.natifedanilharitonov.domain.features.settings_second.SettingsSecondState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen

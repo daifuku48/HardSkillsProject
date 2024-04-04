@@ -7,13 +7,13 @@ import androidx.compose.ui.res.stringResource
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainText
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainTitle
+import com.natifedanilharitonov.hardskillsproject.presentation.main.components.PageTitle
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainSecondMockView(viewModel: MainSecondViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
-    MainTitle(text = stringResource(R.string.main_second_screen))
+    PageTitle(text = stringResource(R.string.main_second_screen))
 
     MainText(text = state.text)
 

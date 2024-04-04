@@ -4,7 +4,7 @@ import kotlinx.coroutines.delay
 import java.util.Random
 import kotlin.random.asKotlinRandom
 
-class RandomStatsSourceImpl : RandomStatsSource {
+internal class RandomStatsSourceImpl : RandomStatsSource {
     private val random = Random()
     override suspend fun getRandomStats(): List<Pair<Float, Float>>? {
         val list = ArrayList<Pair<Float, Float>>(6)

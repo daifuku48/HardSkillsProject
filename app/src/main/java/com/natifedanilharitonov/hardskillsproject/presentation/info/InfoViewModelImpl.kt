@@ -2,10 +2,11 @@ package com.natifedanilharitonov.hardskillsproject.presentation.info
 
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.use_cases.info.InfoEvent
-import com.natifedanilharitonov.domain.use_cases.info.InfoState
+import com.natifedanilharitonov.domain.features.info.InfoEvent
+import com.natifedanilharitonov.domain.features.info.InfoState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
 
 class InfoViewModelImpl(
     reducer: Reducer<InfoState, InfoEvent, InfoUiState>,
@@ -17,10 +18,11 @@ class InfoViewModelImpl(
         handleEvent(InfoEvent.GetUserInfoEvent)
     }
 
-    override fun createInitState(): InfoState = InfoState()
+    override fun createInitState(): InfoState =
+        InfoState()
 
     override fun navigateToNextScreen() {
-
+        navigate(Screen.InfoFirstScreen.route)
     }
 
     override fun getUserData() {

@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -8,6 +9,9 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -16,9 +20,9 @@ fun AuthTextField(
     text: String,
     onTextChanged: (String) -> Unit,
     labelText: String,
-    colorLabelText: Color,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    colorLabelText: Color
 ) {
+    val focusManager = LocalFocusManager.current
     TextField(
         modifier = modifier,
         value = text,
@@ -37,6 +41,15 @@ fun AuthTextField(
             focusedContainerColor = Color.Transparent
         ),
         shape = RoundedCornerShape(10.dp),
-        keyboardOptions = keyboardOptions
+        keyboardOptions = KeyboardOptions(
+            autoCorrect = true,
+            keyboardType = KeyboardType.Text,
+            imeAction = ImeAction.Done
+        ),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                focusManager.clearFocus()
+            }
+        )
     )
 }
