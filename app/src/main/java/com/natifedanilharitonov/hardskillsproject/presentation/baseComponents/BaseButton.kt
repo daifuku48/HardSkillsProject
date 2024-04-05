@@ -15,7 +15,7 @@ fun BaseButton(
     text: String,
     enabled: Boolean = true,
     containerColor: Color,
-    textColor: Color
+    textColor: Color,
 ) {
     Button(
         modifier = modifier,
@@ -24,8 +24,9 @@ fun BaseButton(
         content = {
             Text(text = text, fontSize = 20.sp, color = textColor)
         },
-        colors = ButtonDefaults.buttonColors(
-            containerColor = containerColor
-        )
+        colors =
+            ButtonDefaults.buttonColors(
+                containerColor = containerColor,
+            ),
     )
 }

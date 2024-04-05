@@ -28,7 +28,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -56,37 +56,37 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":domain"))
     implementation(project(":data"))
-    //Lottie
+    // Lottie
     implementation(libs.lottie.compose)
 
-    //Immutable Collection
+    // Immutable Collection
     implementation(libs.kotlinx.collections.immutable)
 
-    //Firebase
+    // Firebase
     implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
-    //Vico Charts
+    // Vico Charts
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m3)
     implementation(libs.vico.core)
     implementation("com.patrykandpatrick.vico:views:2.0.0-alpha.12")
 
-    //Coroutines
+    // Coroutines
     implementation(libs.kotlinx.coroutines.android)
 
-    //Navigation Compose
+    // Navigation Compose
     implementation(libs.androidx.navigation.compose)
 
-    //Coil
+    // Coil
     implementation(libs.coil.compose)
 
-    //Koin
+    // Koin
     implementation(libs.koin.android)
     implementation(libs.koin.androidx.compose)
 
-    //Splash Screen
+    // Splash Screen
     implementation(libs.androidx.core.splashscreen)
 
     implementation(libs.androidx.core.ktx)

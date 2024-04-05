@@ -13,13 +13,11 @@ class InfoViewModelImpl(
     useCases: Set<UseCase<InfoState, InfoEvent>>,
     navigator: Navigator,
 ) : BaseViewModel<InfoState, InfoEvent, InfoUiState>(reducer, useCases, navigator), InfoViewModel {
-
     init {
         handleEvent(InfoEvent.GetUserInfoEvent)
     }
 
-    override fun createInitState(): InfoState =
-        InfoState()
+    override fun createInitState(): InfoState = InfoState()
 
     override fun navigateToNextScreen() {
         navigate(Screen.InfoFirstScreen.route)

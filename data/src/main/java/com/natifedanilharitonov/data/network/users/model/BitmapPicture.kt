@@ -4,11 +4,11 @@ import android.graphics.Bitmap
 import com.natifedanilharitonov.domain.model.DomainPicture
 
 data class BitmapPicture(
-    val medium: Bitmap
+    val medium: Bitmap,
 )
 
-fun BitmapPicture.toDomain() : DomainPicture {
+fun BitmapPicture.toDomain(): DomainPicture {
     return DomainPicture(
-        medium = medium
+        medium = medium,
     )
 }

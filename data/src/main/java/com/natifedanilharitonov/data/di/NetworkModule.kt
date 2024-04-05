@@ -2,7 +2,7 @@ package com.natifedanilharitonov.data.di
 
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
-import com.natifedanilharitonov.data.network.anime_image_source.AnimeRetrofitInstance
+import com.natifedanilharitonov.data.network.animeImageSource.AnimeRetrofitInstance
 import com.natifedanilharitonov.data.network.users.UsersRetrofitInstance
 import com.natifedanilharitonov.data.source.Utils.ANIME_API
 import com.natifedanilharitonov.data.source.Utils.ANIME_IMAGE_URL
@@ -16,38 +16,39 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
-val networkModule = module {
-    single {
-        Firebase.auth
-    }
+val networkModule =
+    module {
+        single {
+            Firebase.auth
+        }
 
-    factory {
-        OkHttpClient.Builder()
-            .addInterceptor(HttpLoggingInterceptor())
-            .build()
-    }
+        factory {
+            OkHttpClient.Builder()
+                .addInterceptor(HttpLoggingInterceptor())
+                .build()
+        }
 
-    single(named(ANIME_API)) {
-        Retrofit.Builder()
-            .baseUrl(ANIME_IMAGE_URL)
-            .client(get())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+        single(named(ANIME_API)) {
+            Retrofit.Builder()
+                .baseUrl(ANIME_IMAGE_URL)
+                .client(get())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
 
-    single(named(USERS_API)) {
-        Retrofit.Builder()
-            .baseUrl(USERS_API_URL)
-            .client(get())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+        single(named(USERS_API)) {
+            Retrofit.Builder()
+                .baseUrl(USERS_API_URL)
+                .client(get())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
 
-    single<AnimeRetrofitInstance> {
-        get<Retrofit>(named(ANIME_API)).create()
-    }
+        single<AnimeRetrofitInstance> {
+            get<Retrofit>(named(ANIME_API)).create()
+        }
 
-    single<UsersRetrofitInstance> {
-        get<Retrofit>(named(USERS_API)).create()
+        single<UsersRetrofitInstance> {
+            get<Retrofit>(named(USERS_API)).create()
+        }
     }
-}

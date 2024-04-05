@@ -19,4 +19,3 @@ fun StatisticChart(modelState: StatUiModel) {
         }
     }
 }
-

@@ -22,9 +22,10 @@ fun MainText(text: StateTextUiModel) {
             is StateTextUiModel.ErrorText -> {
                 Text(
                     text = stringResource(R.string.network_error),
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    textAlign = TextAlign.Center
+                    modifier =
+                        Modifier
+                            .fillMaxWidth(),
+                    textAlign = TextAlign.Center,
                 )
             }
 

@@ -8,10 +8,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.natifedanilharitonov.hardskillsproject.utils.Contants.AXIS_ITEM_COUNT
-import com.natifedanilharitonov.hardskillsproject.utils.Contants.MAX_X
-import com.natifedanilharitonov.hardskillsproject.utils.Contants.MAX_Y
-import com.natifedanilharitonov.hardskillsproject.utils.Contants.MIN_X
+import com.natifedanilharitonov.hardskillsproject.utils.Constants.AXIS_ITEM_COUNT
+import com.natifedanilharitonov.hardskillsproject.utils.Constants.MAX_X
+import com.natifedanilharitonov.hardskillsproject.utils.Constants.MAX_Y
+import com.natifedanilharitonov.hardskillsproject.utils.Constants.MIN_X
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.CartesianChartHost
 import com.patrykandpatrick.vico.compose.chart.layer.rememberLineCartesianLayer
@@ -43,7 +43,7 @@ fun Stats(model: PersistentList<Pair<Float, Float>>) {
                 lineSeries {
                     series(
                         model.map { it.first }.toPersistentList(),
-                        model.map { it.second }.toPersistentList()
+                        model.map { it.second }.toPersistentList(),
                     )
                 }
             }
@@ -52,32 +52,36 @@ fun Stats(model: PersistentList<Pair<Float, Float>>) {
 
     CartesianChartHost(
         chart =
-        rememberCartesianChart(
-            rememberLineCartesianLayer(
-                axisValueOverrider = AxisValueOverrider.fixed(
-                    MIN_X,
-                    MAX_X,
-                    MIN_Y_MAIN_CHART,
-                    MAX_Y
+            rememberCartesianChart(
+                rememberLineCartesianLayer(
+                    axisValueOverrider =
+                        AxisValueOverrider.fixed(
+                            MIN_X,
+                            MAX_X,
+                            MIN_Y_MAIN_CHART,
+                            MAX_Y,
+                        ),
+                    lines =
+                        listOf(
+                            rememberLineSpec(
+                                shader = DynamicShaders.color(Color.Black),
+                                backgroundShader = null,
+                            ),
+                        ),
                 ),
-                lines = listOf(
-                    rememberLineSpec(
-                        shader = DynamicShaders.color(Color.Black),
-                        backgroundShader = null,
+                startAxis =
+                    rememberStartAxis(
+                        tick = null,
+                        axis = null,
+                        itemPlacer = remember { AxisItemPlacer.Vertical.count(count = { AXIS_ITEM_COUNT }) },
                     ),
-                ),
+                persistentMarkers = mapOf(PERSISTENT_MARKER_X to marker),
             ),
-            startAxis = rememberStartAxis(
-                tick = null,
-                axis = null,
-                itemPlacer = remember { AxisItemPlacer.Vertical.count(count = { AXIS_ITEM_COUNT }) },
-            ),
-            persistentMarkers = mapOf(PERSISTENT_MARKER_X to marker),
-        ),
         modelProducer = modelProducer,
-        modifier = Modifier
-            .height(400.dp)
-            .fillMaxWidth(),
+        modifier =
+            Modifier
+                .height(400.dp)
+                .fillMaxWidth(),
         marker = marker,
         zoomState = rememberVicoZoomState(zoomEnabled = false),
     )

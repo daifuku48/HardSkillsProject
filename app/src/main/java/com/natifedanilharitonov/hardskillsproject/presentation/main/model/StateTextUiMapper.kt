@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.main.model
 
-
 import com.natifedanilharitonov.domain.features.main.StateText
 
 class StateTextUiMapper : StateText.Mapper<StateTextUiModel> {

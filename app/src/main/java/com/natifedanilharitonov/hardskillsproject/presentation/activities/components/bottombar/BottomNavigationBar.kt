@@ -12,19 +12,19 @@ import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavBackStackEntry
 import com.natifedanilharitonov.hardskillsproject.R
 
+@Suppress("ktlint:standard:function-naming")
 @Composable
 fun BottomNavigationBar(
     bottomState: Boolean,
-    navigationSelectedItem: Int,
     navigate: (String, Int) -> Unit,
-    backStackEntry: NavBackStackEntry?
+    backStackEntry: NavBackStackEntry?,
 ) {
     val context = LocalContext.current
     if (bottomState) {
         NavigationBar(
-            containerColor = colorResource(id = R.color.light_blue)
+            containerColor = colorResource(id = R.color.light_blue),
         ) {
-            BottomNavigationItems(context).bottomItems.forEachIndexed() { index, item ->
+            BottomNavigationItems(context).bottomItems.forEachIndexed { index, item ->
                 NavigationBarItem(
                     selected = item.route == backStackEntry?.destination?.route,
                     label = {
@@ -33,14 +33,14 @@ fun BottomNavigationBar(
                     icon = {
                         Icon(
                             imageVector = ImageVector.vectorResource(id = item.icon),
-                            contentDescription = item.label
+                            contentDescription = item.label,
                         )
                     },
                     onClick = {
                         if (backStackEntry?.destination?.route != item.route) {
                             navigate(item.route, index)
                         }
-                    }
+                    },
                 )
             }
         }

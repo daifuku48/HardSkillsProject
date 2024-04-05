@@ -31,41 +31,44 @@ fun InfoView(viewModel: InfoViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp),
+        modifier =
+            Modifier
+                .fillMaxSize()
+                .padding(16.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
             painter = painterResource(id = R.drawable.users),
             contentDescription = null,
-            modifier = Modifier
-                .size(120.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary)
-                .padding(8.dp)
+            modifier =
+                Modifier
+                    .size(120.dp)
+                    .clip(CircleShape)
+                    .background(MaterialTheme.colorScheme.primary)
+                    .padding(8.dp),
         )
 
         Text(
             text = stringResource(id = R.string.email, state.email.getText()),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth()
+            modifier =
+                Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth(),
         )
 
         Button(
             onClick = {
                 viewModel.navigateToNextScreen()
             },
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth()
+            modifier =
+                Modifier
+                    .padding(8.dp)
+                    .fillMaxWidth(),
         ) {
             Text(text = stringResource(R.string.next_screen))
         }
     }
 }
-

@@ -59,4 +59,5 @@
     <string name="email_text">Email</string>
     <string name="gender">Gender</string>
     <string name="phone_number">Phone number</string>
+    <string name="user_has_logge">Користувач зареєстрований</string>
 </resources>

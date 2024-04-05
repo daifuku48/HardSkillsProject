@@ -27,35 +27,37 @@ fun BasePopUpUserDialog(
     state: Boolean,
     text: String,
     buttonText: String,
-    onConfirm: () -> Unit
+    onConfirm: () -> Unit,
 ) {
     if (state) {
         BasicAlertDialog(
             onDismissRequest = onConfirm,
-            modifier = modifier
+            modifier = modifier,
         ) {
             Box(
-                modifier = Modifier
-                    .background(
-                        color = Color.White,
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                    .border(
-                        color = Color.DarkGray,
-                        width = 1.dp,
-                        shape = RoundedCornerShape(20.dp)
-                    )
-                    .padding(20.dp),
-                contentAlignment = Alignment.Center
+                modifier =
+                    Modifier
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(20.dp),
+                        )
+                        .border(
+                            color = Color.DarkGray,
+                            width = 1.dp,
+                            shape = RoundedCornerShape(20.dp),
+                        )
+                        .padding(20.dp),
+                contentAlignment = Alignment.Center,
             ) {
                 Column {
                     Text(text = text)
                     Spacer(modifier = Modifier.padding(10.dp))
                     Button(
                         onClick = onConfirm,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.DarkGray
-                        )
+                        colors =
+                            ButtonDefaults.buttonColors(
+                                containerColor = Color.DarkGray,
+                            ),
                     ) {
                         Text(text = buttonText)
                     }
@@ -65,16 +67,13 @@ fun BasePopUpUserDialog(
     }
 }
 
-
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewPopUp() {
-
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
-
         BasePopUpUserDialog(
             modifier = Modifier.padding(30.dp),
             state = true,

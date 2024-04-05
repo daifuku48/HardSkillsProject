@@ -36,74 +36,79 @@ fun RegistrationContainer(
     loginClick: () -> Unit,
     registerButtonEnabled: Boolean,
     emailLabel: EmailLabelState,
-    passwordLabel: PasswordLabelState
+    passwordLabel: PasswordLabelState,
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center,
     ) {
         Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp)
-                .background(
-                    color = colorResource(id = R.color.authCardBackground),
-                    shape = RoundedCornerShape(20.dp)
-                )
-                .border(
-                    width = 1.dp,
-                    color = colorResource(id = R.color.authBorderCard),
-                    shape = RoundedCornerShape(20.dp)
-                ),
-            contentAlignment = Alignment.Center
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp)
+                    .background(
+                        color = colorResource(id = R.color.authCardBackground),
+                        shape = RoundedCornerShape(20.dp),
+                    )
+                    .border(
+                        width = 1.dp,
+                        color = colorResource(id = R.color.authBorderCard),
+                        shape = RoundedCornerShape(20.dp),
+                    ),
+            contentAlignment = Alignment.Center,
         ) {
             Column {
                 AuthTextTitle(
                     text = stringResource(R.string.registration),
-                    modifier = Modifier.padding(30.dp)
+                    modifier = Modifier.padding(30.dp),
                 )
 
                 AuthTextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 10.dp, end = 10.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(start = 10.dp, end = 10.dp),
                     text = email,
                     onTextChanged = { email -> emailChanged(email) },
                     labelText = emailLabel.getLabel(),
-                    colorLabelText = emailLabel.getColor()
+                    colorLabelText = emailLabel.getColor(),
                 )
 
                 Spacer(modifier = Modifier.padding(10.dp))
 
                 PasswordTextField(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
                     text = password,
                     onTextChanged = { password -> passwordChanged(password) },
                     labelText = passwordLabel.getLabel(),
-                    colorLabelText = passwordLabel.getColor()
+                    colorLabelText = passwordLabel.getColor(),
                 )
 
                 BaseButton(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp),
                     onClick = registerClick,
                     enabled = registerButtonEnabled,
                     text = stringResource(R.string.register_btn),
                     containerColor = Color.DarkGray,
-                    textColor = Color.White
+                    textColor = Color.White,
                 )
 
                 BaseButton(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(10.dp),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp),
                     onClick = loginClick,
                     text = stringResource(R.string.login_btn),
                     containerColor = Color.Black,
-                    textColor = Color.White
+                    textColor = Color.White,
                 )
             }
         }

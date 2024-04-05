@@ -11,7 +11,6 @@ import com.natifedanilharitonov.hardskillsproject.presentation.registration.comp
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.components.UserHasRegisteredDialog
 import org.koin.androidx.compose.koinViewModel
 
-
 @Composable
 fun RegistrationView(viewModel: RegistrationViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
@@ -24,22 +23,23 @@ fun RegistrationView(viewModel: RegistrationViewModelImpl = koinViewModel()) {
         loginClick = { viewModel.navigateToLogin() },
         emailLabel = state.emailLabel,
         passwordLabel = state.passwordLabel,
-        registerButtonEnabled = state.registerButtonEnabled
+        registerButtonEnabled = state.registerButtonEnabled,
     )
 
     UserHasRegisteredDialog(
         state = state.showUserHasLoggedDialog,
-        onConfirm = viewModel::onConfirmUserRegisteredDialog
+        onConfirm = viewModel::onConfirmUserRegisteredDialog,
     )
 
     BaseErrorDialog(
         state = state.showUserErrorRegisterDialog,
-        onConfirm = viewModel::onConfirmErrorDialog
+        onConfirm = viewModel::onConfirmErrorDialog,
     )
 
     PendingScreen(
-        modifier = Modifier
-            .fillMaxSize(),
-        state = state.pending
+        modifier =
+            Modifier
+                .fillMaxSize(),
+        state = state.pending,
     )
 }

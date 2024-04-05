@@ -12,13 +12,14 @@ import androidx.compose.ui.unit.sp
 fun RowScope.TableCell(
     text: String,
     weight: Float,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Text(
         text = text,
         fontSize = 12.sp,
-        modifier = modifier
-            .weight(weight)
-            .padding(8.dp)
+        modifier =
+            modifier
+                .weight(weight)
+                .padding(8.dp),
     )
 }

@@ -12,20 +12,18 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Scre
 class RegistrationViewModelImpl(
     reducer: Reducer<RegistrationState, RegistrationEvent, RegistrationUiState>,
     useCases: Set<UseCase<RegistrationState, RegistrationEvent>>,
-    navigator: Navigator
+    navigator: Navigator,
 ) : BaseViewModel<RegistrationState, RegistrationEvent, RegistrationUiState>(
-    reducer,
-    useCases,
-    navigator
-),
+        reducer,
+        useCases,
+        navigator,
+    ),
     RegistrationViewModel {
     init {
         handleEvent(RegistrationEvent.ValidationEvent)
     }
 
-    override fun createInitState(): RegistrationState =
-        RegistrationState()
-
+    override fun createInitState(): RegistrationState = RegistrationState()
 
     override fun emailChanged(email: String) {
         handleEvent(RegistrationEvent.EmailChangedEvent(email))

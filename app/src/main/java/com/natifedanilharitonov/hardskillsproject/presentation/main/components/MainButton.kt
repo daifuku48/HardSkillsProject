@@ -11,11 +11,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MainButton(text: String, onClick: () -> Unit) {
+fun MainButton(
+    text: String,
+    onClick: () -> Unit,
+) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
         Button(
             onClick = onClick,
-            modifier = Modifier.padding(bottom = 30.dp)
+            modifier = Modifier.padding(bottom = 30.dp),
         ) {
             Text(text = text)
         }

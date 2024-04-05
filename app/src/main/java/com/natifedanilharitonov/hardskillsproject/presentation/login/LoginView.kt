@@ -27,17 +27,17 @@ fun LoginView(viewModel: LoginViewModelImpl = koinViewModel()) {
         loginButtonEnabled = state.loginButtonEnabled,
         registerClick = viewModel::navigateToRegister,
         emailLabel = state.emailLabel,
-        passwordLabel = state.passwordLabel
+        passwordLabel = state.passwordLabel,
     )
 
     UserHasLoggedDialog(
         state = state.showUserHasLoggedDialog,
-        onConfirm = viewModel::onConfirmUserHasLoggedDialog
+        onConfirm = viewModel::onConfirmUserHasLoggedDialog,
     )
 
     BaseErrorDialog(
         state = state.showUserErrorLoginDialog,
-        onConfirm = viewModel::onConfirmErrorUserDialog
+        onConfirm = viewModel::onConfirmErrorUserDialog,
     )
 
     PendingScreen(modifier = Modifier.fillMaxSize(), state = state.pending)

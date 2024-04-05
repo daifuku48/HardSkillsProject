@@ -7,9 +7,12 @@ import com.natifedanilharitonov.domain.features.info.model.InfoEmailResult
 import com.natifedanilharitonov.hardskillsproject.presentation.info.model.InfoEmailUiState
 
 class InfoReducer(
-    private val infoEmailMapper: InfoEmailResult.Mapper<InfoEmailUiState>
+    private val infoEmailMapper: InfoEmailResult.Mapper<InfoEmailUiState>,
 ) : Reducer<InfoState, InfoEvent, InfoUiState> {
-    override fun reduce(state: InfoState, event: InfoEvent): InfoState {
+    override fun reduce(
+        state: InfoState,
+        event: InfoEvent,
+    ): InfoState {
         return when (event) {
             is InfoEvent.ErrorEvent -> state
             is InfoEvent.GetUserInfoEvent -> state
@@ -19,7 +22,7 @@ class InfoReducer(
 
     override fun mapToUiModel(state: InfoState): InfoUiState {
         return InfoUiState(
-            email = state.email.map(infoEmailMapper)
+            email = state.email.map(infoEmailMapper),
         )
     }
 }

@@ -5,7 +5,6 @@ import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
 import com.natifedanilharitonov.domain.features.login.LoginEvent
 import com.natifedanilharitonov.domain.features.login.LoginState
-
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
@@ -13,15 +12,14 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Scre
 class LoginViewModelImpl(
     reducer: Reducer<LoginState, LoginEvent, LoginUiState>,
     useCases: Set<UseCase<LoginState, LoginEvent>>,
-    navigator: Navigator
+    navigator: Navigator,
 ) : BaseViewModel<LoginState, LoginEvent, LoginUiState>(reducer, useCases, navigator),
     LoginViewModel {
     init {
         handleEvent(LoginEvent.ValidationEvent)
     }
 
-    override fun createInitState(): LoginState =
-        LoginState()
+    override fun createInitState(): LoginState = LoginState()
 
     override fun onEmailChanged(email: String) {
         handleEvent(LoginEvent.EmailChangedEvent(email = email))
@@ -60,4 +58,3 @@ class LoginViewModelImpl(
         navigate(Screen.MainScreen.route, navOptions)
     }
 }
-

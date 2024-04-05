@@ -11,12 +11,12 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun PendingScreen(
     modifier: Modifier,
-    state: Boolean
+    state: Boolean,
 ) {
     if (state) {
         Box(
             modifier = modifier.background(Color.White),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             LinearProgressIndicator()
         }

@@ -7,9 +7,12 @@ import com.natifedanilharitonov.domain.features.statistics.StatisticsState
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
 
 class StatisticsReducer(
-    private val mapper: StatModel.Mapper<StatUiModel>
+    private val mapper: StatModel.Mapper<StatUiModel>,
 ) : Reducer<StatisticsState, StatisticsEvent, StatisticsUiState> {
-    override fun reduce(state: StatisticsState, event: StatisticsEvent): StatisticsState {
+    override fun reduce(
+        state: StatisticsState,
+        event: StatisticsEvent,
+    ): StatisticsState {
         return when (event) {
             is StatisticsEvent.ErrorEvent -> state
             is StatisticsEvent.GetModelStatsEvent -> state
@@ -19,7 +22,7 @@ class StatisticsReducer(
 
     override fun mapToUiModel(state: StatisticsState): StatisticsUiState {
         return StatisticsUiState(
-            statModel = state.statModel.map(mapper)
+            statModel = state.statModel.map(mapper),
         )
     }
 }

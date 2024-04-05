@@ -29,7 +29,7 @@ class App : Application() {
                 repositoryModule,
                 viewModelModule,
                 sourceModule,
-                mapperModule
+                mapperModule,
             )
         }
     }

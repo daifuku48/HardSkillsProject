@@ -5,5 +5,5 @@ data class DomainUser(
     val name: DomainName,
     val email: String,
     val phone: String,
-    val picture: DomainPicture
+    val picture: DomainPicture,
 )

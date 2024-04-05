@@ -8,8 +8,12 @@ import retrofit2.http.Query
 
 interface UsersRetrofitInstance {
     @GET("api/")
-    suspend fun getUsers(@Query("results") results: String = DEFAULT_USER_COUNT): NetworkUserResult
+    suspend fun getUsers(
+        @Query("results") results: String = DEFAULT_USER_COUNT,
+    ): NetworkUserResult
 
     @GET("api/")
-    suspend fun getUser(@Query("results") results: String = USER): NetworkUserResult
+    suspend fun getUser(
+        @Query("results") results: String = USER,
+    ): NetworkUserResult
 }

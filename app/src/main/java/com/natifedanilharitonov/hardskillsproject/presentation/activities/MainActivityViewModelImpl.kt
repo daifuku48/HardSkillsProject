@@ -3,8 +3,8 @@ package com.natifedanilharitonov.hardskillsproject.presentation.activities
 import androidx.navigation.NavOptions
 import com.natifedanilharitonov.core.Reducer
 import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.features.main_activity.MainActivityEvent
-import com.natifedanilharitonov.domain.features.main_activity.MainActivityState
+import com.natifedanilharitonov.domain.features.mainActivity.MainActivityEvent
+import com.natifedanilharitonov.domain.features.mainActivity.MainActivityState
 import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 
@@ -13,28 +13,31 @@ class MainActivityViewModelImpl(
     useCases: Set<UseCase<MainActivityState, MainActivityEvent>>,
     navigator: Navigator,
 ) : BaseViewModel<MainActivityState, MainActivityEvent, MainActivityUiState>(
-    reducer,
-    useCases,
-    navigator
-),
+        reducer,
+        useCases,
+        navigator,
+    ),
     MainActivityViewModel {
     init {
         handleEvent(MainActivityEvent.GetStartDestinationEvent)
     }
 
-    override fun createInitState(): MainActivityState =
-        MainActivityState()
+    override fun createInitState(): MainActivityState = MainActivityState()
 
-    override fun navigateBottomBarMenu(route: String, index: Int) {
+    override fun navigateBottomBarMenu(
+        route: String,
+        index: Int,
+    ) {
         handleEvent(MainActivityEvent.SetSelectedNavigationBarItemEvent(index))
-        val navOptions = NavOptions
-            .Builder()
-            .setLaunchSingleTop(true)
-            .setPopUpTo(
-                route = route,
-                inclusive = true
-            )
-            .build()
+        val navOptions =
+            NavOptions
+                .Builder()
+                .setLaunchSingleTop(true)
+                .setPopUpTo(
+                    route = route,
+                    inclusive = true,
+                )
+                .build()
         navigate(route, navOptions)
     }
 

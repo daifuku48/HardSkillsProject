@@ -10,55 +10,64 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.model.Passw
 
 class LoginReducer(
     private val emailLabelMapper: EmailValidationResult.Mapper<EmailLabelState>,
-    private val passwordLabelMapper: PasswordValidationResult.Mapper<PasswordLabelState>
+    private val passwordLabelMapper: PasswordValidationResult.Mapper<PasswordLabelState>,
 ) : Reducer<LoginState, LoginEvent, LoginUiState> {
     override fun reduce(
         state: LoginState,
-        event: LoginEvent
+        event: LoginEvent,
     ): LoginState {
         return when (event) {
-            is LoginEvent.EmailChangedEvent -> state.copy(
-                emailText = event.email
-            )
+            is LoginEvent.EmailChangedEvent ->
+                state.copy(
+                    emailText = event.email,
+                )
 
             is LoginEvent.ValidationEvent -> state
             is LoginEvent.ErrorEvent -> state
-            is LoginEvent.LoginUserEvent -> state.copy(
-                pending = true
-            )
+            is LoginEvent.LoginUserEvent ->
+                state.copy(
+                    pending = true,
+                )
 
-            is LoginEvent.PasswordChangedEvent -> state.copy(
-                passwordText = event.password
-            )
+            is LoginEvent.PasswordChangedEvent ->
+                state.copy(
+                    passwordText = event.password,
+                )
 
-            is LoginEvent.UserHasLoggedEvent -> state.copy(
-                showUserHasLoggedDialog = true,
-                pending = false
-            )
+            is LoginEvent.UserHasLoggedEvent ->
+                state.copy(
+                    showUserHasLoggedDialog = true,
+                    pending = false,
+                )
 
-            is LoginEvent.HideUserHasLoggedDialog -> state.copy(
-                showUserHasLoggedDialog = false
-            )
+            is LoginEvent.HideUserHasLoggedDialog ->
+                state.copy(
+                    showUserHasLoggedDialog = false,
+                )
 
-            is LoginEvent.HideUserErrorLoginDialog -> state.copy(
-                showUserErrorLoginDialog = false
-            )
+            is LoginEvent.HideUserErrorLoginDialog ->
+                state.copy(
+                    showUserErrorLoginDialog = false,
+                )
 
-            is LoginEvent.ShowUserErrorLoginDialog -> state.copy(
-                showUserErrorLoginDialog = true,
-                pending = false
-            )
+            is LoginEvent.ShowUserErrorLoginDialog ->
+                state.copy(
+                    showUserErrorLoginDialog = true,
+                    pending = false,
+                )
 
-            is LoginEvent.EmailPasswordValidationEmail -> state.copy(
-                emailState = event.emailValidation,
-                passwordState = event.passwordValidation,
-                loginButtonEnabled = event.buttonEnabled
-            )
+            is LoginEvent.EmailPasswordValidationEmail ->
+                state.copy(
+                    emailState = event.emailValidation,
+                    passwordState = event.passwordValidation,
+                    loginButtonEnabled = event.buttonEnabled,
+                )
 
-            is LoginEvent.ClearTextFields -> state.copy(
-                emailText = "",
-                passwordText = ""
-            )
+            is LoginEvent.ClearTextFields ->
+                state.copy(
+                    emailText = "",
+                    passwordText = "",
+                )
         }
     }
 
@@ -71,7 +80,7 @@ class LoginReducer(
             pending = state.pending,
             showUserHasLoggedDialog = state.showUserHasLoggedDialog,
             showUserErrorLoginDialog = state.showUserErrorLoginDialog,
-            loginButtonEnabled = state.loginButtonEnabled
+            loginButtonEnabled = state.loginButtonEnabled,
         )
     }
 }

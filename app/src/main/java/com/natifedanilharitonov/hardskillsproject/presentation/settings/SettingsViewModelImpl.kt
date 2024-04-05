@@ -12,11 +12,10 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Scre
 class SettingsViewModelImpl(
     reducer: Reducer<SettingsState, SettingsEvent, SettingsUiState>,
     useCases: Set<UseCase<SettingsState, SettingsEvent>>,
-    navigator: Navigator
+    navigator: Navigator,
 ) : BaseViewModel<SettingsState, SettingsEvent, SettingsUiState>(reducer, useCases, navigator),
     SettingsViewModel {
-    override fun createInitState(): SettingsState =
-        SettingsState()
+    override fun createInitState(): SettingsState = SettingsState()
 
     override fun signOut() {
         handleEvent(SettingsEvent.SignOutUserEvent)
@@ -27,11 +26,12 @@ class SettingsViewModelImpl(
     }
 
     override fun navigateToLogin() {
-        val navOptions = NavOptions
-            .Builder()
-            .setPopUpTo(Screen.SettingsScreen.route, inclusive = true)
-            .setLaunchSingleTop(true)
-            .build()
+        val navOptions =
+            NavOptions
+                .Builder()
+                .setPopUpTo(Screen.SettingsScreen.route, inclusive = true)
+                .setLaunchSingleTop(true)
+                .build()
         navigate(Screen.LoginScreen.route, navOptions)
     }
 }

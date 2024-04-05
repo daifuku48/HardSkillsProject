@@ -3,5 +3,5 @@ package com.natifedanilharitonov.hardskillsproject.presentation.activities.compo
 data class BottomNavigationItem(
     val label: String,
     val route: String,
-    val icon: Int
+    val icon: Int,
 )

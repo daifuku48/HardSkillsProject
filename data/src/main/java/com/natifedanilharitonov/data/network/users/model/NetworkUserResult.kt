@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class NetworkUserResult(
     @SerializedName("results")
-    val users: List<NetworkUser>
+    val users: List<NetworkUser>,
 )

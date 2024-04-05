@@ -20,6 +20,6 @@ fun MainView(viewModel: MainViewModelImpl = koinViewModel()) {
 
     MainButton(
         text = stringResource(id = R.string.next_screen),
-        onClick = viewModel::navigateToNextScreen
+        onClick = viewModel::navigateToNextScreen,
     )
 }

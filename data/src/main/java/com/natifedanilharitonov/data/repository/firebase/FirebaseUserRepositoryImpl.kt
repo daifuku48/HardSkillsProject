@@ -5,13 +5,19 @@ import com.natifedanilharitonov.data.network.firebase.FirebaseUserSource
 import com.natifedanilharitonov.domain.repository.FirebaseUserRepository
 
 internal class FirebaseUserRepositoryImpl(
-    private val source: FirebaseUserSource
+    private val source: FirebaseUserSource,
 ) : FirebaseUserRepository {
-    override suspend fun register(email: String, password: String): Boolean {
+    override suspend fun register(
+        email: String,
+        password: String,
+    ): Boolean {
         return source.register(email, password)
     }
 
-    override suspend fun login(email: String, password: String): Boolean {
+    override suspend fun login(
+        email: String,
+        password: String,
+    ): Boolean {
         return source.login(email, password)
     }
 

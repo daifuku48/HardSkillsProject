@@ -1,6 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.activities.model
 
-import com.natifedanilharitonov.domain.features.main_activity.StartDestinationResult
+import com.natifedanilharitonov.domain.features.mainActivity.StartDestinationResult
 
 class StartDestinationMapper : StartDestinationResult.Mapper<StartDestinationUiModel> {
     override fun mapToMainDestination(): StartDestinationUiModel {

@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun AuthTextTitle(
     modifier: Modifier = Modifier,
-    text: String
+    text: String,
 ) {
     Box(modifier = modifier) {
         Text(text = text, fontSize = 26.sp)

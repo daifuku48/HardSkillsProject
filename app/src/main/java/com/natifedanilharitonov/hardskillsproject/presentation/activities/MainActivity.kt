@@ -21,9 +21,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.bottombar.BottomNavigationBar
-import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.NavigationDrawer
-import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.NavigationDrawerItems
-import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawer_layout.TopBar
+import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawerLayout.NavigationDrawer
+import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawerLayout.NavigationDrawerItems
+import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawerLayout.TopBar
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.model.getDestination
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
@@ -34,6 +34,7 @@ import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
     private val navigator: Navigator by inject()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
@@ -71,11 +72,11 @@ class MainActivity : ComponentActivity() {
                             closeDrawer = {
                                 scope.launch { drawerState.close() }
                             },
-                            currentRoute = navController.currentDestination?.route
+                            currentRoute = navController.currentDestination?.route,
                         )
                     },
                     drawerState = drawerState,
-                    gesturesEnabled = drawerState.isOpen
+                    gesturesEnabled = drawerState.isOpen,
                 ) {
                     Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
                         TopBar(drawerState = state.drawerState, onNavigationDrawerClick = {
@@ -86,18 +87,17 @@ class MainActivity : ComponentActivity() {
                     }, bottomBar = {
                         BottomNavigationBar(
                             bottomState = state.bottomState,
-                            navigationSelectedItem = state.bottomNavigationSelectedItem,
                             navigate = { item, index ->
                                 viewModel.navigateBottomBarMenu(item, index)
                             },
-                            backStackEntry = navBackStackEntry
+                            backStackEntry = navBackStackEntry,
                         )
                     }) { paddingValues ->
                         state.startDestination?.let { destination ->
                             NavHost(
                                 modifier = Modifier.padding(paddingValues = paddingValues),
                                 navController = navController,
-                                startDestination = destination.getDestination()
+                                startDestination = destination.getDestination(),
                             ) {
                                 Screens(
                                     listOf(
@@ -121,7 +121,7 @@ class MainActivity : ComponentActivity() {
                                         Screen.RandomUserFirstScreen,
                                         Screen.RandomUserSecondScreen,
                                         Screen.UsersScreen,
-                                    )
+                                    ),
                                 ).show(navGraphBuilder = this, showBottomState = { bottomState ->
                                     viewModel.changeBottomState(bottomState)
                                 }, showDrawerState = { drawerState ->
@@ -135,5 +135,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-

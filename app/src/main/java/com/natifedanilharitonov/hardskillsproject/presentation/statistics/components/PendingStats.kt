@@ -12,10 +12,11 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun PendingStats() {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(400.dp),
-        contentAlignment = Alignment.Center
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(400.dp),
+        contentAlignment = Alignment.Center,
     ) {
         CircularProgressIndicator()
     }

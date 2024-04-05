@@ -7,7 +7,7 @@ class NetworkUserBitmap(
     val name: NetworkName,
     val email: String,
     val phone: String,
-    val picture: BitmapPicture
+    val picture: BitmapPicture,
 )
 
 fun NetworkUserBitmap.toDomain(): DomainUser {
@@ -16,6 +16,6 @@ fun NetworkUserBitmap.toDomain(): DomainUser {
         name = name.toDomain(),
         email = email,
         phone = phone,
-        picture = picture.toDomain()
+        picture = picture.toDomain(),
     )
 }

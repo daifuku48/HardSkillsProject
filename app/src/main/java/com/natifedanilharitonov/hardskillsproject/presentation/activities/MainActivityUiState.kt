@@ -7,5 +7,5 @@ data class MainActivityUiState(
     val bottomState: Boolean = false,
     val drawerState: Boolean = false,
     val startDestination: StartDestinationUiModel? = null,
-    val bottomNavigationSelectedItem: Int = 0
+    val bottomNavigationSelectedItem: Int = 0,
 ) : UiModel

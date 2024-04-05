@@ -20,7 +20,7 @@ fun AuthTextField(
     text: String,
     onTextChanged: (String) -> Unit,
     labelText: String,
-    colorLabelText: Color
+    colorLabelText: Color,
 ) {
     val focusManager = LocalFocusManager.current
     TextField(
@@ -33,23 +33,26 @@ fun AuthTextField(
         label = {
             Text(
                 text = labelText,
-                color = colorLabelText
+                color = colorLabelText,
             )
         },
-        colors = TextFieldDefaults.colors(
-            unfocusedContainerColor = Color.Transparent,
-            focusedContainerColor = Color.Transparent
-        ),
+        colors =
+            TextFieldDefaults.colors(
+                unfocusedContainerColor = Color.Transparent,
+                focusedContainerColor = Color.Transparent,
+            ),
         shape = RoundedCornerShape(10.dp),
-        keyboardOptions = KeyboardOptions(
-            autoCorrect = true,
-            keyboardType = KeyboardType.Text,
-            imeAction = ImeAction.Done
-        ),
-        keyboardActions = KeyboardActions(
-            onDone = {
-                focusManager.clearFocus()
-            }
-        )
+        keyboardOptions =
+            KeyboardOptions(
+                autoCorrect = true,
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Done,
+            ),
+        keyboardActions =
+            KeyboardActions(
+                onDone = {
+                    focusManager.clearFocus()
+                },
+            ),
     )
 }

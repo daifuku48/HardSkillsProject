@@ -7,9 +7,12 @@ import com.natifedanilharitonov.domain.features.main.StateText
 import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 
 class MainReducer(
-    private val textMapper: StateText.Mapper<StateTextUiModel>
+    private val textMapper: StateText.Mapper<StateTextUiModel>,
 ) : Reducer<MainState, MainEvent, MainUiState> {
-    override fun reduce(state: MainState, event: MainEvent): MainState {
+    override fun reduce(
+        state: MainState,
+        event: MainEvent,
+    ): MainState {
         return when (event) {
             is MainEvent.ErrorEvent -> state
             is MainEvent.GetMainTextEvent -> state
@@ -19,7 +22,7 @@ class MainReducer(
 
     override fun mapToUiModel(state: MainState): MainUiState {
         return MainUiState(
-            text = state.text.map(textMapper)
+            text = state.text.map(textMapper),
         )
     }
 }

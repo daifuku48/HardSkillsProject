@@ -7,24 +7,35 @@ import com.natifedanilharitonov.domain.features.login.model.EmailValidationResul
 import com.natifedanilharitonov.domain.features.login.model.PasswordValidationResult
 
 class EmailPasswordLoginValidationUseCase : UseCase<LoginState, LoginEvent> {
-    override suspend fun execute(state: LoginState, event: LoginEvent): LoginEvent {
+    override suspend fun execute(
+        state: LoginState,
+        event: LoginEvent,
+    ): LoginEvent {
         return if (event is LoginEvent.ValidationEvent) {
             val emailValidation = validateEmail(state.emailText)
             val emailResult =
-                if (emailValidation || state.emailText.isEmpty()) EmailValidationResult.ValidEmail
-                else EmailValidationResult.ErrorEmail
+                if (emailValidation || state.emailText.isEmpty()) {
+                    EmailValidationResult.ValidEmail
+                } else {
+                    EmailValidationResult.ErrorEmail
+                }
 
             val passwordValidation = validatePassword(state.passwordText)
             val passwordResult =
-                if (passwordValidation || state.passwordText.isEmpty()) PasswordValidationResult.ValidPassword
-                else PasswordValidationResult.ErrorPassword
+                if (passwordValidation || state.passwordText.isEmpty()) {
+                    PasswordValidationResult.ValidPassword
+                } else {
+                    PasswordValidationResult.ErrorPassword
+                }
             val buttonEnabled = emailValidation && passwordValidation
             LoginEvent.EmailPasswordValidationEmail(
                 emailValidation = emailResult,
                 passwordValidation = passwordResult,
-                buttonEnabled = buttonEnabled
+                buttonEnabled = buttonEnabled,
             )
-        } else LoginEvent.ErrorEvent
+        } else {
+            LoginEvent.ErrorEvent
+        }
     }
 
     private fun validateEmail(email: String): Boolean {

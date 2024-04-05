@@ -10,14 +10,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-
 @Composable
-fun PageTitle(modifier: Modifier = Modifier, text: String) {
+fun PageTitle(
+    modifier: Modifier = Modifier,
+    text: String,
+) {
     Box(modifier = modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
         Text(
             text = text,
             fontSize = 24.sp,
-            modifier = Modifier.padding(top = 30.dp)
+            modifier = Modifier.padding(top = 30.dp),
         )
     }
 }

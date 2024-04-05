@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login.model
 
-
 import com.natifedanilharitonov.domain.features.login.model.PasswordValidationResult
 
 class PasswordLabelMapper : PasswordValidationResult.Mapper<PasswordLabelState> {

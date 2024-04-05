@@ -19,8 +19,6 @@ fun SettingsView(viewModel: SettingsViewModelImpl = koinViewModel()) {
 
     SettingsContainer(
         signOut = viewModel::signOut,
-        navigateToNextScreen = viewModel::navigateToNextScreen
+        navigateToNextScreen = viewModel::navigateToNextScreen,
     )
 }
-
-

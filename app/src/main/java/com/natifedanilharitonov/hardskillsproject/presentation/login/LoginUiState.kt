@@ -12,5 +12,5 @@ data class LoginUiState(
     val pending: Boolean = false,
     val showUserHasLoggedDialog: Boolean = false,
     val showUserErrorLoginDialog: Boolean = false,
-    val loginButtonEnabled: Boolean = false
+    val loginButtonEnabled: Boolean = false,
 ) : UiModel

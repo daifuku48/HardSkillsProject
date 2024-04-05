@@ -5,7 +5,9 @@ interface InfoEmailResult {
 
     interface Mapper<T> {
         fun mapPending(): T
+
         fun mapSuccess(text: String): T
+
         fun mapUnauthorized(): T
     }
 

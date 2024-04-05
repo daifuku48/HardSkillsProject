@@ -3,37 +3,37 @@ package com.natifedanilharitonov.hardskillsproject.presentation.base.screens
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.natifedanilharitonov.hardskillsproject.presentation.info.InfoView
-import com.natifedanilharitonov.hardskillsproject.presentation.info_first.InfoFirstView
-import com.natifedanilharitonov.hardskillsproject.presentation.info_second.InfoSecondView
+import com.natifedanilharitonov.hardskillsproject.presentation.infoFirst.InfoFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.infoSecond.InfoSecondView
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
 import com.natifedanilharitonov.hardskillsproject.presentation.main.MainView
-import com.natifedanilharitonov.hardskillsproject.presentation.main_first.MainFirstView
-import com.natifedanilharitonov.hardskillsproject.presentation.main_second.MainSecondMockView
-import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image.RandomAnimeImageView
-import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image_first.RandomAnimeImageFirstView
-import com.natifedanilharitonov.hardskillsproject.presentation.random_anime_image_second.RandomAnimeImageSecondView
+import com.natifedanilharitonov.hardskillsproject.presentation.mainFirst.MainFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.mainSecond.MainSecondMockView
+import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage.RandomAnimeImageView
+import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImageFirst.RandomAnimeImageFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImageSecond.RandomAnimeImageSecondView
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.RegistrationView
 import com.natifedanilharitonov.hardskillsproject.presentation.settings.SettingsView
-import com.natifedanilharitonov.hardskillsproject.presentation.settings_first.SettingsFirstView
-import com.natifedanilharitonov.hardskillsproject.presentation.settings_second.SettingsSecondView
+import com.natifedanilharitonov.hardskillsproject.presentation.settingsFirst.SettingsFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.settingsSecond.SettingsSecondView
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.StatisticsView
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics_first.StatisticsFirstView
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics_second.StatisticsSecondView
-import com.natifedanilharitonov.hardskillsproject.presentation.user_list.UserListView
-import com.natifedanilharitonov.hardskillsproject.presentation.user_random_first.UserRandomFirstView
-import com.natifedanilharitonov.hardskillsproject.presentation.user_random_second.UserRandomSecondView
-import com.natifedanilharitonov.hardskillsproject.utils.Contants.HIDE_NAV_STATE
-import com.natifedanilharitonov.hardskillsproject.utils.Contants.SHOW_NAV_STATE
-
+import com.natifedanilharitonov.hardskillsproject.presentation.statisticsFirst.StatisticsFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.statisticsSecond.StatisticsSecondView
+import com.natifedanilharitonov.hardskillsproject.presentation.userList.UserListView
+import com.natifedanilharitonov.hardskillsproject.presentation.userRandomFirst.UserRandomFirstView
+import com.natifedanilharitonov.hardskillsproject.presentation.userRandomSecond.UserRandomSecondView
+import com.natifedanilharitonov.hardskillsproject.utils.Constants.HIDE_NAV_STATE
+import com.natifedanilharitonov.hardskillsproject.utils.Constants.SHOW_NAV_STATE
 
 abstract class Screen {
     abstract val route: String
     protected abstract val bottomState: Boolean
     protected abstract val drawerState: Boolean
+
     abstract fun show(
         navGraphBuilder: NavGraphBuilder,
         showBottomState: (Boolean) -> Unit,
-        showDrawerState: (Boolean) -> Unit
+        showDrawerState: (Boolean) -> Unit,
     )
 
     object LoginScreen : Screen() {
@@ -46,7 +46,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = LOGIN_ROUTE) {
@@ -69,7 +69,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = REGISTRATION_ROUTE) {
@@ -92,7 +92,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = MAIN_ROUTE) {
@@ -115,7 +115,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = MAIN_FIRST_MOCK_ROUTE) {
@@ -138,7 +138,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = MAIN_SECOND_MOCK_ROUTE) {
@@ -148,7 +148,6 @@ abstract class Screen {
                 }
             }
         }
-
     }
 
     object SettingsScreen : Screen() {
@@ -162,7 +161,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = SETTINGS_ROUTE) {
@@ -185,7 +184,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = SETTINGS_FIRST_ROUTE) {
@@ -195,7 +194,6 @@ abstract class Screen {
                 }
             }
         }
-
     }
 
     object SettingsSecondScreen : Screen() {
@@ -209,7 +207,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = SETTINGS_SECOND_ROUTE) {
@@ -219,7 +217,6 @@ abstract class Screen {
                 }
             }
         }
-
     }
 
     object InfoScreen : Screen() {
@@ -233,7 +230,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = INFO_ROUTE) {
@@ -256,7 +253,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = INFO_FIRST_ROUTE) {
@@ -279,7 +276,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = INFO_SECOND_ROUTE) {
@@ -302,7 +299,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = RANDOM_ANIME_IMAGE_ROUTE) {
@@ -325,7 +322,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = RANDOM_ANIME_IMAGE_FIRST_ROUTE) {
@@ -348,7 +345,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = RANDOM_ANIME_IMAGE_SECOND_ROUTE) {
@@ -371,7 +368,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = STATISTICS_ROUTE) {
@@ -394,7 +391,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = STATISTICS_FIRST_ROUTE) {
@@ -417,7 +414,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = STATISTICS_SECOND_ROUTE) {
@@ -440,7 +437,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = RANDOM_USER_FIRST_ROUTE) {
@@ -463,7 +460,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = RANDOM_USER_SECOND_ROUTE) {
@@ -486,7 +483,7 @@ abstract class Screen {
         override fun show(
             navGraphBuilder: NavGraphBuilder,
             showBottomState: (Boolean) -> Unit,
-            showDrawerState: (Boolean) -> Unit
+            showDrawerState: (Boolean) -> Unit,
         ) {
             with(navGraphBuilder) {
                 composable(route = USERS_ROUTE) {

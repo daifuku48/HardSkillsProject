@@ -13,7 +13,7 @@ data class NetworkUser(
     @SerializedName("phone")
     val phone: String,
     @SerializedName("picture")
-    val picture: NetworkPicture
+    val picture: NetworkPicture,
 )
 
 fun NetworkUser.toUserWithBitmap(medium: Bitmap): NetworkUserBitmap {
@@ -22,7 +22,6 @@ fun NetworkUser.toUserWithBitmap(medium: Bitmap): NetworkUserBitmap {
         name = name,
         email = email,
         phone = phone,
-        picture = picture.toBitmap(medium)
+        picture = picture.toBitmap(medium),
     )
 }
-

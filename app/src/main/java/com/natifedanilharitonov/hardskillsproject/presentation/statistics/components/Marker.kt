@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics.components
 
-import android.graphics.RectF
 import android.graphics.Typeface
 import android.text.Layout
 import androidx.compose.material3.MaterialTheme
@@ -16,19 +15,15 @@ import com.patrykandpatrick.vico.compose.component.shape.markerCorneredShape
 import com.patrykandpatrick.vico.compose.dimensions.dimensionsOf
 import com.patrykandpatrick.vico.core.chart.dimensions.HorizontalDimensions
 import com.patrykandpatrick.vico.core.chart.insets.Insets
-import com.patrykandpatrick.vico.core.chart.values.ChartValues
 import com.patrykandpatrick.vico.core.component.marker.MarkerComponent
 import com.patrykandpatrick.vico.core.component.shape.Shapes
 import com.patrykandpatrick.vico.core.component.shape.cornered.Corner
 import com.patrykandpatrick.vico.core.component.text.TextComponent
-import com.patrykandpatrick.vico.core.context.DrawContext
 import com.patrykandpatrick.vico.core.context.MeasureContext
 import com.patrykandpatrick.vico.core.marker.Marker
 
 @Composable
-fun rememberMarker(
-    labelPosition: MarkerComponent.LabelPosition = MarkerComponent.LabelPosition.Top,
-): Marker {
+fun rememberMarker(labelPosition: MarkerComponent.LabelPosition = MarkerComponent.LabelPosition.Top): Marker {
     val labelBackgroundShape = Shapes.markerCorneredShape(Corner.FullyRounded)
     val labelBackground =
         rememberShapeComponent(labelBackgroundShape, MaterialTheme.colorScheme.surface)
@@ -46,26 +41,31 @@ fun rememberMarker(
             textAlignment = Layout.Alignment.ALIGN_CENTER,
             minWidth = TextComponent.MinWidth.fixed(40f),
         )
-    val indicatorFrontComponent = rememberShapeComponent(Shapes.pillShape, MaterialTheme.colorScheme.surface)
+    val indicatorFrontComponent =
+        rememberShapeComponent(Shapes.pillShape, MaterialTheme.colorScheme.surface)
     val indicatorCenterComponent = rememberShapeComponent(Shapes.pillShape)
     val indicatorRearComponent = rememberShapeComponent(Shapes.pillShape)
-    val indicatorShadowLayerComponent = rememberShapeComponent(Shapes.rectShape)
     val indicator =
         rememberLayeredComponent(
             rear = indicatorRearComponent,
             front =
-            rememberLayeredComponent(
-                rear = indicatorCenterComponent,
-                front = indicatorFrontComponent,
-                padding = dimensionsOf(5.dp),
-            ),
+                rememberLayeredComponent(
+                    rear = indicatorCenterComponent,
+                    front = indicatorFrontComponent,
+                    padding = dimensionsOf(5.dp),
+                ),
             padding = dimensionsOf(10.dp),
         )
     val guideline =
         rememberLineComponent(
             color = MaterialTheme.colorScheme.onSurface.copy(.2f),
             thickness = 2.dp,
-            shape = Shapes.dashedShape(shape = Shapes.pillShape, dashLength = 8.dp, gapLength = 4.dp),
+            shape =
+                Shapes.dashedShape(
+                    shape = Shapes.pillShape,
+                    dashLength = 8.dp,
+                    gapLength = 4.dp,
+                ),
         )
     return remember(label, labelPosition, indicator, guideline) {
         object : MarkerComponent(label, labelPosition, indicator, guideline) {
@@ -80,16 +80,6 @@ fun rememberMarker(
                 }
             }
 
-            override fun draw(
-                context: DrawContext,
-                bounds: RectF,
-                markedEntries: List<Marker.EntryModel>,
-                chartValues: ChartValues
-            ) {
-                super.draw(context, bounds, markedEntries, chartValues)
-
-            }
-
             override fun getInsets(
                 context: MeasureContext,
                 outInsets: Insets,
@@ -98,9 +88,9 @@ fun rememberMarker(
                 with(context) {
                     outInsets.top =
                         (
-                                CLIPPING_FREE_SHADOW_RADIUS_MULTIPLIER * LABEL_BACKGROUND_SHADOW_RADIUS_DP -
-                                        LABEL_BACKGROUND_SHADOW_DY_DP
-                                )
+                            CLIPPING_FREE_SHADOW_RADIUS_MULTIPLIER * LABEL_BACKGROUND_SHADOW_RADIUS_DP -
+                                LABEL_BACKGROUND_SHADOW_DY_DP
+                        )
                             .pixels
                     if (labelPosition == LabelPosition.AroundPoint) return
                     outInsets.top += label.getHeight(context) + labelBackgroundShape.tickSizeDp.pixels

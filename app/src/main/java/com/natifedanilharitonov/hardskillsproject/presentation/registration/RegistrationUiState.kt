@@ -12,5 +12,5 @@ data class RegistrationUiState(
     val pending: Boolean = false,
     val registerButtonEnabled: Boolean = false,
     val showUserHasLoggedDialog: Boolean = false,
-    val showUserErrorRegisterDialog: Boolean = false
+    val showUserErrorRegisterDialog: Boolean = false,
 ) : UiModel

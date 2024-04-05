@@ -10,36 +10,43 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.model.Passw
 
 class RegistrationReducer(
     private val emailLabelMapper: EmailValidationResult.Mapper<EmailLabelState>,
-    private val passwordLabelMapper: PasswordValidationResult.Mapper<PasswordLabelState>
+    private val passwordLabelMapper: PasswordValidationResult.Mapper<PasswordLabelState>,
 ) : Reducer<RegistrationState, RegistrationEvent, RegistrationUiState> {
-    override fun reduce(state: RegistrationState, event: RegistrationEvent): RegistrationState {
+    override fun reduce(
+        state: RegistrationState,
+        event: RegistrationEvent,
+    ): RegistrationState {
         return when (event) {
             is RegistrationEvent.EmailChangedEvent -> state.copy(email = event.email)
             RegistrationEvent.ValidationEvent -> state
-            is RegistrationEvent.EmailPasswordValidationLabelReceived -> state.copy(
-                emailLabel = event.labelEmail,
-                passwordLabel = event.labelPassword,
-                registerButtonEnabled = event.buttonEnabled
-            )
+            is RegistrationEvent.EmailPasswordValidationLabelReceived ->
+                state.copy(
+                    emailLabel = event.labelEmail,
+                    passwordLabel = event.labelPassword,
+                    registerButtonEnabled = event.buttonEnabled,
+                )
 
             RegistrationEvent.ErrorEvent -> state
-            RegistrationEvent.HideUserErrorRegistrationDialog -> state.copy(
-                showUserErrorRegisterDialog = false
-            )
+            RegistrationEvent.HideUserErrorRegistrationDialog ->
+                state.copy(
+                    showUserErrorRegisterDialog = false,
+                )
 
             RegistrationEvent.NavigateToLoginUserEvent -> state
             is RegistrationEvent.PasswordChangedEvent -> state.copy(password = event.password)
             RegistrationEvent.RegisterUserEvent -> state.copy(pending = true)
-            RegistrationEvent.ShowUserErrorRegistrationDialog -> state.copy(
-                showUserErrorRegisterDialog = true,
-                pending = false
-            )
+            RegistrationEvent.ShowUserErrorRegistrationDialog ->
+                state.copy(
+                    showUserErrorRegisterDialog = true,
+                    pending = false,
+                )
 
             RegistrationEvent.HideUserHasRegisteredDialog -> state.copy(showUserHasLoggedDialog = false)
-            RegistrationEvent.ShowUserHasLoggedDialog -> state.copy(
-                showUserHasLoggedDialog = true,
-                pending = false
-            )
+            RegistrationEvent.ShowUserHasLoggedDialog ->
+                state.copy(
+                    showUserHasLoggedDialog = true,
+                    pending = false,
+                )
         }
     }
 
@@ -52,7 +59,7 @@ class RegistrationReducer(
             pending = state.pending,
             registerButtonEnabled = state.registerButtonEnabled,
             showUserHasLoggedDialog = state.showUserHasLoggedDialog,
-            showUserErrorRegisterDialog = state.showUserErrorRegisterDialog
+            showUserErrorRegisterDialog = state.showUserErrorRegisterDialog,
         )
     }
 }

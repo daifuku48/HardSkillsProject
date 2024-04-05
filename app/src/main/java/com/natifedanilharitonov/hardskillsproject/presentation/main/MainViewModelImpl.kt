@@ -11,14 +11,13 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Scre
 class MainViewModelImpl(
     reducer: Reducer<MainState, MainEvent, MainUiState>,
     useCases: Set<UseCase<MainState, MainEvent>>,
-    navigator: Navigator
+    navigator: Navigator,
 ) : BaseViewModel<MainState, MainEvent, MainUiState>(reducer, useCases, navigator), MainViewModel {
     init {
         handleEvent(MainEvent.GetMainTextEvent)
     }
 
-    override fun createInitState(): MainState =
-        MainState()
+    override fun createInitState(): MainState = MainState()
 
     override fun navigateToNextScreen() {
         navigate(Screen.MainFirstMockScreen.route)

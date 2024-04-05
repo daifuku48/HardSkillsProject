@@ -11,13 +11,13 @@ import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.Ba
 @Composable
 fun UserHasLoggedDialog(
     state: Boolean,
-    onConfirm: () -> Unit
+    onConfirm: () -> Unit,
 ) {
     BasePopUpUserDialog(
         modifier = Modifier.padding(30.dp),
         state = state,
         text = stringResource(R.string.user_has_logged),
         buttonText = stringResource(id = R.string.ok),
-        onConfirm = onConfirm
+        onConfirm = onConfirm,
     )
 }

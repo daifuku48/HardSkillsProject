@@ -6,6 +6,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Scre
 @Stable
 interface StartDestinationUiModel {
     data object MainScreenDestination : StartDestinationUiModel
+
     data object LoginScreenDestination : StartDestinationUiModel
 }
 

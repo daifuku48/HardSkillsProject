@@ -13,17 +13,10 @@ import org.koin.androidx.compose.koinViewModel
 fun StatisticsView(viewModel: StatisticsViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
 
-
     StatisticChart(state.statModel)
 
     MainButton(
         text = stringResource(id = R.string.next_screen),
-        onClick = viewModel::navigateToNextScreen
+        onClick = viewModel::navigateToNextScreen,
     )
 }
-
-
-
-
-
-

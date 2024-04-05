@@ -21,26 +21,29 @@ import kotlinx.coroutines.withContext
 abstract class BaseViewModel<State : UiState, Event : UiEvent, Model : UiModel>(
     private val reducer: Reducer<State, Event, Model>,
     private val useCase: Set<UseCase<State, Event>>,
-    private val navigator: Navigator
+    private val navigator: Navigator,
 ) : ViewModel() {
-
     private val initState by lazy {
         createInitState()
     }
 
     protected val state: MutableStateFlow<State> = MutableStateFlow(initState)
 
-    val uiState: StateFlow<Model> = state.map { state ->
-        reducer.mapToUiModel(state)
-    }.stateIn(
-        viewModelScope,
-        SharingStarted.Lazily,
-        initialValue = reducer.mapToUiModel(createInitState())
-    )
+    val uiState: StateFlow<Model> =
+        state.map { state ->
+            reducer.mapToUiModel(state)
+        }.stateIn(
+            viewModelScope,
+            SharingStarted.Lazily,
+            initialValue = reducer.mapToUiModel(createInitState()),
+        )
 
     protected abstract fun createInitState(): State
 
-    protected fun navigate(route: String, navOptions: NavOptions? = null) {
+    protected fun navigate(
+        route: String,
+        navOptions: NavOptions? = null,
+    ) {
         navigator.navigate(route, navOptions)
     }
 

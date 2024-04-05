@@ -4,11 +4,11 @@ import com.natifedanilharitonov.core.UseCase
 import com.natifedanilharitonov.domain.repository.FirebaseUserRepository
 
 class RegisterUserUseCase(
-    private val repository: FirebaseUserRepository
+    private val repository: FirebaseUserRepository,
 ) : UseCase<RegistrationState, RegistrationEvent> {
     override suspend fun execute(
         state: RegistrationState,
-        event: RegistrationEvent
+        event: RegistrationEvent,
     ): RegistrationEvent {
         return if (event is RegistrationEvent.RegisterUserEvent) {
             val isLogged = repository.register(state.email, state.password)
@@ -17,7 +17,9 @@ class RegisterUserUseCase(
             } else {
                 RegistrationEvent.HideUserErrorRegistrationDialog
             }
-        } else RegistrationEvent.ErrorEvent
+        } else {
+            RegistrationEvent.ErrorEvent
+        }
     }
 
     override fun canHandle(event: RegistrationEvent): Boolean {

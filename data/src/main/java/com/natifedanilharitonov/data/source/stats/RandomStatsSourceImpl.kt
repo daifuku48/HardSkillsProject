@@ -6,6 +6,7 @@ import kotlin.random.asKotlinRandom
 
 internal class RandomStatsSourceImpl : RandomStatsSource {
     private val random = Random()
+
     override suspend fun getRandomStats(): List<Pair<Float, Float>>? {
         val list = ArrayList<Pair<Float, Float>>(6)
         for (index in 0 until 7) {
@@ -17,6 +18,8 @@ internal class RandomStatsSourceImpl : RandomStatsSource {
         // for errors
         return if (Random().asKotlinRandom().nextInt(1, 100) < 5) {
             null
-        } else list
+        } else {
+            list
+        }
     }
 }

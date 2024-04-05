@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.data.network.users
 
 import android.util.Log
-import com.natifedanilharitonov.data.network.image_downloader.ImageDownloaderSource
+import com.natifedanilharitonov.data.network.imageDownloader.ImageDownloaderSource
 import com.natifedanilharitonov.data.network.users.model.NetworkUserBitmap
 import com.natifedanilharitonov.data.network.users.model.toUserWithBitmap
 import kotlinx.coroutines.CoroutineScope
@@ -10,10 +10,9 @@ import kotlinx.coroutines.async
 
 internal class UsersSourceImpl(
     private val instance: UsersRetrofitInstance,
-    private val downloaderSource: ImageDownloaderSource
+    private val downloaderSource: ImageDownloaderSource,
 ) : UsersSource {
     override suspend fun getUsers(): List<NetworkUserBitmap> {
-
         val users = instance.getUsers().users
         Log.d("AAA", "image")
         val usersList = ArrayList<NetworkUserBitmap>()
@@ -28,7 +27,6 @@ internal class UsersSourceImpl(
             usersList.add(users[count].toUserWithBitmap(deferred.await()))
         }
         return usersList
-
     }
 
     override suspend fun getUser(): NetworkUserBitmap? {

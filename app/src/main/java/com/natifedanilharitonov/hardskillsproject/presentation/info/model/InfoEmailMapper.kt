@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.info.model
 
-
 import com.natifedanilharitonov.domain.features.info.model.InfoEmailResult
 
 class InfoEmailMapper : InfoEmailResult.Mapper<InfoEmailUiState> {

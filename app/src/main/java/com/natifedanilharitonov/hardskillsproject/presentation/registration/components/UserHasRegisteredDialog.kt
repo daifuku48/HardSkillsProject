@@ -8,12 +8,12 @@ import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.Ba
 @Composable
 fun UserHasRegisteredDialog(
     state: Boolean,
-    onConfirm: () -> Unit
+    onConfirm: () -> Unit,
 ) {
     BasePopUpUserDialog(
         state = state,
-        text = "Користувач зареєстрований",
+        text = stringResource(R.string.user_has_logge),
         buttonText = stringResource(id = R.string.ok),
-        onConfirm = onConfirm
+        onConfirm = onConfirm,
     )
 }

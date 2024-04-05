@@ -4,24 +4,24 @@ import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 
 class AppNavigator : Navigator {
-    private var _navController : NavController? = null
-    private val navController : NavController
-        get() = requireNotNull(_navController) { "at first you need to attach navController before navigating "}
+    private var navController: NavController? = null
 
-
-    override fun navigate(route: String, navOptions: NavOptions?) {
-        navController.navigate(route, navOptions)
+    override fun navigate(
+        route: String,
+        navOptions: NavOptions?,
+    ) {
+        navController?.navigate(route, navOptions)
     }
 
     override fun popBack() {
-        navController.popBackStack()
+        navController?.popBackStack()
     }
 
     override fun attach(navController: NavController) {
-        _navController = navController
+        this.navController = navController
     }
 
     override fun detach() {
-        _navController = null
+        navController = null
     }
 }

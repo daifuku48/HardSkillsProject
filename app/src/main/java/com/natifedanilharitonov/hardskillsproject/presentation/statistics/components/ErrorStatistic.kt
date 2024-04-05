@@ -14,10 +14,11 @@ import com.natifedanilharitonov.hardskillsproject.R
 @Composable
 fun ErrorStatistic() {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(400.dp),
-        contentAlignment = Alignment.Center
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(400.dp),
+        contentAlignment = Alignment.Center,
     ) {
         Text(text = stringResource(R.string.error_stats_model))
     }

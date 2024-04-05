@@ -10,6 +10,6 @@ data class NetworkPicture(
 
 fun NetworkPicture.toBitmap(bitmap: Bitmap): BitmapPicture {
     return BitmapPicture(
-        medium = bitmap
+        medium = bitmap,
     )
 }

@@ -11,19 +11,18 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Scre
 class StatisticsViewModelImpl(
     reducer: Reducer<StatisticsState, StatisticsEvent, StatisticsUiState>,
     useCases: Set<UseCase<StatisticsState, StatisticsEvent>>,
-    navigator: Navigator
+    navigator: Navigator,
 ) : BaseViewModel<StatisticsState, StatisticsEvent, StatisticsUiState>(
-    reducer,
-    useCases,
-    navigator
-),
+        reducer,
+        useCases,
+        navigator,
+    ),
     StatisticsViewModel {
     init {
         handleEvent(StatisticsEvent.GetModelStatsEvent)
     }
 
-    override fun createInitState(): StatisticsState =
-        StatisticsState()
+    override fun createInitState(): StatisticsState = StatisticsState()
 
     fun navigateToNextScreen() {
         navigate(Screen.StatisticsFirstScreen.route)

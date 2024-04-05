@@ -4,8 +4,9 @@ import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.A
 import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
 import org.koin.dsl.module
 
-val navigationModule = module {
-    single<Navigator> {
-        AppNavigator()
+val navigationModule =
+    module {
+        single<Navigator> {
+            AppNavigator()
+        }
     }
-}

@@ -15,12 +15,15 @@ junitVersion = "1.1.5"
 espressoCore = "3.5.1"
 kotlinxCollectionsImmutable = "0.3.7"
 kotlinxCoroutinesAndroid = "1.8.0"
+kotlinxCoroutinesTest = "1.8.0"
 lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2023.08.00"
 loggingInterceptor = "4.12.0"
 lottieCompose = "6.4.0"
+mockitoAndroid = "5.10.0"
 mockitoCore = "5.11.0"
+mockkAndroid = "1.13.10"
 navigationCompose = "2.7.7"
 retrofit = "2.9.0"
 vico = "2.0.0-alpha.12"
@@ -32,8 +35,11 @@ material = "1.11.0"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 coil-kt-coil = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
+mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockitoAndroid" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkAndroid" }
 vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico" }
 vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }

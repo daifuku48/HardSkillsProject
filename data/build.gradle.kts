@@ -34,6 +34,10 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    testImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.android)
+    testImplementation(libs.mockk.android)
+
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
@@ -52,6 +56,8 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
+
+    testImplementation(libs.kotlinx.coroutines.test)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

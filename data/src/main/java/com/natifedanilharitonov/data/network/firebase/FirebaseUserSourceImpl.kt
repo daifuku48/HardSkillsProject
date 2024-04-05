@@ -6,11 +6,11 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 internal class FirebaseUserSourceImpl(
-    private val auth: FirebaseAuth
+    private val auth: FirebaseAuth,
 ) : FirebaseUserSource {
     override suspend fun register(
         email: String,
-        password: String
+        password: String,
     ): Boolean {
         return suspendCoroutine { continuation ->
             auth.createUserWithEmailAndPassword(email, password)
@@ -23,7 +23,10 @@ internal class FirebaseUserSourceImpl(
         }
     }
 
-    override suspend fun login(email: String, password: String): Boolean {
+    override suspend fun login(
+        email: String,
+        password: String,
+    ): Boolean {
         return suspendCoroutine { continuation ->
             auth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {

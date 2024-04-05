@@ -20,21 +20,22 @@ import com.natifedanilharitonov.hardskillsproject.R
 fun SettingsContainer(
     modifier: Modifier = Modifier,
     signOut: () -> Unit,
-    navigateToNextScreen: () -> Unit
+    navigateToNextScreen: () -> Unit,
 ) {
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Button(onClick = signOut) {
             Text(text = stringResource(R.string.sign_out), fontSize = 24.sp)
         }
 
         Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(30.dp)
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(30.dp),
         )
 
         Button(onClick = navigateToNextScreen) {
