@@ -16,7 +16,7 @@ internal class RandomStatsSourceImpl : RandomStatsSource {
         }
         delay(300L)
         // for errors
-        return if (Random().asKotlinRandom().nextInt(1, 100) < 5) {
+        return if (Random().asKotlinRandom().nextInt(0, 99) < 5) {
             null
         } else {
             list

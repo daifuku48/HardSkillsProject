@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.data.network.users
 
-import android.util.Log
 import com.natifedanilharitonov.data.network.imageDownloader.ImageDownloaderSource
 import com.natifedanilharitonov.data.network.users.model.NetworkUserBitmap
 import com.natifedanilharitonov.data.network.users.model.toUserWithBitmap
@@ -14,12 +13,10 @@ internal class UsersSourceImpl(
 ) : UsersSource {
     override suspend fun getUsers(): List<NetworkUserBitmap> {
         val users = instance.getUsers().users
-        Log.d("AAA", "image")
         val usersList = ArrayList<NetworkUserBitmap>()
         val deferredImages =
             users.map {
                 CoroutineScope(Dispatchers.IO).async {
-                    Log.d("AAA", "image")
                     downloaderSource.loadImage(it.picture.medium)
                 }
             }
