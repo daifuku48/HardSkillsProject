@@ -12,9 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
 fun SettingsContainer(
@@ -41,5 +43,13 @@ fun SettingsContainer(
         Button(onClick = navigateToNextScreen) {
             Text(text = stringResource(id = R.string.next_screen), fontSize = 24.sp)
         }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewSettingsContainer() {
+    HardSkillsProjectTheme {
+        SettingsContainer(signOut = { }, navigateToNextScreen = {})
     }
 }

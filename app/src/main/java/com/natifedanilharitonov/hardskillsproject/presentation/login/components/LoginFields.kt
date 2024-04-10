@@ -26,7 +26,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.model.Passw
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginContainer(
+fun LoginFields(
     email: String,
     emailChanged: (String) -> Unit,
     password: String,

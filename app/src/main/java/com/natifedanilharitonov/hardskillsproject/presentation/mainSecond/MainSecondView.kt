@@ -5,20 +5,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainText
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.PageTitle
+import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainViewContainer
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun MainSecondMockView(viewModel: MainSecondViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
-    PageTitle(text = stringResource(R.string.main_second_screen))
 
-    MainText(text = state.text)
-
-    MainButton(
-        text = stringResource(R.string.back_to_main),
-        onClick = viewModel::backToMain,
+    MainViewContainer(
+        title = stringResource(id = R.string.main_second_screen),
+        text = state.text,
+        navigate = viewModel::backToMain,
+        buttonText = stringResource(R.string.back_to_main),
     )
 }

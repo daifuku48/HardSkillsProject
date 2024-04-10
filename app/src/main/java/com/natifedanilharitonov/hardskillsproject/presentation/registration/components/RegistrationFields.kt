@@ -27,7 +27,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.model.Email
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 
 @Composable
-fun RegistrationContainer(
+fun RegistrationFields(
     email: String,
     emailChanged: (String) -> Unit,
     password: String,

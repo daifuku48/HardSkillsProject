@@ -26,7 +26,7 @@ class RandomAnimeImageSecondViewModelImpl(
         navigate(Screen.RandomAnimeImageScreen.route)
     }
 
-    override fun getAnimeImage() {
+    override fun refreshImage() {
         handleEvent(RandomAnimeImageSecondEvent.GetRandomImageEvent)
     }
 

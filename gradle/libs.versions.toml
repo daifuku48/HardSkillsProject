@@ -26,6 +26,7 @@ mockitoCore = "5.11.0"
 mockkAndroid = "1.13.10"
 navigationCompose = "2.7.7"
 retrofit = "2.9.0"
+ultron = "2.3.5"
 vico = "2.0.0-alpha.12"
 jetbrainsKotlinJvm = "1.9.0"
 appcompat = "1.6.1"
@@ -40,6 +41,9 @@ lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "
 mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockitoAndroid" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
 mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkAndroid" }
+ultron = { module = "com.atiurin:ultron", version.ref = "ultron" }
+ultron-compose = { module = "com.atiurin:ultron-compose", version.ref = "ultron" }
+ultron-allure = { module = "com.atiurin:ultron-allure", version.ref = "ultron" }
 vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico" }
 vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }

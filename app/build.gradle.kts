@@ -56,6 +56,12 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":domain"))
     implementation(project(":data"))
+
+    // UI tests
+    androidTestImplementation(libs.ultron)
+    androidTestImplementation(libs.ultron.allure)
+    androidTestImplementation(libs.ultron.compose)
+
     // Lottie
     implementation(libs.lottie.compose)
 

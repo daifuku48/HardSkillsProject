@@ -3,5 +3,5 @@ package com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage
 interface RandomAnimeImageSecondViewModel {
     fun popBackToMain()
 
-    fun getAnimeImage()
+    fun refreshImage()
 }

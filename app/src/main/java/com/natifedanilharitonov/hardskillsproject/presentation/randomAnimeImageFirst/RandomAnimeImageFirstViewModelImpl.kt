@@ -22,7 +22,7 @@ class RandomAnimeImageFirstViewModelImpl(
         handleEvent(RandomAnimeImageFirstEvent.GetRandomImageEvent)
     }
 
-    override fun getAnimeImage() {
+    override fun refreshImage() {
         handleEvent(RandomAnimeImageFirstEvent.GetRandomImageEvent)
     }
 

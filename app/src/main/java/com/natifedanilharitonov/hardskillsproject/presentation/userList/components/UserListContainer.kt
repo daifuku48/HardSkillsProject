@@ -2,10 +2,14 @@ package com.natifedanilharitonov.hardskillsproject.presentation.userList.compone
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.previewUser
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserListUiModel
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserPaginationUiModel
+import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
+import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun UserListContainer(
@@ -33,5 +37,57 @@ fun UserListContainer(
         UserListUiModel.Pending -> {
             PendingListScreen()
         }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewUserListContainer() {
+    HardSkillsProjectTheme {
+        UserListContainer(
+            userList =
+                UserListUiModel.List(
+                    persistentListOf(
+                        previewUser(),
+                        previewUser(),
+                        previewUser(),
+                        previewUser(),
+                        previewUser(),
+                        previewUser(),
+                    ),
+                ),
+            addUsers = {},
+            pagingValue = false,
+            pagingState = UserPaginationUiModel.Idle,
+            backToMain = {},
+        )
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewUserListErrorContainer() {
+    HardSkillsProjectTheme {
+        UserListContainer(
+            userList = UserListUiModel.ErrorList,
+            addUsers = {},
+            pagingValue = false,
+            pagingState = UserPaginationUiModel.Idle,
+            backToMain = {},
+        )
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewUserListPendingContainer() {
+    HardSkillsProjectTheme {
+        UserListContainer(
+            userList = UserListUiModel.Pending,
+            addUsers = {},
+            pagingValue = false,
+            pagingState = UserPaginationUiModel.Idle,
+            backToMain = {},
+        )
     }
 }
