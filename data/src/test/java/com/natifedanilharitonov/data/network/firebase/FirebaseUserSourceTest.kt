@@ -1,5 +1,6 @@
 package com.natifedanilharitonov.data.network.firebase
 
+import com.natifedanilharitonov.data.network.firebase.model.FirebaseUserNetwork
 import com.natifedanilharitonov.domain.Utils.EMAIL_PATTERN
 import com.natifedanilharitonov.domain.Utils.PASSWORD_PATTERN
 import junit.framework.TestCase.assertEquals
@@ -9,7 +10,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 class FirebaseUserSourceTest {
-    private lateinit var source: MockFirebaseUserSource
+    private lateinit var source: FirebaseUserSource
 
     @Test
     fun `login user access`() =
@@ -60,7 +61,7 @@ class FirebaseUserSourceTest {
         runTest {
             source = MockFirebaseSource(MockFirebaseAuth.MockFirebaseAuthImpl())
             source.login("email@gmail.com", "12345678")
-            assertEquals(source.getUser(), MockFireBaseUser.CurrentUser)
+            assertEquals(source.getUser()?.email, "email@gmail.com")
         }
 
     @Test
@@ -88,7 +89,7 @@ class FirebaseUserSourceTest {
         }
 }
 
-private class MockFirebaseSource(val auth: MockFirebaseAuth) : MockFirebaseUserSource {
+private class MockFirebaseSource(val auth: MockFirebaseAuth) : FirebaseUserSource {
     override suspend fun register(
         email: String,
         password: String,
@@ -115,8 +116,17 @@ private class MockFirebaseSource(val auth: MockFirebaseAuth) : MockFirebaseUserS
         }
     }
 
-    override suspend fun getUser(): MockFireBaseUser? {
-        return auth.getCurrentUser()
+    override suspend fun getUser(): FirebaseUserNetwork? {
+        val user = auth.getCurrentUser()
+        return if (user != null) {
+            if (user is MockFireBaseUser.CurrentUser) {
+                FirebaseUserNetwork(email = user.email)
+            } else {
+                null
+            }
+        } else {
+            null
+        }
     }
 
     override fun signOut() {
@@ -179,7 +189,7 @@ private interface MockFirebaseAuth {
 
         override fun getCurrentUser(): MockFireBaseUser? {
             return if (userHasLogged) {
-                MockFireBaseUser.CurrentUser
+                MockFireBaseUser.CurrentUser("mock@gmail.com")
             } else {
                 null
             }
@@ -203,7 +213,7 @@ private interface MockAuthResult {
 }
 
 private interface MockFireBaseUser {
-    data object CurrentUser : MockFireBaseUser
+    data class CurrentUser(val email: String) : MockFireBaseUser
 }
 
 private interface SignOutResult {

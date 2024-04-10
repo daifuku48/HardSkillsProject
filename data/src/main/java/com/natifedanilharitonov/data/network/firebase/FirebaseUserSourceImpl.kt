@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.data.network.firebase
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.natifedanilharitonov.data.network.firebase.model.FirebaseUserNetwork
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -38,8 +38,13 @@ internal class FirebaseUserSourceImpl(
         }
     }
 
-    override suspend fun getUser(): FirebaseUser? {
-        return auth.currentUser
+    override suspend fun getUser(): FirebaseUserNetwork? {
+        val user = auth.currentUser
+        return if (user != null) {
+            FirebaseUserNetwork(user.email ?: "")
+        } else {
+            null
+        }
     }
 
     override fun signOut() {

@@ -1,6 +1,6 @@
 package com.natifedanilharitonov.data.network.firebase
 
-import com.google.firebase.auth.FirebaseUser
+import com.natifedanilharitonov.data.network.firebase.model.FirebaseUserNetwork
 
 interface FirebaseUserSource {
     suspend fun register(
@@ -13,7 +13,7 @@ interface FirebaseUserSource {
         password: String,
     ): Boolean
 
-    suspend fun getUser(): FirebaseUser?
+    suspend fun getUser(): FirebaseUserNetwork?
 
     fun signOut()
 }

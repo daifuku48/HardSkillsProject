@@ -1,10 +1,11 @@
 package com.natifedanilharitonov.domain.features.main
 
+import com.natifedanilharitonov.core.UseCase
 import com.natifedanilharitonov.domain.repository.MockTextRepository
 
 class GetMainTextUseCase(
     private val repository: MockTextRepository,
-) : com.natifedanilharitonov.core.UseCase<MainState, MainEvent> {
+) : UseCase<MainState, MainEvent> {
     override suspend fun execute(
         state: MainState,
         event: MainEvent,

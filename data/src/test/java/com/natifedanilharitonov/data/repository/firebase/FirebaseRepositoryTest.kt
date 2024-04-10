@@ -1,12 +1,11 @@
 package com.natifedanilharitonov.data.repository.firebase
 
-import com.google.firebase.auth.FirebaseUser
 import com.natifedanilharitonov.data.network.firebase.FirebaseUserSource
+import com.natifedanilharitonov.data.network.firebase.model.FirebaseUserNetwork
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
@@ -57,7 +56,7 @@ class FirebaseRepositoryTest {
     @Test
     fun `get user`() =
         runTest {
-            `when`(source.getUser()).thenReturn(mock<FirebaseUser>())
+            `when`(source.getUser()).thenReturn(FirebaseUserNetwork("mock@gmail.com"))
             assert(source.getUser() != null)
         }
 

@@ -19,7 +19,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -34,15 +34,20 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    //Firebase
+    testImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.android)
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // Firebase
     implementation(platform(libs.firebase.bom))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
-    //Koin
+    // Koin
     implementation(libs.koin.android)
 
-    //Immutable Collection
+    // Immutable Collection
     implementation(libs.kotlinx.collections.immutable)
 
     testImplementation(libs.mockito.core)

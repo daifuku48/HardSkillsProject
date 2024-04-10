@@ -1,6 +1,6 @@
 package com.natifedanilharitonov.domain.repository
 
-import com.google.firebase.auth.FirebaseUser
+import com.natifedanilharitonov.domain.model.DomainFirebaseUser
 
 interface FirebaseUserRepository {
     suspend fun register(
@@ -13,7 +13,7 @@ interface FirebaseUserRepository {
         password: String,
     ): Boolean
 
-    suspend fun getUser(): FirebaseUser?
+    suspend fun getUser(): DomainFirebaseUser?
 
     fun signOut()
 }

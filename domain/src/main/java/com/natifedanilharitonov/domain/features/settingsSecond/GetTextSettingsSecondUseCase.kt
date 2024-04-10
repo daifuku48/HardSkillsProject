@@ -1,11 +1,12 @@
 package com.natifedanilharitonov.domain.features.settingsSecond
 
+import com.natifedanilharitonov.core.UseCase
 import com.natifedanilharitonov.domain.features.main.StateText
 import com.natifedanilharitonov.domain.repository.MockTextRepository
 
 class GetTextSettingsSecondUseCase(
     private val repository: MockTextRepository,
-) : com.natifedanilharitonov.core.UseCase<SettingsSecondState, SettingsSecondEvent> {
+) : UseCase<SettingsSecondState, SettingsSecondEvent> {
     override suspend fun execute(
         state: SettingsSecondState,
         event: SettingsSecondEvent,
