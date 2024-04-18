@@ -3,7 +3,6 @@ package com.natifedanilharitonov.hardskillsproject.animeAnimeRandom.common
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import com.atiurin.ultron.core.compose.createUltronComposeRule
-import com.atiurin.ultron.core.compose.list.composeList
 import com.atiurin.ultron.extensions.assertDoesNotExist
 import com.atiurin.ultron.extensions.assertIsDisplayed
 import com.atiurin.ultron.extensions.assertTextContains
@@ -22,7 +21,6 @@ import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PHONE_NUMBER_TA
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.RANDOM_TEXT_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.REFRESH_BUTTON_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.USER_EMAIL_TAG
-import com.natifedanilharitonov.hardskillsproject.utils.TestTags.USER_LIST_ITEM_TAG
 import org.junit.FixMethodOrder
 import org.junit.Rule
 import org.junit.Test
@@ -34,6 +32,7 @@ class FullUiTest {
     val rule = createUltronComposeRule<MainActivity>()
 
     // Tests are invoked in alphabetical order
+    // Before testing you need to sign out from app
     @Test
     fun a_registerUserSignOutAndLoginTest() {
         MainActivityScreen {
@@ -133,6 +132,8 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
     private val mainSecondTitle = hasText("Main Second Screen")
     private val nextScreenBtn = hasText("Next Screen")
     private val backToMain = hasText("Back to main")
+    private val backToMainScreenBtn = hasText("Back to Main Screen")
+    private val backBtn = hasText("Back")
 
     // Settings
     private val signOutButton = hasText("Sign Out")
@@ -142,7 +143,7 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
 
     // Statistics
     private val chart = hasTestTag(CHART_TAG)
-    private val backChart = hasText("Back to main chart")
+    private val backChart = hasText("Back to main")
 
     // Anime Images
     private val animeImage = hasTestTag(IMAGE_TAG)
@@ -157,9 +158,6 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
     private val genderRow = hasTestTag(GENDER_TAG)
     private val phoneNumberRow = hasTestTag(PHONE_NUMBER_TAG)
     private val userImage = hasTestTag(IMAGE_TAG)
-
-    // User List
-    private val userListItem = composeList(hasTestTag(USER_LIST_ITEM_TAG))
 
     fun loginUser() {
         inputEmailText()
@@ -292,11 +290,14 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
         statsScreen.click()
         chart.assertIsDisplayed()
         nextScreenBtn.click()
+        backBtn.click()
+        nextScreenBtn.click()
         chart.assertIsDisplayed()
         nextScreenBtn.click()
         chart.assertIsDisplayed()
         backChart.assertIsDisplayed()
         backChart.click()
+        backToMainScreenBtn.click()
     }
 
     fun checkAnimeImagesScreens() {
@@ -306,6 +307,8 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
         animeImage.assertIsDisplayed()
         refreshButton.click()
         animeImage.assertIsDisplayed()
+        nextScreenBtn.click()
+        backBtn.click()
         nextScreenBtn.click()
         animeFirstTitle.assertIsDisplayed()
         animeImage.assertIsDisplayed()
@@ -318,6 +321,7 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
         animeImage.assertIsDisplayed()
         backToMain.assertIsDisplayed()
         backToMain.click()
+        backToMainScreenBtn.click()
     }
 
     fun checkUsersScreens() {
@@ -329,15 +333,17 @@ private object MainActivityScreen : Screen<MainActivityScreen>() {
         phoneNumberRow.assertIsDisplayed()
         userImage.assertIsDisplayed()
         nextScreenBtn.click()
+        backBtn.click()
+        nextScreenBtn.click()
         nameRow.assertIsDisplayed()
         emailRow.assertIsDisplayed()
         genderRow.assertIsDisplayed()
         phoneNumberRow.assertIsDisplayed()
         userImage.assertIsDisplayed()
         nextScreenBtn.click()
-        userListItem.assertIsDisplayed()
         backToMain.assertIsDisplayed()
         backToMain.click()
+        backToMainScreenBtn.click()
     }
 
     private fun generateRandomEmail(): String {

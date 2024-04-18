@@ -2,13 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="FullUiTest">
+        <State />
+      </entry>
       <entry key="PreviewStats">
         <State />
       </entry>
       <entry key="RandomAnimeImageViewTest">
         <State />
       </entry>
+      <entry key="a_registerUserSignOutAndLoginTest()">
+        <State />
+      </entry>
       <entry key="app">
+        <State />
+      </entry>
+      <entry key="f_testStatsViews()">
         <State />
       </entry>
     </value>
