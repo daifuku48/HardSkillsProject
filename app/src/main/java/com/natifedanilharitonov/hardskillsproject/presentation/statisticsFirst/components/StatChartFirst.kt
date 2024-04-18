@@ -8,11 +8,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MAX_X
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MAX_Y
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MIN_X
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MIN_Y
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.CHART_TAG
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.rememberAxisLabelComponent
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -169,7 +171,8 @@ fun StatChartFirst(
         modelProducer = modelProducer,
         modifier =
             Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .testTag(CHART_TAG),
         runInitialAnimation = false,
         horizontalLayout = HorizontalLayout.fullWidth(),
     )

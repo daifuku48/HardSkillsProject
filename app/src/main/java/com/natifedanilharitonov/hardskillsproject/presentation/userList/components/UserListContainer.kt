@@ -1,11 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.userList.components
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.previewUser
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserListUiModel
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserPaginationUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
@@ -18,6 +16,9 @@ fun UserListContainer(
     pagingValue: Boolean,
     pagingState: UserPaginationUiModel,
     backToMain: () -> Unit,
+    backToMainText: String,
+    popBack: () -> Unit,
+    popBackText: String,
 ) {
     when (userList) {
         UserListUiModel.ErrorList -> {
@@ -31,7 +32,12 @@ fun UserListContainer(
                 canPaging = pagingValue,
                 pagingState = pagingState,
             )
-            MainButton(text = stringResource(id = R.string.back_to_main), onClick = backToMain)
+            ButtonColumn(
+                popBackText = popBackText,
+                popBack = popBack,
+                navigateNext = backToMain,
+                navigateNextText = backToMainText,
+            )
         }
 
         UserListUiModel.Pending -> {
@@ -60,6 +66,9 @@ fun PreviewUserListContainer() {
             pagingValue = false,
             pagingState = UserPaginationUiModel.Idle,
             backToMain = {},
+            popBack = {},
+            popBackText = "Back",
+            backToMainText = "Back to Main",
         )
     }
 }
@@ -74,6 +83,9 @@ fun PreviewUserListErrorContainer() {
             pagingValue = false,
             pagingState = UserPaginationUiModel.Idle,
             backToMain = {},
+            popBack = {},
+            popBackText = "Back",
+            backToMainText = "Back to Main",
         )
     }
 }
@@ -88,6 +100,9 @@ fun PreviewUserListPendingContainer() {
             pagingValue = false,
             pagingState = UserPaginationUiModel.Idle,
             backToMain = {},
+            popBack = {},
+            popBackText = "Back",
+            backToMainText = "Back to Main",
         )
     }
 }

@@ -13,6 +13,13 @@ class AppNavigator : Navigator {
         navController?.navigate(route, navOptions)
     }
 
+    override fun popBackStack(
+        destination: String,
+        inclusive: Boolean,
+    ) {
+        navController?.popBackStack(destination, inclusive)
+    }
+
     override fun popBack() {
         navController?.popBackStack()
     }

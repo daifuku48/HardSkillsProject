@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
 import com.natifedanilharitonov.hardskillsproject.presentation.statisticsSecond.model.DoubleStatUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 import kotlinx.collections.immutable.persistentListOf
@@ -13,12 +13,15 @@ import kotlinx.collections.immutable.persistentListOf
 fun StatsSecondContainer(
     popToMain: () -> Unit,
     model: DoubleStatUiModel,
+    popBackScreen: () -> Unit,
+    backText: String,
 ) {
     StatSecondStateView(model = model)
-
-    MainButton(
-        text = stringResource(R.string.back_to_main_chart),
-        onClick = popToMain,
+    ButtonColumn(
+        popBackText = backText,
+        popBack = popBackScreen,
+        navigateNext = popToMain,
+        navigateNextText = stringResource(id = R.string.back_to_main),
     )
 }
 
@@ -57,6 +60,8 @@ fun PreviewSecondStats() {
                             Pair(9f, 14f),
                         ),
                 ),
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }
@@ -69,6 +74,8 @@ fun PreviewSecondPendingStats() {
             popToMain = {},
             model =
                 DoubleStatUiModel.Pending,
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }
@@ -81,6 +88,8 @@ fun PreviewSecondErrorStats() {
             popToMain = {},
             model =
                 DoubleStatUiModel.Error,
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }

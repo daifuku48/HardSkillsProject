@@ -10,10 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PagingPending() {
+fun PagingPending(modifier: Modifier = Modifier) {
     Box(
         modifier =
-            Modifier
+            modifier
                 .fillMaxWidth()
                 .height(150.dp),
         contentAlignment = Alignment.Center,

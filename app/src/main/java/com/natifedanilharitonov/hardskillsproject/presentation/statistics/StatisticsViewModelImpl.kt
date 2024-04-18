@@ -24,7 +24,11 @@ class StatisticsViewModelImpl(
 
     override fun createInitState(): StatisticsState = StatisticsState()
 
-    fun navigateToNextScreen() {
+    override fun popBackScreen() {
+        popBackStack(Screen.MainScreen.route, false)
+    }
+
+    override fun navigateToNextScreen() {
         navigate(Screen.StatisticsFirstScreen.route)
     }
 }

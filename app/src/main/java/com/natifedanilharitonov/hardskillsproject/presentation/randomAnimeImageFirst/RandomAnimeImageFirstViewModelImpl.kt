@@ -30,5 +30,9 @@ class RandomAnimeImageFirstViewModelImpl(
         navigate(Screen.RandomAnimeImageSecondScreen.route)
     }
 
+    override fun popBackScreen() {
+        popBack()
+    }
+
     override fun createInitState(): RandomAnimeImageFirstState = RandomAnimeImageFirstState()
 }

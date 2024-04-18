@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -25,6 +26,8 @@ import com.natifedanilharitonov.hardskillsproject.presentation.login.components.
 import com.natifedanilharitonov.hardskillsproject.presentation.login.components.getLabel
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.EMAIL_TAG
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PASSWORD_TAG
 
 @Composable
 fun RegistrationFields(
@@ -68,6 +71,7 @@ fun RegistrationFields(
                     modifier =
                         Modifier
                             .fillMaxWidth()
+                            .testTag(EMAIL_TAG)
                             .padding(start = 10.dp, end = 10.dp),
                     text = email,
                     onTextChanged = { email -> emailChanged(email) },
@@ -81,6 +85,7 @@ fun RegistrationFields(
                     modifier =
                         Modifier
                             .fillMaxWidth()
+                            .testTag(PASSWORD_TAG)
                             .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
                     text = password,
                     onTextChanged = { password -> passwordChanged(password) },

@@ -30,5 +30,9 @@ class RandomAnimeImageSecondViewModelImpl(
         handleEvent(RandomAnimeImageSecondEvent.GetRandomImageEvent)
     }
 
+    override fun popBackToScreen() {
+        popBack()
+    }
+
     override fun createInitState(): RandomAnimeImageSecondState = RandomAnimeImageSecondState()
 }

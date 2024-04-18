@@ -4,4 +4,5 @@ interface StatisticsFirstViewModel {
     fun navigateToNextScreen()
 
     fun getModelStats()
+    fun popBackScreen()
 }

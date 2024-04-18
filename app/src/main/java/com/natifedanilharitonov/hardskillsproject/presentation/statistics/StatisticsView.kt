@@ -13,7 +13,9 @@ fun StatisticsView(viewModel: StatisticsViewModelImpl = koinViewModel()) {
     val state by viewModel.uiState.collectAsState()
     StatsMainContainer(
         stats = state.statModel,
-        buttonText = stringResource(id = R.string.next_screen),
-        onClickButton = viewModel::navigateToNextScreen,
+        buttonNextScreenText = stringResource(id = R.string.next_screen),
+        navigateNextScreen = viewModel::navigateToNextScreen,
+        popBack = viewModel::popBackScreen,
+        backText = stringResource(id = R.string.back_to_main_screen),
     )
 }

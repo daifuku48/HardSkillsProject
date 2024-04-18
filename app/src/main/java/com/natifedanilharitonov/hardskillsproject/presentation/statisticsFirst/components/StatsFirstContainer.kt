@@ -2,7 +2,7 @@ package com.natifedanilharitonov.hardskillsproject.presentation.statisticsFirst.
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 import kotlinx.collections.immutable.persistentListOf
@@ -13,12 +13,15 @@ fun StatsFirstContainer(
     buttonText: String,
     onClickButton: () -> Unit,
     getStats: () -> Unit,
+    backText: String,
+    popBackScreen: () -> Unit,
 ) {
     StatisticsFirstContainer(model = stats, getStats = getStats)
-
-    MainButton(
-        text = buttonText,
-        onClick = onClickButton,
+    ButtonColumn(
+        popBackText = backText,
+        popBack = popBackScreen,
+        navigateNext = onClickButton,
+        navigateNextText = buttonText,
     )
 }
 
@@ -46,6 +49,8 @@ fun PreviewStatsFirstContainer() {
             buttonText = "navigate",
             onClickButton = { },
             getStats = {},
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }
@@ -55,11 +60,12 @@ fun PreviewStatsFirstContainer() {
 fun PreviewStatsFirstErrorContainer() {
     HardSkillsProjectTheme {
         StatsFirstContainer(
-            stats =
-                StatUiModel.Error,
+            stats = StatUiModel.Error,
             buttonText = "navigate",
             onClickButton = { },
             getStats = {},
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }
@@ -73,6 +79,8 @@ fun PreviewStatsFirstPendingContainer() {
             buttonText = "navigate",
             onClickButton = { },
             getStats = {},
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }

@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -23,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.USER_EMAIL_TAG
 
 @Composable
 fun InfoContainerView(
@@ -55,7 +57,8 @@ fun InfoContainerView(
             modifier =
                 Modifier
                     .padding(16.dp)
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .testTag(USER_EMAIL_TAG),
         )
 
         Button(

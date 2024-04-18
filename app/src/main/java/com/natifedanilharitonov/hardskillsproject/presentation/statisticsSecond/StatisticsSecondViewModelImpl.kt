@@ -32,4 +32,8 @@ class StatisticsSecondViewModelImpl(
                 .build()
         navigate(Screen.StatisticsScreen.route, navOptions)
     }
+
+    override fun popBackScreen() {
+        popBack()
+    }
 }

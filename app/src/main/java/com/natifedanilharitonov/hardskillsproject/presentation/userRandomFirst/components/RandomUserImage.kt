@@ -21,7 +21,7 @@ fun RandomUserImage(
 ) {
     Box(
         modifier =
-            modifier
+            Modifier
                 .fillMaxWidth()
                 .padding(10.dp),
         contentAlignment = Alignment.Center,
@@ -30,7 +30,7 @@ fun RandomUserImage(
             model = image,
             contentDescription = null,
             modifier =
-                Modifier
+                modifier
                     .size(200.dp)
                     .clip(CircleShape),
             contentScale = ContentScale.Crop,

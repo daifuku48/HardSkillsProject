@@ -57,6 +57,11 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
+    testImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.android)
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.kotlinx.coroutines.test)
+
     // UI tests
     androidTestImplementation(libs.ultron)
     androidTestImplementation(libs.ultron.allure)

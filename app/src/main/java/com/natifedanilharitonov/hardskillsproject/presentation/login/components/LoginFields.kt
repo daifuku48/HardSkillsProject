@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,8 +23,9 @@ import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.Ba
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
 import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.EMAIL_TAG
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PASSWORD_TAG
 
-@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun LoginFields(
     email: String,
@@ -67,6 +68,7 @@ fun LoginFields(
                     modifier =
                         Modifier
                             .fillMaxWidth()
+                            .testTag(EMAIL_TAG)
                             .padding(start = 10.dp, end = 10.dp),
                     text = email,
                     onTextChanged = { email -> emailChanged(email) },
@@ -80,6 +82,7 @@ fun LoginFields(
                     modifier =
                         Modifier
                             .fillMaxWidth()
+                            .testTag(PASSWORD_TAG)
                             .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
                     text = password,
                     onTextChanged = { password -> passwordChanged(password) },

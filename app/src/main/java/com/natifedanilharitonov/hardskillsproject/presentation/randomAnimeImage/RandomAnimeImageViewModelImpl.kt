@@ -31,4 +31,8 @@ class RandomAnimeImageViewModelImpl(
     override fun refreshImage() {
         handleEvent(RandomAnimeImageEvent.GetRandomImageEvent)
     }
+
+    override fun popBackToMain() {
+        popBackStack(Screen.MainScreen.route, false)
+    }
 }

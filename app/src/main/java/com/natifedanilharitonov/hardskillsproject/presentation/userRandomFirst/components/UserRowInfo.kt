@@ -13,6 +13,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.Ta
 
 @Composable
 fun UserRowInfo(
+    modifier: Modifier = Modifier,
     title: String,
     description: String,
 ) {
@@ -23,6 +24,6 @@ fun UserRowInfo(
                 .border(1.dp, Color.Black),
     ) {
         TableCell(title, weight = 0.5f)
-        TableCell(text = description, weight = 1f)
+        TableCell(text = description, weight = 1f, modifier = modifier)
     }
 }

@@ -26,5 +26,9 @@ class UserRandomSecondViewModelImpl(
         navigate(Screen.UsersScreen.route)
     }
 
+    override fun popBackScreen() {
+        popBack()
+    }
+
     override fun createInitState(): UserRandomSecondState = UserRandomSecondState()
 }

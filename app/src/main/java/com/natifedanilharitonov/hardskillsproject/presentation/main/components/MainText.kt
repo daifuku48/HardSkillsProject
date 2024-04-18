@@ -9,11 +9,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
 import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.RANDOM_TEXT_TAG
 
 @Composable
 fun MainText(text: StateTextUiModel) {
@@ -24,7 +26,8 @@ fun MainText(text: StateTextUiModel) {
                     text = stringResource(R.string.network_error),
                     modifier =
                         Modifier
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .testTag(RANDOM_TEXT_TAG),
                     textAlign = TextAlign.Center,
                 )
             }
@@ -34,7 +37,7 @@ fun MainText(text: StateTextUiModel) {
             }
 
             is StateTextUiModel.Text -> {
-                Text(text = text.text, modifier = Modifier.padding(30.dp))
+                Text(text = text.text, modifier = Modifier.padding(30.dp).testTag(RANDOM_TEXT_TAG))
             }
         }
     }

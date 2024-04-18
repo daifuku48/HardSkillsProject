@@ -4,4 +4,6 @@ interface UserListViewModel {
     fun addUsers()
 
     fun backToMain()
+
+    fun popBackScreen()
 }

@@ -9,10 +9,12 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,7 +25,7 @@ fun TopBar(
 ) {
     if (drawerState) {
         TopAppBar(
-            modifier = modifier,
+            modifier = modifier.testTag(TestTags.NAV_DRIVER_TAG),
             title = {
                 Text(text = stringResource(id = R.string.app_name))
             },
@@ -31,6 +33,7 @@ fun TopBar(
                 IconButton(
                     content = {
                         Icon(
+                            modifier = Modifier,
                             imageVector = ImageVector.vectorResource(id = R.drawable.menu),
                             contentDescription = "Menu",
                         )

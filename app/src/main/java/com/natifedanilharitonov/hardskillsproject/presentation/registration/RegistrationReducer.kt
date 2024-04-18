@@ -39,6 +39,8 @@ class RegistrationReducer(
                 state.copy(
                     showUserErrorRegisterDialog = true,
                     pending = false,
+                    email = "",
+                    password = "",
                 )
 
             RegistrationEvent.HideUserHasRegisteredDialog -> state.copy(showUserHasLoggedDialog = false)

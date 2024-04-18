@@ -15,7 +15,7 @@ class RegisterUserUseCase(
             if (isLogged) {
                 RegistrationEvent.ShowUserHasLoggedDialog
             } else {
-                RegistrationEvent.HideUserErrorRegistrationDialog
+                RegistrationEvent.ShowUserErrorRegistrationDialog
             }
         } else {
             RegistrationEvent.ErrorEvent

@@ -1,3 +1,6 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics
 
-interface StatisticsViewModel
+interface StatisticsViewModel {
+    fun popBackScreen()
+    fun navigateToNextScreen()
+}

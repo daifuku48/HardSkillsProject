@@ -7,11 +7,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.AXIS_ITEM_COUNT
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MAX_X
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MAX_Y
 import com.natifedanilharitonov.hardskillsproject.utils.Constants.MIN_X
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.CHART_TAG
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
 import com.patrykandpatrick.vico.compose.chart.CartesianChartHost
 import com.patrykandpatrick.vico.compose.chart.layer.rememberLineCartesianLayer
@@ -81,6 +83,7 @@ fun Stats(model: PersistentList<Pair<Float, Float>>) {
         modifier =
             Modifier
                 .height(400.dp)
+                .testTag(CHART_TAG)
                 .fillMaxWidth(),
         marker = marker,
         zoomState = rememberVicoZoomState(zoomEnabled = false),

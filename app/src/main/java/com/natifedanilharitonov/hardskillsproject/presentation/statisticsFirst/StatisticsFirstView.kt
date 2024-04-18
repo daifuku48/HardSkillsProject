@@ -17,5 +17,7 @@ fun StatisticsFirstView(viewModel: StatisticsFirstViewModelImpl = koinViewModel(
         getStats = viewModel::getModelStats,
         buttonText = stringResource(id = R.string.next_screen),
         onClickButton = viewModel::navigateToNextScreen,
+        popBackScreen = viewModel::popBackScreen,
+        backText = stringResource(id = R.string.back),
     )
 }

@@ -4,4 +4,6 @@ interface RandomAnimeImageFirstViewModel {
     fun refreshImage()
 
     fun navigateToNextScreen()
+
+    fun popBackScreen()
 }

@@ -6,8 +6,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.rememberMarker
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.CHART_TAG
 import com.patrykandpatrick.vico.compose.axis.horizontal.rememberBottomAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberEndAxis
 import com.patrykandpatrick.vico.compose.axis.vertical.rememberStartAxis
@@ -86,7 +88,7 @@ fun StatsSecond(
                 bottomAxis = rememberBottomAxis(),
             ),
         modelProducer = modelProducer,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().testTag(CHART_TAG),
         marker = rememberMarker(),
         runInitialAnimation = false,
         zoomState = rememberVicoZoomState(zoomEnabled = false),

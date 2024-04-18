@@ -31,4 +31,8 @@ class StatisticsFirstViewModelImpl(
     override fun getModelStats() {
         handleEvent(StatisticsFirstEvent.GetStatsModel)
     }
+
+    override fun popBackScreen() {
+        popBack()
+    }
 }

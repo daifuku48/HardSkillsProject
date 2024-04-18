@@ -47,6 +47,13 @@ abstract class BaseViewModel<State : UiState, Event : UiEvent, Model : UiModel>(
         navigator.navigate(route, navOptions)
     }
 
+    protected fun popBackStack(
+        destination: String,
+        inclusive: Boolean,
+    ) {
+        navigator.popBackStack(destination, inclusive)
+    }
+
     protected fun popBack() {
         navigator.popBack()
     }

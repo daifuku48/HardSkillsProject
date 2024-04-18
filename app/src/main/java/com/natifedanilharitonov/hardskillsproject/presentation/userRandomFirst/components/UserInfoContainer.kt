@@ -4,15 +4,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.natifedanilharitonov.hardskillsproject.R
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.LottieProgress
 import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.previewUser
-import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.components.ErrorListScreen
 import com.natifedanilharitonov.hardskillsproject.presentation.userRandomFirst.model.UserResultUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
 fun UserInfoContainer(
+    backText: String,
+    popBackScreen: () -> Unit,
     userResult: UserResultUiModel,
     onNextScreen: () -> Unit,
 ) {
@@ -29,11 +31,15 @@ fun UserInfoContainer(
             LottieProgress()
         }
     }
-
-    MainButton(text = stringResource(id = R.string.next_screen), onClick = onNextScreen)
+    ButtonColumn(
+        popBackText = backText,
+        popBack = popBackScreen,
+        navigateNext = onNextScreen,
+        navigateNextText = stringResource(id = R.string.next_screen),
+    )
 }
 
-@Preview
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewUserInfoContainer() {
     HardSkillsProjectTheme {
@@ -43,6 +49,35 @@ fun PreviewUserInfoContainer() {
                     user = previewUser(),
                 ),
             onNextScreen = {},
+            popBackScreen = {},
+            backText = "Back",
+        )
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewErrorContainer() {
+    HardSkillsProjectTheme {
+        UserInfoContainer(
+            userResult =
+                UserResultUiModel.Error,
+            onNextScreen = {},
+            popBackScreen = {},
+            backText = "Back",
+        )
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun PreviewPendingContainer() {
+    HardSkillsProjectTheme {
+        UserInfoContainer(
+            userResult = UserResultUiModel.Pending,
+            onNextScreen = {},
+            popBackScreen = {},
+            backText = "Back",
         )
     }
 }

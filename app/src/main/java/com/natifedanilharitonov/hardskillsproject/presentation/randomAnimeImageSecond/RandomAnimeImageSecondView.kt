@@ -16,7 +16,9 @@ fun RandomAnimeImageSecondView(viewModel: RandomAnimeImageSecondViewModelImpl = 
         title = stringResource(id = R.string.second_anime_page),
         image = state.image,
         refreshImage = viewModel::refreshImage,
-        navigate = viewModel::popBackToMain,
-        textButton = stringResource(id = R.string.back_to_main),
+        navigateScreen = viewModel::popBackToMain,
+        textButtonNextScreen = stringResource(id = R.string.back_to_main),
+        popBack = viewModel::popBackToScreen,
+        textBackToMainScreen = stringResource(id = R.string.back),
     )
 }

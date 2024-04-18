@@ -9,6 +9,11 @@ interface Navigator {
         navOptions: NavOptions? = null,
     )
 
+    fun popBackStack(
+        destination: String,
+        inclusive: Boolean,
+    )
+
     fun popBack()
 
     fun attach(navController: NavController)

@@ -2,13 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PreviewAnimeImageContainer">
-        <State />
-      </entry>
-      <entry key="PreviewLoginErrorDialog">
-        <State />
-      </entry>
       <entry key="PreviewStats">
+        <State />
+      </entry>
+      <entry key="RandomAnimeImageViewTest">
         <State />
       </entry>
       <entry key="app">

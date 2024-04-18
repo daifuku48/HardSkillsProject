@@ -7,7 +7,9 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PENDING_TAG
 
 @Composable
 fun PendingStats() {
@@ -15,6 +17,7 @@ fun PendingStats() {
         modifier =
             Modifier
                 .fillMaxWidth()
+                .testTag(PENDING_TAG)
                 .height(400.dp),
         contentAlignment = Alignment.Center,
     ) {

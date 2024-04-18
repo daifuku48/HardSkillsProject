@@ -27,4 +27,8 @@ class UserListViewModelImpl(
     override fun backToMain() {
         navigate(Screen.RandomUserFirstScreen.route)
     }
+
+    override fun popBackScreen() {
+        popBack()
+    }
 }

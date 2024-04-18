@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -53,6 +54,7 @@ fun BasePopUpUserDialog(
                     Text(text = text)
                     Spacer(modifier = Modifier.padding(10.dp))
                     Button(
+                        modifier = Modifier.testTag("Button tag"),
                         onClick = onConfirm,
                         colors =
                             ButtonDefaults.buttonColors(

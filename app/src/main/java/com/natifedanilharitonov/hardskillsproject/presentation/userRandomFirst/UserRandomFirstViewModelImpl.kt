@@ -28,4 +28,8 @@ class UserRandomFirstViewModelImpl(
     override fun navigateToNextScreen() {
         navigate(Screen.RandomUserSecondScreen.route)
     }
+
+    override fun popToMain() {
+        popBackStack(Screen.MainScreen.route, false)
+    }
 }

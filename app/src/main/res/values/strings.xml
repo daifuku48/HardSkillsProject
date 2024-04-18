@@ -60,4 +60,6 @@
     <string name="gender">Gender</string>
     <string name="phone_number">Phone number</string>
     <string name="user_has_logge">Користувач зареєстрований</string>
+    <string name="back_to_main_screen">Back to Main Screen</string>
+    <string name="back">Back</string>
 </resources>
