@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.animeAnimeRandom.randomAnimeImage
+package com.natifedanilharitonov.hardskillsproject.randomAnimeImage
 
 import android.graphics.Bitmap
 import androidx.compose.ui.test.hasTestTag

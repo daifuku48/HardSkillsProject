@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.animeAnimeRandom.main
+package com.natifedanilharitonov.hardskillsproject.main
 
 import androidx.compose.ui.test.hasText
 import com.atiurin.ultron.core.compose.createDefaultUltronComposeRule

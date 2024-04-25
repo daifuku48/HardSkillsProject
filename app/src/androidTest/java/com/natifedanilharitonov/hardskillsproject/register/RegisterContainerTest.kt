@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.animeAnimeRandom.register
+package com.natifedanilharitonov.hardskillsproject.register
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

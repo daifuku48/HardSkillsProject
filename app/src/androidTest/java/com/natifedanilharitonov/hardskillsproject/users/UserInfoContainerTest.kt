@@ -1,4 +1,4 @@
-package com.natifedanilharitonov.hardskillsproject.animeAnimeRandom.users
+package com.natifedanilharitonov.hardskillsproject.users
 
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
