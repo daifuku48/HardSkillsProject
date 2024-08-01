@@ -1,21 +1,35 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settings
 
 import androidx.navigation.NavOptions
-import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.features.settings.SettingsEvent
-import com.natifedanilharitonov.domain.features.settings.SettingsState
-import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
-import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+import com.natifedanilharitonov.hardskillsproject.base.BaseViewModel
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
+import com.natifeuaandroid.coremodule.Reducer
+import com.natifeuaandroid.coremodule.UseCase
+import com.natifeuaandroid.domainmodule.features.settings.SettingsEvent
+import com.natifeuaandroid.domainmodule.features.settings.SettingsState
 
 class SettingsViewModelImpl(
-    reducer: Reducer<SettingsState, SettingsEvent, SettingsUiState>,
+    reducer: Reducer<SettingsState, SettingsEvent>,
     useCases: Set<UseCase<SettingsState, SettingsEvent>>,
     navigator: Navigator,
 ) : BaseViewModel<SettingsState, SettingsEvent, SettingsUiState>(reducer, useCases, navigator),
     SettingsViewModel {
-    override fun createInitState(): SettingsState = SettingsState()
+
+    init {
+        addSpecialEvent(SettingsEvent.UserIsSignedOutEvent::class)
+    }
+
+    override fun mapToUiModel(state: SettingsState): SettingsUiState {
+        return state.toUi()
+    }
+
+    override fun handleSpecialEvents(event: SettingsEvent) {
+        when (event) {
+            SettingsEvent.UserIsSignedOutEvent -> navigateToLogin()
+            else -> {}
+        }
+    }
 
     override fun signOut() {
         handleEvent(SettingsEvent.SignOutUserEvent)
@@ -29,7 +43,7 @@ class SettingsViewModelImpl(
         val navOptions =
             NavOptions
                 .Builder()
-                .setPopUpTo(Screen.SettingsScreen.route, inclusive = true)
+                .setPopUpTo(Screen.MainScreen.route, inclusive = true)
                 .setLaunchSingleTop(true)
                 .build()
         navigate(Screen.LoginScreen.route, navOptions)

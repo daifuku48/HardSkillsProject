@@ -21,6 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "HardSkillsProject"
 include(":app")
-include(":core")
 include(":data")
-include(":domain")
+include(":domainModule")
+include(":coreModule")

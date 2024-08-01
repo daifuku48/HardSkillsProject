@@ -4,17 +4,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.ButtonColumn
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainButton
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainText
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.PageTitle
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
 fun MainViewContainer(
     title: String,
-    text: StateTextUiModel,
+    text: String?,
     navigate: () -> Unit,
     buttonText: String,
     popBack: () -> Unit,
@@ -41,7 +40,7 @@ fun PreviewMainFirstView() {
     HardSkillsProjectTheme {
         MainViewContainer(
             title = "Title",
-            text = StateTextUiModel.Text("text text text text text text text text "),
+            text = "text text text text text text text text ",
             navigate = { },
             buttonText = "navigate",
             popBack = {},
@@ -55,7 +54,7 @@ fun PreviewMainFirstErrorView() {
     HardSkillsProjectTheme {
         MainViewContainer(
             title = "Title",
-            text = StateTextUiModel.ErrorText,
+            text = null,
             navigate = { },
             buttonText = "navigate",
             popBack = {},
@@ -69,7 +68,7 @@ fun PreviewMainFirstPendingView() {
     HardSkillsProjectTheme {
         MainViewContainer(
             title = "Title",
-            text = StateTextUiModel.Pending,
+            text = "",
             navigate = { },
             buttonText = "navigate",
             popBack = {},

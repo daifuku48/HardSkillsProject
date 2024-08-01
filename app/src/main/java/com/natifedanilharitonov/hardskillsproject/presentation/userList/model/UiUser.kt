@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.userList.model
 
-import com.natifedanilharitonov.domain.model.DomainUser
+import com.natifeuaandroid.domainmodule.model.DomainUser
+
 
 data class UiUser(
     val gender: String,

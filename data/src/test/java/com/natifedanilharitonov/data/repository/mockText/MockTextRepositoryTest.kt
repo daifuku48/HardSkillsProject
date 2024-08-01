@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.data.repository.mockText
 
 import com.natifedanilharitonov.data.source.randomText.RandomTextSource
-import com.natifedanilharitonov.domain.repository.MockTextRepository
+import com.natifeuaandroid.domainmodule.repository.MockTextRepository
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Before

@@ -1,7 +1,8 @@
 package com.natifedanilharitonov.data.repository.stats
 
 import com.natifedanilharitonov.data.source.stats.RandomStatsSource
-import com.natifedanilharitonov.domain.repository.RandomStatsRepository
+import com.natifeuaandroid.domainmodule.repository.RandomStatsRepository
+
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.toPersistentList
 

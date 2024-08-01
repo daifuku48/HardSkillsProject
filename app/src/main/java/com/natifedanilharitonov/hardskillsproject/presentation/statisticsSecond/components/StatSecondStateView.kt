@@ -3,24 +3,21 @@ package com.natifedanilharitonov.hardskillsproject.presentation.statisticsSecond
 import androidx.compose.runtime.Composable
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.ErrorStatistic
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.PendingStats
-import com.natifedanilharitonov.hardskillsproject.presentation.statisticsSecond.model.DoubleStatUiModel
+import kotlinx.collections.immutable.PersistentList
 
 @Composable
-fun StatSecondStateView(model: DoubleStatUiModel) {
-    when (model) {
-        is DoubleStatUiModel.Error -> {
-            ErrorStatistic()
-        }
-
-        is DoubleStatUiModel.Model -> {
-            StatsSecond(
-                modelLines = model.modelLines,
-                modelColumns = model.modelColumns,
-            )
-        }
-
-        is DoubleStatUiModel.Pending -> {
-            PendingStats()
-        }
+fun StatSecondStateView(
+    modelLines: PersistentList<Pair<Float, Float>>?,
+    modelColumns: PersistentList<Pair<Float, Float>>?
+) {
+    if (modelLines?.isEmpty() == true || modelColumns?.isEmpty() == true) {
+        PendingStats()
+    } else if (modelLines == null || modelColumns == null) {
+        ErrorStatistic()
+    } else {
+        StatsSecond(
+            modelLines = modelLines,
+            modelColumns = modelColumns,
+        )
     }
 }

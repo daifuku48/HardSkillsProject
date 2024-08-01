@@ -1,21 +1,22 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics.components
 
 import androidx.compose.runtime.Composable
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
 
 @Composable
-fun StatisticChart(modelState: StatUiModel) {
+fun StatisticChart(modelState: PersistentList<Pair<Float, Float>>?) {
     when (modelState) {
-        is StatUiModel.Error -> {
+        null -> {
             ErrorStatistic()
         }
 
-        is StatUiModel.Model -> {
-            Stats(modelState.model)
+        persistentListOf<Pair<Float, Float>>() -> {
+            PendingStats()
         }
 
-        is StatUiModel.Pending -> {
-            PendingStats()
+        else -> {
+            Stats(modelState)
         }
     }
 }

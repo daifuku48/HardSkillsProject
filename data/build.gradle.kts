@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":domain"))
+    implementation(project(":domainModule"))
     testImplementation(libs.mockito.core)
     androidTestImplementation(libs.mockito.android)
     testImplementation(libs.mockk.android)

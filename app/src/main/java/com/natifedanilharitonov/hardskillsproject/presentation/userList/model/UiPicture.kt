@@ -1,10 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.userList.model
 
-import android.graphics.Bitmap
-import com.natifedanilharitonov.domain.model.DomainPicture
+import com.natifeuaandroid.domainmodule.model.DomainPicture
 
 data class UiPicture(
-    val medium: Bitmap,
+    val medium: String,
 )
 
 fun DomainPicture.toUi(): UiPicture {

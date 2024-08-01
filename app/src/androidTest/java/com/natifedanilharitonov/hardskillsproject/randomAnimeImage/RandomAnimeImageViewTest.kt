@@ -1,13 +1,11 @@
 package com.natifedanilharitonov.hardskillsproject.randomAnimeImage
 
-import android.graphics.Bitmap
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.hasText
 import com.atiurin.ultron.core.compose.createDefaultUltronComposeRule
 import com.atiurin.ultron.extensions.assertIsDisplayed
 import com.atiurin.ultron.extensions.click
 import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage.components.RandomAnimeImageContainer
-import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage.model.AnimeImageUiModel
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.REFRESH_BUTTON_TAG
 import org.junit.Rule
 import org.junit.Test
@@ -20,14 +18,7 @@ class RandomAnimeImageViewTest {
     fun testImageView() {
         rule.setContent {
             RandomAnimeImageContainer(
-                image =
-                    AnimeImageUiModel.ImageAccess(
-                        Bitmap.createBitmap(
-                            100,
-                            100,
-                            Bitmap.Config.ALPHA_8,
-                        ),
-                    ),
+                image = "image.jpeg",
                 navigateScreen = {},
                 refreshImage = {},
                 textButtonNextScreen = "navigate button",

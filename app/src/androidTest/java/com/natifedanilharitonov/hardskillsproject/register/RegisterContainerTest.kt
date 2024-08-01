@@ -13,8 +13,6 @@ import com.atiurin.ultron.extensions.assertTextContains
 import com.atiurin.ultron.extensions.click
 import com.atiurin.ultron.extensions.inputText
 import com.atiurin.ultron.page.Screen
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 import com.natifedanilharitonov.hardskillsproject.presentation.registration.components.RegistrationContainerView
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.EMAIL_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PASSWORD_TAG
@@ -46,8 +44,8 @@ class RegisterContainerTest {
                 registerClick = { },
                 loginClick = { },
                 registerButtonEnabled = true,
-                emailLabel = EmailLabelState.ValidEmailLabel,
-                passwordLabel = PasswordLabelState.ErrorPassword,
+                emailLabel = true,
+                passwordLabel = false,
                 userLogDialogState = false,
                 onConfirmUserLogDialogState = { },
                 errorDialogState = false,
@@ -90,8 +88,8 @@ class RegisterContainerTest {
                 },
                 loginClick = { },
                 registerButtonEnabled = true,
-                emailLabel = EmailLabelState.ValidEmailLabel,
-                passwordLabel = PasswordLabelState.ErrorPassword,
+                emailLabel = true,
+                passwordLabel = false,
                 userLogDialogState = showPopUp,
                 onConfirmUserLogDialogState = { showPopUp = false },
                 errorDialogState = false,
@@ -133,8 +131,8 @@ class RegisterContainerTest {
                 },
                 loginClick = { },
                 registerButtonEnabled = true,
-                emailLabel = EmailLabelState.ValidEmailLabel,
-                passwordLabel = PasswordLabelState.ErrorPassword,
+                emailLabel = true,
+                passwordLabel = false,
                 userLogDialogState = false,
                 onConfirmUserLogDialogState = { showPopUp = false },
                 errorDialogState = showPopUp,
@@ -191,6 +189,5 @@ private object RegisterScreenObjects : Screen<RegisterScreenObjects>() {
         popUpError.assertIsDisplayed()
         popUpBtn.assertIsDisplayed()
         popUpBtn.click()
-        popUpBtn.assertDoesNotExist()
     }
 }

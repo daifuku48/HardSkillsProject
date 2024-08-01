@@ -1,8 +1,13 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settingsFirst
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
+import com.natifeuaandroid.domainmodule.features.settingsFirst.SettingsFirstState
 
 data class SettingsFirstUiState(
-    val text: StateTextUiModel = StateTextUiModel.Pending,
-) : UiModel
+    val text: String?,
+)
+
+fun SettingsFirstState.toUi(): SettingsFirstUiState {
+    return SettingsFirstUiState(
+        text = text
+    )
+}

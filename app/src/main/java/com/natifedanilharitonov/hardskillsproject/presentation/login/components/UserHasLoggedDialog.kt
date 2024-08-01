@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BasePopUpUserDialog
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.BasePopUpUserDialog
 
 @Composable
 fun UserHasLoggedDialog(

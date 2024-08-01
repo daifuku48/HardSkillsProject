@@ -1,16 +1,16 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login
 
 import androidx.navigation.NavOptions
-import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.features.login.LoginEvent
-import com.natifedanilharitonov.domain.features.login.LoginState
-import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
-import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+import com.natifedanilharitonov.hardskillsproject.base.BaseViewModel
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
+import com.natifeuaandroid.coremodule.Reducer
+import com.natifeuaandroid.coremodule.UseCase
+import com.natifeuaandroid.domainmodule.features.login.LoginEvent
+import com.natifeuaandroid.domainmodule.features.login.LoginState
 
 class LoginViewModelImpl(
-    reducer: Reducer<LoginState, LoginEvent, LoginUiState>,
+    reducer: Reducer<LoginState, LoginEvent>,
     useCases: Set<UseCase<LoginState, LoginEvent>>,
     navigator: Navigator,
 ) : BaseViewModel<LoginState, LoginEvent, LoginUiState>(reducer, useCases, navigator),
@@ -19,7 +19,11 @@ class LoginViewModelImpl(
         handleEvent(LoginEvent.ValidationEvent)
     }
 
-    override fun createInitState(): LoginState = LoginState()
+    override fun mapToUiModel(state: LoginState): LoginUiState {
+        return state.toUi()
+    }
+
+    override fun handleSpecialEvents(event: LoginEvent) {}
 
     override fun onEmailChanged(email: String) {
         handleEvent(LoginEvent.EmailChangedEvent(email = email))
@@ -53,8 +57,11 @@ class LoginViewModelImpl(
 
     private fun navigateToMainScreen() {
         val navOptions =
-            NavOptions.Builder().setPopUpTo(Screen.LoginScreen.route, inclusive = true)
-                .setLaunchSingleTop(true).build()
+            NavOptions
+                .Builder()
+                .setPopUpTo(Screen.LoginScreen.route, inclusive = true)
+                .setLaunchSingleTop(true)
+                .build()
         navigate(Screen.MainScreen.route, navOptions)
     }
 }

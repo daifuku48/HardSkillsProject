@@ -1,7 +1,9 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settings
 
-import com.natifedanilharitonov.core.UiModel
+import com.natifeuaandroid.domainmodule.features.settings.SettingsState
 
-data class SettingsUiState(
-    val isSignOutUser: Boolean = false,
-) : UiModel
+ class SettingsUiState
+
+fun SettingsState.toUi(): SettingsUiState {
+    return SettingsUiState()
+}

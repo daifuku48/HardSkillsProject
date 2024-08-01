@@ -1,47 +1,34 @@
 package com.natifedanilharitonov.data.network.users
 
-import com.natifedanilharitonov.data.network.imageDownloader.ImageDownloaderSource
 import com.natifedanilharitonov.data.network.users.model.NetworkName
 import com.natifedanilharitonov.data.network.users.model.NetworkPicture
 import com.natifedanilharitonov.data.network.users.model.NetworkUser
 import com.natifedanilharitonov.data.network.users.model.NetworkUserResult
-import com.natifedanilharitonov.data.network.users.model.toUserWithBitmap
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
 
 class UsersSourceTest {
     private lateinit var userSource: UsersSourceImpl
     private val usersInstance = MockUsersInstance()
 
-    @Mock
-    private lateinit var downLoaderSource: ImageDownloaderSource
-
     @Before
     fun setUp() {
         MockitoAnnotations.openMocks(this)
-        userSource = UsersSourceImpl(usersInstance, downLoaderSource)
+        userSource = UsersSourceImpl(usersInstance)
     }
 
     @Test
     fun `get users access`() =
         runTest {
-            `when`(downLoaderSource.loadImage("mockurl")).thenReturn(mock())
+            val users = usersInstance.getUsers().users
 
-            val users = usersInstance.getUsers()
-            val expectedUsers =
-                mockUsers.map { it.toUserWithBitmap(downLoaderSource.loadImage("mockurl")) }
-            val actualUsers =
-                users.users.map { it.toUserWithBitmap(downLoaderSource.loadImage("mockurl")) }
 
-            assertEquals(expectedUsers.size, actualUsers.size)
+            assertEquals(users.size, users.size)
 
-            expectedUsers.zip(actualUsers).forEach { (expected, actual) ->
+            users.zip(users).forEach { (expected, actual) ->
                 assertEquals(expected.email, actual.email)
                 assertEquals(expected.gender, actual.gender)
             }
@@ -50,12 +37,9 @@ class UsersSourceTest {
     @Test
     fun `get user access`() =
         runTest {
-            `when`(downLoaderSource.loadImage("mockurl")).thenReturn(mock())
             val user = usersInstance.getUser()
-            val expectedUser =
-                mockUser.toUserWithBitmap(downLoaderSource.loadImage("mockurl"))
-            val actualUser =
-                user.users.first().toUserWithBitmap(downLoaderSource.loadImage("mockurl"))
+            val expectedUser = mockUser
+            val actualUser = user.users.first()
 
             assertEquals(expectedUser.email, actualUser.email)
             assertEquals(expectedUser.gender, actualUser.gender)

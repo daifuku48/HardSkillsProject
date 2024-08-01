@@ -3,7 +3,7 @@ package com.natifedanilharitonov.hardskillsproject.presentation.registration.com
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BasePopUpUserDialog
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.BasePopUpUserDialog
 
 @Composable
 fun UserHasRegisteredDialog(

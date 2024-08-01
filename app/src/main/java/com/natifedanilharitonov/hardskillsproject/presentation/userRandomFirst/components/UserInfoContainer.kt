@@ -4,33 +4,35 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.LottieProgress
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.previewUser
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.ButtonColumn
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.LottieProgress
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.previewUser
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.components.ErrorListScreen
-import com.natifedanilharitonov.hardskillsproject.presentation.userRandomFirst.model.UserResultUiModel
+import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UiUser
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
 fun UserInfoContainer(
     backText: String,
     popBackScreen: () -> Unit,
-    userResult: UserResultUiModel,
+    userResult: UiUser?,
     onNextScreen: () -> Unit,
+    isPending: Boolean,
 ) {
-    when (userResult) {
-        is UserResultUiModel.Error -> {
-            ErrorListScreen()
-        }
+    if (isPending) {
+        LottieProgress()
+    } else {
+        when (userResult) {
+            null -> {
+                ErrorListScreen()
+            }
 
-        is UserResultUiModel.Model -> {
-            UserInfoTable(user = userResult.user)
-        }
-
-        is UserResultUiModel.Pending -> {
-            LottieProgress()
+            else -> {
+                UserInfoTable(user = userResult)
+            }
         }
     }
+
     ButtonColumn(
         popBackText = backText,
         popBack = popBackScreen,
@@ -44,13 +46,11 @@ fun UserInfoContainer(
 fun PreviewUserInfoContainer() {
     HardSkillsProjectTheme {
         UserInfoContainer(
-            userResult =
-                UserResultUiModel.Model(
-                    user = previewUser(),
-                ),
+            userResult = previewUser(),
             onNextScreen = {},
             popBackScreen = {},
             backText = "Back",
+            isPending = false,
         )
     }
 }
@@ -60,11 +60,11 @@ fun PreviewUserInfoContainer() {
 fun PreviewErrorContainer() {
     HardSkillsProjectTheme {
         UserInfoContainer(
-            userResult =
-                UserResultUiModel.Error,
+            userResult = null,
             onNextScreen = {},
             popBackScreen = {},
             backText = "Back",
+            isPending = false,
         )
     }
 }
@@ -74,10 +74,11 @@ fun PreviewErrorContainer() {
 fun PreviewPendingContainer() {
     HardSkillsProjectTheme {
         UserInfoContainer(
-            userResult = UserResultUiModel.Pending,
+            userResult = null,
             onNextScreen = {},
             popBackScreen = {},
             backText = "Back",
+            isPending = false,
         )
     }
 }

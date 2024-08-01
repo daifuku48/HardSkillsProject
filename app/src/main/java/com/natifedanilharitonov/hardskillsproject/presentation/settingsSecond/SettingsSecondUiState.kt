@@ -1,8 +1,13 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.settingsSecond
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
+import com.natifeuaandroid.domainmodule.features.settingsSecond.SettingsSecondState
 
 data class SettingsSecondUiState(
-    val text: StateTextUiModel = StateTextUiModel.Pending,
-) : UiModel
+    val text: String?,
+)
+
+fun SettingsSecondState.toUi(): SettingsSecondUiState {
+    return SettingsSecondUiState(
+        text = text
+    )
+}

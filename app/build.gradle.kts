@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
     id("com.google.gms.google-services")
     id("dev.shreyaspatil.compose-compiler-report-generator")
 }
@@ -53,8 +52,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":domain"))
+    implementation(project(":coreModule"))
+    implementation(project(":domainModule"))
     implementation(project(":data"))
 
     testImplementation(libs.mockito.core)

@@ -5,9 +5,8 @@ import androidx.compose.ui.test.hasText
 import com.atiurin.ultron.core.compose.createDefaultUltronComposeRule
 import com.atiurin.ultron.extensions.assertIsDisplayed
 import com.atiurin.ultron.extensions.click
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.previewUser
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.previewUser
 import com.natifedanilharitonov.hardskillsproject.presentation.userRandomFirst.components.UserInfoContainer
-import com.natifedanilharitonov.hardskillsproject.presentation.userRandomFirst.model.UserResultUiModel
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PENDING_TAG
 import org.junit.Rule
 import org.junit.Test
@@ -20,13 +19,11 @@ class UserInfoContainerTest {
     fun testView() {
         rule.setContent {
             UserInfoContainer(
-                userResult =
-                    UserResultUiModel.Model(
-                        user = previewUser(),
-                    ),
+                userResult = previewUser(),
                 onNextScreen = {},
                 backText = "",
                 popBackScreen = {},
+                isPending = false,
             )
         }
 
@@ -41,11 +38,11 @@ class UserInfoContainerTest {
     fun testError() {
         rule.setContent {
             UserInfoContainer(
-                userResult =
-                    UserResultUiModel.Error,
+                userResult = null,
                 onNextScreen = {},
                 backText = "",
                 popBackScreen = {},
+                isPending = false,
             )
         }
         hasText("Oups, something went wrong, users are not existing").assertIsDisplayed()
@@ -56,11 +53,11 @@ class UserInfoContainerTest {
     fun testPending() {
         rule.setContent {
             UserInfoContainer(
-                userResult =
-                    UserResultUiModel.Pending,
+                userResult = null,
                 onNextScreen = {},
                 backText = "",
                 popBackScreen = {},
+                isPending = true,
             )
         }
         hasTestTag(PENDING_TAG).assertIsDisplayed()

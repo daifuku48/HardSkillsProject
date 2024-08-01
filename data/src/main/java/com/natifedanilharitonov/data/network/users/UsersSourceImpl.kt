@@ -1,36 +1,19 @@
 package com.natifedanilharitonov.data.network.users
 
-import com.natifedanilharitonov.data.network.imageDownloader.ImageDownloaderSource
-import com.natifedanilharitonov.data.network.users.model.NetworkUserBitmap
-import com.natifedanilharitonov.data.network.users.model.toUserWithBitmap
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
+import com.natifedanilharitonov.data.network.users.model.NetworkUser
 
 internal class UsersSourceImpl(
     private val instance: UsersRetrofitInstance,
-    private val downloaderSource: ImageDownloaderSource,
 ) : UsersSource {
-    override suspend fun getUsers(): List<NetworkUserBitmap> {
+    override suspend fun getUsers(): List<NetworkUser> {
         val users = instance.getUsers().users
-        val usersList = ArrayList<NetworkUserBitmap>()
-        val deferredImages =
-            users.map {
-                CoroutineScope(Dispatchers.IO).async {
-                    downloaderSource.loadImage(it.picture.medium)
-                }
-            }
-        for ((count, deferred) in deferredImages.withIndex()) {
-            usersList.add(users[count].toUserWithBitmap(deferred.await()))
-        }
-        return usersList
+        return users
     }
 
-    override suspend fun getUser(): NetworkUserBitmap? {
+    override suspend fun getUser(): NetworkUser? {
         return try {
             val user = instance.getUser()
-            val image = downloaderSource.loadImage(user.users.first().picture.medium)
-            user.users.first().toUserWithBitmap(image)
+            return user.users.first()
         } catch (e: Exception) {
             e.printStackTrace()
             null

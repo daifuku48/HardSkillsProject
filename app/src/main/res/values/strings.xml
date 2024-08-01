@@ -62,4 +62,6 @@
     <string name="user_has_logge">Користувач зареєстрований</string>
     <string name="back_to_main_screen">Back to Main Screen</string>
     <string name="back">Back</string>
+    <string name="connection_error">Connection error</string>
+    <string name="empty_string" />
 </resources>

@@ -1,8 +1,11 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.main
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
+import com.natifeuaandroid.domainmodule.features.main.MainState
 
 data class MainUiState(
-    val text: StateTextUiModel = StateTextUiModel.Pending,
-) : UiModel
+    val text: String?,
+)
+
+fun MainState.toUi(): MainUiState {
+    return MainUiState(text = text)
+}

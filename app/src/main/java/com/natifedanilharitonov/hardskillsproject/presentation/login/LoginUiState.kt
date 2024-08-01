@@ -1,16 +1,27 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.login
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
+import com.natifeuaandroid.domainmodule.features.login.LoginState
 
 data class LoginUiState(
-    val email: String = "",
-    val password: String = "",
-    val emailLabel: EmailLabelState = EmailLabelState.ValidEmailLabel,
-    val passwordLabel: PasswordLabelState = PasswordLabelState.ValidPassword,
-    val pending: Boolean = false,
-    val showUserHasLoggedDialog: Boolean = false,
-    val showUserErrorLoginDialog: Boolean = false,
-    val loginButtonEnabled: Boolean = false,
-) : UiModel
+    val email: String,
+    val password: String,
+    val emailLabelValid: Boolean,
+    val passwordLabelValid: Boolean,
+    val pending: Boolean,
+    val showUserHasLoggedDialog: Boolean,
+    val showUserErrorLoginDialog: Boolean,
+    val loginButtonEnabled: Boolean,
+)
+
+fun LoginState.toUi(): LoginUiState {
+    return LoginUiState(
+        email = emailText,
+        password = passwordText,
+        emailLabelValid = emailLabelValid,
+        passwordLabelValid = passwordLabelValid,
+        pending = pending,
+        showUserHasLoggedDialog = showUserHasLoggedDialog,
+        showUserErrorLoginDialog = showUserErrorLoginDialog,
+        loginButtonEnabled = loginButtonEnabled
+    )
+}

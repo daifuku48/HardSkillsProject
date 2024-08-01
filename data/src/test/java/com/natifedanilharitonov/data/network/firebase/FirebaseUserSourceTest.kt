@@ -1,8 +1,9 @@
 package com.natifedanilharitonov.data.network.firebase
 
 import com.natifedanilharitonov.data.network.firebase.model.FirebaseUserNetwork
-import com.natifedanilharitonov.domain.Utils.EMAIL_PATTERN
-import com.natifedanilharitonov.domain.Utils.PASSWORD_PATTERN
+import com.natifeuaandroid.domainmodule.Utils.EMAIL_PATTERN
+import com.natifeuaandroid.domainmodule.Utils.PASSWORD_PATTERN
+
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
@@ -60,8 +61,8 @@ class FirebaseUserSourceTest {
     fun `get user access`() =
         runTest {
             source = MockFirebaseSource(MockFirebaseAuth.MockFirebaseAuthImpl())
-            source.login("email@gmail.com", "12345678")
-            assertEquals(source.getUser()?.email, "email@gmail.com")
+            source.login("mock@gmail.com", "12345678")
+            assertEquals(source.getUser()?.email, "mock@gmail.com")
         }
 
     @Test

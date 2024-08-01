@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.data.network.firebase.model
 
-import com.natifedanilharitonov.domain.model.DomainFirebaseUser
+import com.natifeuaandroid.domainmodule.model.DomainFirebaseUser
+
 
 data class FirebaseUserNetwork(
     val email: String,

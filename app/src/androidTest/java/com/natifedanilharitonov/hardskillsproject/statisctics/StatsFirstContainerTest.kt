@@ -6,7 +6,6 @@ import com.atiurin.ultron.core.compose.createDefaultUltronComposeRule
 import com.atiurin.ultron.extensions.assertIsDisplayed
 import com.atiurin.ultron.extensions.click
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.StatsMainContainer
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
 import com.natifedanilharitonov.hardskillsproject.presentation.statisticsFirst.components.StatsFirstContainer
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.CHART_TAG
 import kotlinx.collections.immutable.persistentListOf
@@ -21,22 +20,18 @@ class StatsFirstContainerTest {
     fun testView() {
         rule.setContent {
             StatsFirstContainer(
-                stats =
-                    StatUiModel.Model(
-                        model =
-                            persistentListOf(
-                                Pair(0f, 3f),
-                                Pair(1f, 1f),
-                                Pair(2f, 2f),
-                                Pair(3f, 4f),
-                                Pair(4f, 5f),
-                                Pair(5f, 2f),
-                                Pair(6f, 4f),
-                                Pair(7f, 5f),
-                                Pair(8f, 2f),
-                                Pair(9f, 5f),
-                            ),
-                    ),
+                stats = persistentListOf(
+                    Pair(0f, 3f),
+                    Pair(1f, 1f),
+                    Pair(2f, 2f),
+                    Pair(3f, 4f),
+                    Pair(4f, 5f),
+                    Pair(5f, 2f),
+                    Pair(6f, 4f),
+                    Pair(7f, 5f),
+                    Pair(8f, 2f),
+                    Pair(9f, 5f),
+                ),
                 buttonText = "navigate",
                 onClickButton = { },
                 getStats = {},
@@ -54,7 +49,7 @@ class StatsFirstContainerTest {
     fun testError() {
         rule.setContent {
             StatsMainContainer(
-                stats = StatUiModel.Error,
+                stats = null,
                 buttonNextScreenText = "navigate",
                 navigateNextScreen = {},
                 backText = "Back",
@@ -70,7 +65,7 @@ class StatsFirstContainerTest {
     fun testPending() {
         rule.setContent {
             StatsMainContainer(
-                stats = StatUiModel.Pending,
+                stats = persistentListOf(),
                 buttonNextScreenText = "navigate",
                 navigateNextScreen = {},
                 backText = "Back",

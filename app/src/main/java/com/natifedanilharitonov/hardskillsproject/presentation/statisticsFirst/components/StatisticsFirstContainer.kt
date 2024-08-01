@@ -3,24 +3,26 @@ package com.natifedanilharitonov.hardskillsproject.presentation.statisticsFirst.
 import androidx.compose.runtime.Composable
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.ErrorStatistic
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.PendingStats
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
+
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun StatisticsFirstContainer(
-    model: StatUiModel,
+    model: PersistentList<Pair<Float, Float>>?,
     getStats: () -> Unit,
 ) {
     when (model) {
-        is StatUiModel.Error -> {
+        null -> {
             ErrorStatistic()
         }
 
-        is StatUiModel.Model -> {
-            StatChartFirst(model = model.model, getStats = getStats)
+        persistentListOf<Pair<Float, Float>>() -> {
+            PendingStats()
         }
 
-        is StatUiModel.Pending -> {
-            PendingStats()
+        else -> {
+            StatChartFirst(model = model, getStats = getStats)
         }
     }
 }

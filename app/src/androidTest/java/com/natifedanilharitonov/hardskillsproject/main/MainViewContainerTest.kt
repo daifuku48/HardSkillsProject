@@ -5,7 +5,6 @@ import com.atiurin.ultron.core.compose.createDefaultUltronComposeRule
 import com.atiurin.ultron.extensions.assertIsDisplayed
 import com.atiurin.ultron.extensions.click
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.MainViewContainer
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 import org.junit.Rule
 import org.junit.Test
 
@@ -17,7 +16,7 @@ class MainViewContainerTest {
     fun testMainView() {
         rule.setContent {
             MainViewContainer(
-                text = StateTextUiModel.Text("text text text"),
+                text = "text text text",
                 buttonText = "next button",
                 navigate = {},
                 title = "Main page",

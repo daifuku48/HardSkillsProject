@@ -14,7 +14,8 @@ fun StatisticsSecondView(viewModel: StatisticsSecondViewModelImpl = koinViewMode
 
     StatsSecondContainer(
         popToMain = viewModel::navigateToMainChart,
-        model = state.model,
+        modelColumns = state.modelColumns,
+        modelLines = state.modelLines,
         popBackScreen = viewModel::popBackScreen,
         backText = stringResource(id = R.string.back),
     )

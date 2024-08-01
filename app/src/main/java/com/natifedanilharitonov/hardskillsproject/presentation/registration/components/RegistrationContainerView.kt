@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseErrorDialog
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.PendingScreen
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.BaseErrorDialog
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.PendingScreen
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
@@ -19,13 +17,13 @@ fun RegistrationContainerView(
     registerClick: () -> Unit,
     loginClick: () -> Unit,
     registerButtonEnabled: Boolean,
-    emailLabel: EmailLabelState,
-    passwordLabel: PasswordLabelState,
     userLogDialogState: Boolean,
     onConfirmUserLogDialogState: () -> Unit,
     errorDialogState: Boolean,
     onConfirmErrorDialogState: () -> Unit,
     pending: Boolean,
+    passwordLabel: Boolean,
+    emailLabel: Boolean
 ) {
     RegistrationFields(
         email = email,
@@ -51,8 +49,8 @@ fun RegistrationContainerView(
 
     PendingScreen(
         modifier =
-            Modifier
-                .fillMaxSize(),
+        Modifier
+            .fillMaxSize(),
         state = pending,
     )
 }
@@ -69,8 +67,8 @@ fun PreviewRegistration() {
             registerClick = { },
             loginClick = { },
             registerButtonEnabled = true,
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ErrorPassword,
+            emailLabel = true,
+            passwordLabel = false,
             userLogDialogState = false,
             onConfirmUserLogDialogState = { },
             errorDialogState = false,
@@ -92,8 +90,8 @@ fun PreviewUserLogRegistration() {
             registerClick = { },
             loginClick = { },
             registerButtonEnabled = true,
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ErrorPassword,
+            emailLabel = true,
+            passwordLabel = false,
             userLogDialogState = true,
             onConfirmUserLogDialogState = { },
             errorDialogState = false,
@@ -115,8 +113,8 @@ fun PreviewErrorLogRegistration() {
             registerClick = { },
             loginClick = { },
             registerButtonEnabled = true,
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ErrorPassword,
+            emailLabel = true,
+            passwordLabel = false,
             userLogDialogState = false,
             onConfirmUserLogDialogState = { },
             errorDialogState = true,
@@ -138,8 +136,8 @@ fun PreviewPendingRegistration() {
             registerClick = { },
             loginClick = { },
             registerButtonEnabled = true,
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ErrorPassword,
+            emailLabel = true,
+            passwordLabel = false,
             userLogDialogState = false,
             onConfirmUserLogDialogState = { },
             errorDialogState = false,

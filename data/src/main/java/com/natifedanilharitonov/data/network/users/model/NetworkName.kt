@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.data.network.users.model
 
 import com.google.gson.annotations.SerializedName
-import com.natifedanilharitonov.domain.model.DomainName
+import com.natifeuaandroid.domainmodule.model.DomainName
 
 data class NetworkName(
     @SerializedName("title")

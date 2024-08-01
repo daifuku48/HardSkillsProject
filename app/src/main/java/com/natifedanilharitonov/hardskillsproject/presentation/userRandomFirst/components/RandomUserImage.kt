@@ -17,7 +17,7 @@ import coil.compose.AsyncImage
 @Composable
 fun RandomUserImage(
     modifier: Modifier = Modifier,
-    image: Bitmap,
+    image: String,
 ) {
     Box(
         modifier =

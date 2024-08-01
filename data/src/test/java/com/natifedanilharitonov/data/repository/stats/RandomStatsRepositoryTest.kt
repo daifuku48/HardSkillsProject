@@ -1,7 +1,8 @@
 package com.natifedanilharitonov.data.repository.stats
 
 import com.natifedanilharitonov.data.source.stats.RandomStatsSource
-import com.natifedanilharitonov.domain.repository.RandomStatsRepository
+import com.natifeuaandroid.domainmodule.repository.RandomStatsRepository
+
 import junit.framework.TestCase.assertEquals
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.test.runTest

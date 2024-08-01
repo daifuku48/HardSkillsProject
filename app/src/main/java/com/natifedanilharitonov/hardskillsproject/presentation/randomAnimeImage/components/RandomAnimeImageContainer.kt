@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage.components
 
-import android.graphics.Bitmap
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,14 +13,13 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.presentation.main.components.PageTitle
-import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage.model.AnimeImageUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.IMAGE_TAG
 
 @Composable
 fun RandomAnimeImageContainer(
     title: String,
-    image: AnimeImageUiModel,
+    image: String?,
     refreshImage: () -> Unit,
     textButtonNextScreen: String,
     navigateScreen: () -> Unit,
@@ -59,7 +57,7 @@ fun RandomAnimeImageContainer(
 fun PreviewAnimeImagePendingMainContainer() {
     HardSkillsProjectTheme {
         RandomAnimeImageContainer(
-            image = AnimeImageUiModel.ImagePending,
+            image = "",
             refreshImage = {},
             navigateScreen = {},
             textButtonNextScreen = "navigate to next screen",
@@ -75,7 +73,7 @@ fun PreviewAnimeImagePendingMainContainer() {
 fun PreviewAnimeImageErrorMainContainer() {
     HardSkillsProjectTheme {
         RandomAnimeImageContainer(
-            image = AnimeImageUiModel.ImageError,
+            image = null,
             refreshImage = {},
             navigateScreen = {},
             textButtonNextScreen = "navigate to next screen",
@@ -86,25 +84,3 @@ fun PreviewAnimeImageErrorMainContainer() {
     }
 }
 
-@Preview(showSystemUi = true, showBackground = true)
-@Composable
-fun PreviewAnimeImageMainContainer() {
-    HardSkillsProjectTheme {
-        RandomAnimeImageContainer(
-            image =
-                AnimeImageUiModel.ImageAccess(
-                    Bitmap.createBitmap(
-                        100,
-                        100,
-                        Bitmap.Config.ARGB_8888,
-                    ),
-                ),
-            refreshImage = {},
-            navigateScreen = {},
-            textButtonNextScreen = "navigate to next screen",
-            title = "Main Screen",
-            textBackToMainScreen = "Back To Main Screen",
-            popBack = {},
-        )
-    }
-}

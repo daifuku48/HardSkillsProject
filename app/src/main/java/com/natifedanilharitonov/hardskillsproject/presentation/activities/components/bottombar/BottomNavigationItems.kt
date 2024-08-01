@@ -2,10 +2,12 @@ package com.natifedanilharitonov.hardskillsproject.presentation.activities.compo
 
 import android.content.Context
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
 import kotlinx.collections.immutable.persistentListOf
 
-class BottomNavigationItems(context: Context) {
+class BottomNavigationItems(
+    context: Context,
+) {
     val bottomItems =
         persistentListOf(
             BottomNavigationItem(

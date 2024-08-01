@@ -5,11 +5,11 @@ import com.natifedanilharitonov.data.repository.mockText.MockTextRepositoryImpl
 import com.natifedanilharitonov.data.repository.randomImages.RandomAnimeImageRepositoryImpl
 import com.natifedanilharitonov.data.repository.stats.RandomStatsRepositoryImpl
 import com.natifedanilharitonov.data.repository.users.UserRepositoryImpl
-import com.natifedanilharitonov.domain.repository.FirebaseUserRepository
-import com.natifedanilharitonov.domain.repository.MockTextRepository
-import com.natifedanilharitonov.domain.repository.RandomAnimeImageRepository
-import com.natifedanilharitonov.domain.repository.RandomStatsRepository
-import com.natifedanilharitonov.domain.repository.UsersRepository
+import com.natifeuaandroid.domainmodule.repository.FirebaseUserRepository
+import com.natifeuaandroid.domainmodule.repository.MockTextRepository
+import com.natifeuaandroid.domainmodule.repository.RandomAnimeImageRepository
+import com.natifeuaandroid.domainmodule.repository.RandomStatsRepository
+import com.natifeuaandroid.domainmodule.repository.UsersRepository
 import org.koin.dsl.module
 
 val repositoryModule =

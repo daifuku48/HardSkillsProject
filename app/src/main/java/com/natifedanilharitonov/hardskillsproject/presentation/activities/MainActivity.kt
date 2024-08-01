@@ -20,14 +20,13 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.base.navigation.ProjectScreens
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.bottombar.BottomNavigationBar
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawerLayout.NavigationDrawer
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawerLayout.NavigationDrawerItems
 import com.natifedanilharitonov.hardskillsproject.presentation.activities.components.drawerLayout.TopBar
-import com.natifedanilharitonov.hardskillsproject.presentation.activities.model.getDestination
-import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screens
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -97,36 +96,37 @@ class MainActivity : ComponentActivity() {
                             NavHost(
                                 modifier = Modifier.padding(paddingValues = paddingValues),
                                 navController = navController,
-                                startDestination = destination.getDestination(),
+                                startDestination = destination,
                             ) {
-                                Screens(
-                                    listOf(
-                                        Screen.LoginScreen,
-                                        Screen.RegistrationScreen,
-                                        Screen.MainScreen,
-                                        Screen.MainFirstMockScreen,
-                                        Screen.MainSecondMockScreen,
-                                        Screen.SettingsScreen,
-                                        Screen.SettingFirstScreen,
-                                        Screen.SettingsSecondScreen,
-                                        Screen.InfoScreen,
-                                        Screen.InfoFirstScreen,
-                                        Screen.InfoSecondScreen,
-                                        Screen.RandomAnimeImageScreen,
-                                        Screen.RandomAnimeImageFirstScreen,
-                                        Screen.RandomAnimeImageSecondScreen,
-                                        Screen.StatisticsScreen,
-                                        Screen.StatisticsFirstScreen,
-                                        Screen.StatisticsSecondScreen,
-                                        Screen.RandomUserFirstScreen,
-                                        Screen.RandomUserSecondScreen,
-                                        Screen.UsersScreen,
-                                    ),
-                                ).show(navGraphBuilder = this, showBottomState = { bottomState ->
-                                    viewModel.changeBottomState(bottomState)
-                                }, showDrawerState = { drawerState ->
-                                    viewModel.changeDrawerState(drawerState)
-                                })
+                                ProjectScreens
+                                    .ProjectScreensImpl(
+                                        listOf(
+                                            Screen.LoginScreen,
+                                            Screen.RegistrationScreen,
+                                            Screen.MainScreen,
+                                            Screen.MainFirstMockScreen,
+                                            Screen.MainSecondMockScreen,
+                                            Screen.SettingsScreen,
+                                            Screen.SettingFirstScreen,
+                                            Screen.SettingsSecondScreen,
+                                            Screen.InfoScreen,
+                                            Screen.InfoFirstScreen,
+                                            Screen.InfoSecondScreen,
+                                            Screen.RandomAnimeImageScreen,
+                                            Screen.RandomAnimeImageFirstScreen,
+                                            Screen.RandomAnimeImageSecondScreen,
+                                            Screen.StatisticsScreen,
+                                            Screen.StatisticsFirstScreen,
+                                            Screen.StatisticsSecondScreen,
+                                            Screen.RandomUserFirstScreen,
+                                            Screen.RandomUserSecondScreen,
+                                            Screen.UsersScreen,
+                                        ),
+                                    ).show(navGraphBuilder = this, showBottomState = { bottomState ->
+                                        viewModel.changeBottomState(bottomState)
+                                    }, showDrawerState = { drawerState ->
+                                        viewModel.changeDrawerState(drawerState)
+                                    })
                             }
                         }
                     }

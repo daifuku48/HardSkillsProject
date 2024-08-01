@@ -2,8 +2,9 @@ package com.natifedanilharitonov.data.repository.firebase
 
 import com.natifedanilharitonov.data.network.firebase.FirebaseUserSource
 import com.natifedanilharitonov.data.network.firebase.model.toDomain
-import com.natifedanilharitonov.domain.model.DomainFirebaseUser
-import com.natifedanilharitonov.domain.repository.FirebaseUserRepository
+import com.natifeuaandroid.domainmodule.model.DomainFirebaseUser
+import com.natifeuaandroid.domainmodule.repository.FirebaseUserRepository
+
 
 internal class FirebaseUserRepositoryImpl(
     private val source: FirebaseUserSource,

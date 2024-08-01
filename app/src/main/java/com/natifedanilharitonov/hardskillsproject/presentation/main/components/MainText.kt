@@ -14,30 +14,31 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.RANDOM_TEXT_TAG
 
 @Composable
-fun MainText(text: StateTextUiModel) {
+fun MainText(text: String?) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         when (text) {
-            is StateTextUiModel.ErrorText -> {
+            ERROR_TEXT -> {
                 Text(
                     text = stringResource(R.string.network_error),
                     modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .testTag(RANDOM_TEXT_TAG),
+                    Modifier
+                        .fillMaxWidth()
+                        .testTag(RANDOM_TEXT_TAG),
                     textAlign = TextAlign.Center,
                 )
             }
 
-            is StateTextUiModel.Pending -> {
+            PENDING_TEXT -> {
                 CircularProgressIndicator()
             }
 
-            is StateTextUiModel.Text -> {
-                Text(text = text.text, modifier = Modifier.padding(30.dp).testTag(RANDOM_TEXT_TAG))
+            else -> {
+                Text(text = text, modifier = Modifier
+                    .padding(30.dp)
+                    .testTag(RANDOM_TEXT_TAG))
             }
         }
     }

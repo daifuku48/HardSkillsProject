@@ -1,10 +1,11 @@
 package com.natifedanilharitonov.data.repository.users
 
 import android.graphics.Bitmap
-import com.natifedanilharitonov.domain.model.DomainName
-import com.natifedanilharitonov.domain.model.DomainPicture
-import com.natifedanilharitonov.domain.model.DomainUser
-import com.natifedanilharitonov.domain.repository.UsersRepository
+import com.natifeuaandroid.domainmodule.model.DomainName
+import com.natifeuaandroid.domainmodule.model.DomainPicture
+import com.natifeuaandroid.domainmodule.model.DomainUser
+import com.natifeuaandroid.domainmodule.repository.UsersRepository
+
 import junit.framework.TestCase.assertEquals
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
@@ -24,14 +25,14 @@ class UserRepositoryTest {
                 persistentListOf(
                     DomainUser(
                         gender = "male",
-                        picture = DomainPicture(bitmap),
+                        picture = DomainPicture("image"),
                         name = DomainName("Mr", "Mock", "Mock"),
                         email = "mock@mock.com",
                         phone = "+380332001020",
                     ),
                     DomainUser(
                         gender = "female",
-                        picture = DomainPicture(bitmap),
+                        picture = DomainPicture("image"),
                         name = DomainName("Mr", "Mocki", "Mock"),
                         email = "mock@moc1k.com",
                         phone = "+3803320010f0",
@@ -60,7 +61,7 @@ class UserRepositoryTest {
             val expected =
                 DomainUser(
                     gender = "male",
-                    picture = DomainPicture(bitmap),
+                    picture = DomainPicture("image"),
                     name = DomainName("Mr", "Mock", "Mock"),
                     email = "mock@mock.com",
                     phone = "+380332001020",
@@ -95,14 +96,14 @@ private class MockUserRepositoryAccess : UsersRepository {
         return persistentListOf(
             DomainUser(
                 gender = "male",
-                picture = DomainPicture(bitmap),
+                picture = DomainPicture("image"),
                 name = DomainName("Mr", "Mock", "Mock"),
                 email = "mock@mock.com",
                 phone = "+380332001020",
             ),
             DomainUser(
                 gender = "female",
-                picture = DomainPicture(bitmap),
+                picture = DomainPicture("image"),
                 name = DomainName("Mr", "Mocki", "Mock"),
                 email = "mock@moc1k.com",
                 phone = "+3803320010f0",
@@ -114,7 +115,7 @@ private class MockUserRepositoryAccess : UsersRepository {
         val bitmap = mock<Bitmap>()
         return DomainUser(
             gender = "male",
-            picture = DomainPicture(bitmap),
+            picture = DomainPicture("image"),
             name = DomainName("Mr", "Mock", "Mock"),
             email = "mock@mock.com",
             phone = "+380332001020",

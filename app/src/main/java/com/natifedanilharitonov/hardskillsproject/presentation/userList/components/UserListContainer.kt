@@ -2,35 +2,37 @@ package com.natifedanilharitonov.hardskillsproject.presentation.userList.compone
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.previewUser
-import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserListUiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserPaginationUiModel
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.ButtonColumn
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.previewUser
+import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UiUser
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
+import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun UserListContainer(
-    userList: UserListUiModel,
+    userList: PersistentList<UiUser>?,
     addUsers: () -> Unit,
     pagingValue: Boolean,
-    pagingState: UserPaginationUiModel,
     backToMain: () -> Unit,
     backToMainText: String,
     popBack: () -> Unit,
     popBackText: String,
 ) {
     when (userList) {
-        UserListUiModel.ErrorList -> {
+        null -> {
             ErrorListScreen()
         }
 
-        is UserListUiModel.List -> {
+        persistentListOf<UiUser>() -> {
+            PendingListScreen()
+        }
+
+        else -> {
             UserListColumn(
-                userList = userList.userList,
+                userList = userList,
                 addUsers = addUsers,
                 canPaging = pagingValue,
-                pagingState = pagingState,
             )
             ButtonColumn(
                 popBackText = popBackText,
@@ -38,10 +40,6 @@ fun UserListContainer(
                 navigateNext = backToMain,
                 navigateNextText = backToMainText,
             )
-        }
-
-        UserListUiModel.Pending -> {
-            PendingListScreen()
         }
     }
 }
@@ -52,19 +50,17 @@ fun PreviewUserListContainer() {
     HardSkillsProjectTheme {
         UserListContainer(
             userList =
-                UserListUiModel.List(
-                    persistentListOf(
-                        previewUser(),
-                        previewUser(),
-                        previewUser(),
-                        previewUser(),
-                        previewUser(),
-                        previewUser(),
-                    ),
-                ),
+
+            persistentListOf(
+                previewUser(),
+                previewUser(),
+                previewUser(),
+                previewUser(),
+                previewUser(),
+                previewUser(),
+            ),
             addUsers = {},
             pagingValue = false,
-            pagingState = UserPaginationUiModel.Idle,
             backToMain = {},
             popBack = {},
             popBackText = "Back",
@@ -78,10 +74,9 @@ fun PreviewUserListContainer() {
 fun PreviewUserListErrorContainer() {
     HardSkillsProjectTheme {
         UserListContainer(
-            userList = UserListUiModel.ErrorList,
+            userList = null,
             addUsers = {},
             pagingValue = false,
-            pagingState = UserPaginationUiModel.Idle,
             backToMain = {},
             popBack = {},
             popBackText = "Back",
@@ -95,10 +90,9 @@ fun PreviewUserListErrorContainer() {
 fun PreviewUserListPendingContainer() {
     HardSkillsProjectTheme {
         UserListContainer(
-            userList = UserListUiModel.Pending,
+            userList = persistentListOf(),
             addUsers = {},
             pagingValue = false,
-            pagingState = UserPaginationUiModel.Idle,
             backToMain = {},
             popBack = {},
             popBackText = "Back",

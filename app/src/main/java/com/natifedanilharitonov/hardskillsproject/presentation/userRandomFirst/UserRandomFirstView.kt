@@ -17,5 +17,6 @@ fun UserRandomFirstView(viewModel: UserRandomFirstViewModelImpl = koinViewModel(
         onNextScreen = viewModel::navigateToNextScreen,
         backText = stringResource(id = R.string.back_to_main_screen),
         popBackScreen = viewModel::popToMain,
+        isPending = state.isPending
     )
 }

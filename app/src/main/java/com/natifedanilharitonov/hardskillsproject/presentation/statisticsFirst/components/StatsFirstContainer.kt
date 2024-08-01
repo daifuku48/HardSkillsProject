@@ -2,14 +2,14 @@ package com.natifedanilharitonov.hardskillsproject.presentation.statisticsFirst.
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.ButtonColumn
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.ButtonColumn
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
+import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 
 @Composable
 fun StatsFirstContainer(
-    stats: StatUiModel,
+    stats: PersistentList<Pair<Float, Float>>?,
     buttonText: String,
     onClickButton: () -> Unit,
     getStats: () -> Unit,
@@ -31,21 +31,18 @@ fun PreviewStatsFirstContainer() {
     HardSkillsProjectTheme {
         StatsFirstContainer(
             stats =
-                StatUiModel.Model(
-                    model =
-                        persistentListOf(
-                            Pair(0f, 3f),
-                            Pair(1f, 1f),
-                            Pair(2f, 2f),
-                            Pair(3f, 4f),
-                            Pair(4f, 5f),
-                            Pair(5f, 2f),
-                            Pair(6f, 4f),
-                            Pair(7f, 5f),
-                            Pair(8f, 2f),
-                            Pair(9f, 5f),
-                        ),
-                ),
+            persistentListOf(
+                Pair(0f, 3f),
+                Pair(1f, 1f),
+                Pair(2f, 2f),
+                Pair(3f, 4f),
+                Pair(4f, 5f),
+                Pair(5f, 2f),
+                Pair(6f, 4f),
+                Pair(7f, 5f),
+                Pair(8f, 2f),
+                Pair(9f, 5f),
+            ),
             buttonText = "navigate",
             onClickButton = { },
             getStats = {},
@@ -60,7 +57,7 @@ fun PreviewStatsFirstContainer() {
 fun PreviewStatsFirstErrorContainer() {
     HardSkillsProjectTheme {
         StatsFirstContainer(
-            stats = StatUiModel.Error,
+            stats = null,
             buttonText = "navigate",
             onClickButton = { },
             getStats = {},
@@ -75,7 +72,7 @@ fun PreviewStatsFirstErrorContainer() {
 fun PreviewStatsFirstPendingContainer() {
     HardSkillsProjectTheme {
         StatsFirstContainer(
-            stats = StatUiModel.Pending,
+            stats = persistentListOf(),
             buttonText = "navigate",
             onClickButton = { },
             getStats = {},

@@ -1,29 +1,33 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.registration
 
 import androidx.navigation.NavOptions
-import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.features.registration.RegistrationEvent
-import com.natifedanilharitonov.domain.features.registration.RegistrationState
-import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
-import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+import com.natifedanilharitonov.hardskillsproject.base.BaseViewModel
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
+import com.natifeuaandroid.coremodule.Reducer
+import com.natifeuaandroid.coremodule.UseCase
+import com.natifeuaandroid.domainmodule.features.registration.RegistrationEvent
+import com.natifeuaandroid.domainmodule.features.registration.RegistrationState
 
 class RegistrationViewModelImpl(
-    reducer: Reducer<RegistrationState, RegistrationEvent, RegistrationUiState>,
+    reducer: Reducer<RegistrationState, RegistrationEvent>,
     useCases: Set<UseCase<RegistrationState, RegistrationEvent>>,
     navigator: Navigator,
 ) : BaseViewModel<RegistrationState, RegistrationEvent, RegistrationUiState>(
-        reducer,
-        useCases,
-        navigator,
-    ),
+    reducer,
+    useCases,
+    navigator,
+),
     RegistrationViewModel {
     init {
         handleEvent(RegistrationEvent.ValidationEvent)
     }
 
-    override fun createInitState(): RegistrationState = RegistrationState()
+    override fun mapToUiModel(state: RegistrationState): RegistrationUiState {
+        return state.toUi()
+    }
+
+    override fun handleSpecialEvents(event: RegistrationEvent) {}
 
     override fun emailChanged(email: String) {
         handleEvent(RegistrationEvent.EmailChangedEvent(email))
@@ -41,8 +45,11 @@ class RegistrationViewModelImpl(
 
     override fun navigateToLogin() {
         val navOptions =
-            NavOptions.Builder().setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
-                .setLaunchSingleTop(true).build()
+            NavOptions
+                .Builder()
+                .setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
+                .setLaunchSingleTop(true)
+                .build()
         navigate(Screen.LoginScreen.route, navOptions)
     }
 
@@ -53,7 +60,9 @@ class RegistrationViewModelImpl(
     override fun onConfirmUserRegisteredDialog() {
         handleEvent(RegistrationEvent.HideUserHasRegisteredDialog)
         val navOptions =
-            NavOptions.Builder().setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
+            NavOptions
+                .Builder()
+                .setPopUpTo(Screen.RegistrationScreen.route, inclusive = true)
                 .build()
         navigate(Screen.MainScreen.route, navOptions)
     }

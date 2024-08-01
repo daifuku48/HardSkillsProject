@@ -17,5 +17,6 @@ fun UserRandomSecondView(viewModel: UserRandomSecondViewModelImpl = koinViewMode
         onNextScreen = viewModel::navigateToNextScreen,
         popBackScreen = viewModel::popBackScreen,
         backText = stringResource(id = R.string.back),
+        isPending = state.isPending
     )
 }

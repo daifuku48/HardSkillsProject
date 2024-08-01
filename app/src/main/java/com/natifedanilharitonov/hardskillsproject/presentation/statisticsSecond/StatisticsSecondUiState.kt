@@ -1,8 +1,16 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statisticsSecond
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.statisticsSecond.model.DoubleStatUiModel
+import com.natifeuaandroid.domainmodule.features.statisticsSecond.StatisticsSecondState
+import kotlinx.collections.immutable.PersistentList
 
 data class StatisticsSecondUiState(
-    val model: DoubleStatUiModel = DoubleStatUiModel.Pending,
-) : UiModel
+    val modelLines: PersistentList<Pair<Float, Float>>?,
+    val modelColumns: PersistentList<Pair<Float, Float>>?
+)
+
+fun StatisticsSecondState.toUi(): StatisticsSecondUiState {
+    return StatisticsSecondUiState(
+        modelLines = modelLines,
+        modelColumns = modelColumns
+    )
+}

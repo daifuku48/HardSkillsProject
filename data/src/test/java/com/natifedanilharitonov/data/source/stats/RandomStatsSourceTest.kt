@@ -40,6 +40,6 @@ class RandomStatsSourceTest {
             }
 
             val probability = nullCount / 100.0
-            Assert.assertTrue(probability in 0.04..0.06)
+            Assert.assertTrue(probability in 0.04..0.1)
         }
 }

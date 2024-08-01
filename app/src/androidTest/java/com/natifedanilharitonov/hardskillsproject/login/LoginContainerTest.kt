@@ -14,8 +14,6 @@ import com.atiurin.ultron.extensions.click
 import com.atiurin.ultron.extensions.inputText
 import com.atiurin.ultron.page.Screen
 import com.natifedanilharitonov.hardskillsproject.presentation.login.components.LoginContainerView
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.EMAIL_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PASSWORD_TAG
 import org.junit.Rule
@@ -43,8 +41,8 @@ class LoginContainerTest {
                 passwordChanged = { text ->
                     password = text
                 },
-                emailLabel = EmailLabelState.ValidEmailLabel,
-                passwordLabel = PasswordLabelState.ValidPassword,
+                emailLabel = true,
+                passwordLabel = true,
                 pending = false,
                 userLogDialogState = false,
                 onConfirmUserLogDialogState = {},
@@ -84,8 +82,8 @@ class LoginContainerTest {
                 passwordChanged = { text ->
                     password = text
                 },
-                emailLabel = EmailLabelState.ValidEmailLabel,
-                passwordLabel = PasswordLabelState.ValidPassword,
+                emailLabel = true,
+                passwordLabel = true,
                 pending = false,
                 userLogDialogState = showPopUp,
                 onConfirmUserLogDialogState = {
@@ -125,8 +123,8 @@ class LoginContainerTest {
                 passwordChanged = { text ->
                     password = text
                 },
-                emailLabel = EmailLabelState.ValidEmailLabel,
-                passwordLabel = PasswordLabelState.ValidPassword,
+                emailLabel = true,
+                passwordLabel = true,
                 pending = false,
                 userLogDialogState = false,
                 onConfirmUserLogDialogState = {},

@@ -1,26 +1,29 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.infoFirst
 
-import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.features.infoFirst.InfoFirstEvent
-import com.natifedanilharitonov.domain.features.infoFirst.InfoFirstState
-import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
-import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+
+import com.natifedanilharitonov.hardskillsproject.base.BaseViewModel
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
+import com.natifeuaandroid.domainmodule.features.infoFirst.InfoFirstEvent
+import com.natifeuaandroid.domainmodule.features.infoFirst.InfoFirstState
 
 class InfoFirstViewModelImpl(
-    reducer: Reducer<InfoFirstState, InfoFirstEvent, InfoFirstUiModel>,
-    useCases: Set<UseCase<InfoFirstState, InfoFirstEvent>>,
+    reducer: com.natifeuaandroid.coremodule.Reducer<InfoFirstState, InfoFirstEvent>,
+    useCases: Set<com.natifeuaandroid.coremodule.UseCase<InfoFirstState, InfoFirstEvent>>,
     navigator: Navigator,
-) : BaseViewModel<InfoFirstState, InfoFirstEvent, InfoFirstUiModel>(reducer, useCases, navigator),
+) : BaseViewModel<InfoFirstState, InfoFirstEvent, InfoFirstUiState>(reducer, useCases, navigator),
     InfoFirstViewModel {
     init {
         handleEvent(InfoFirstEvent.GetTextEvent)
     }
 
-    override fun createInitState(): InfoFirstState = InfoFirstState()
-
     override fun navigateToNextScreen() {
         navigate(Screen.InfoSecondScreen.route)
     }
+
+    override fun mapToUiModel(state: InfoFirstState): InfoFirstUiState {
+        return state.toUi()
+    }
+
+    override fun handleSpecialEvents(event: InfoFirstEvent) {}
 }

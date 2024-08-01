@@ -4,10 +4,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseErrorDialog
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.PendingScreen
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.BaseErrorDialog
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.PendingScreen
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
@@ -19,8 +17,8 @@ fun LoginContainerView(
     registerClick: () -> Unit,
     loginClick: () -> Unit,
     loginButtonEnabled: Boolean,
-    emailLabel: EmailLabelState,
-    passwordLabel: PasswordLabelState,
+    emailLabel: Boolean,
+    passwordLabel: Boolean,
     userLogDialogState: Boolean,
     onConfirmUserLogDialogState: () -> Unit,
     errorDialogState: Boolean,
@@ -65,8 +63,8 @@ fun PreviewLogin() {
             emailChanged = {},
             password = "12345678",
             passwordChanged = {},
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ValidPassword,
+            emailLabel = true,
+            passwordLabel = true,
             pending = false,
             userLogDialogState = false,
             onConfirmUserLogDialogState = {},
@@ -88,8 +86,8 @@ fun PreviewLoginUserDialog() {
             emailChanged = {},
             password = "12345678",
             passwordChanged = {},
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ValidPassword,
+            emailLabel = true,
+            passwordLabel = true,
             pending = false,
             userLogDialogState = true,
             onConfirmUserLogDialogState = {},
@@ -111,8 +109,8 @@ fun PreviewLoginErrorDialog() {
             emailChanged = {},
             password = "12345678",
             passwordChanged = {},
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ValidPassword,
+            emailLabel = true,
+            passwordLabel = true,
             pending = false,
             userLogDialogState = false,
             onConfirmUserLogDialogState = {},
@@ -134,8 +132,8 @@ fun PreviewPending() {
             emailChanged = {},
             password = "12345678",
             passwordChanged = {},
-            emailLabel = EmailLabelState.ValidEmailLabel,
-            passwordLabel = PasswordLabelState.ValidPassword,
+            emailLabel = true,
+            passwordLabel = true,
             pending = true,
             userLogDialogState = false,
             onConfirmUserLogDialogState = {},

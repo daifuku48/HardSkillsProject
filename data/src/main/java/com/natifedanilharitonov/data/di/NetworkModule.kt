@@ -22,16 +22,14 @@ val networkModule =
             Firebase.auth
         }
 
-        factory {
-            OkHttpClient.Builder()
-                .addInterceptor(HttpLoggingInterceptor())
-                .build()
-        }
-
         single(named(ANIME_API)) {
             Retrofit.Builder()
                 .baseUrl(ANIME_IMAGE_URL)
-                .client(get())
+                .client(
+                    OkHttpClient.Builder()
+                        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                        .build()
+                )
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }
@@ -39,7 +37,11 @@ val networkModule =
         single(named(USERS_API)) {
             Retrofit.Builder()
                 .baseUrl(USERS_API_URL)
-                .client(get())
+                .client(
+                    OkHttpClient.Builder()
+                        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                        .build()
+                )
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         }

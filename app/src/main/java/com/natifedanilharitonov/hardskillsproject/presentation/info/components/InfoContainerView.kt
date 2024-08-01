@@ -28,14 +28,14 @@ import com.natifedanilharitonov.hardskillsproject.utils.TestTags.USER_EMAIL_TAG
 
 @Composable
 fun InfoContainerView(
-    email: String,
+    email: String?,
     navigate: () -> Unit,
 ) {
     Column(
         modifier =
-            Modifier
-                .fillMaxSize()
-                .padding(16.dp),
+        Modifier
+            .fillMaxSize()
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -43,30 +43,43 @@ fun InfoContainerView(
             painter = painterResource(id = R.drawable.users),
             contentDescription = null,
             modifier =
-                Modifier
-                    .size(120.dp)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary)
-                    .padding(8.dp),
+            Modifier
+                .size(120.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary)
+                .padding(8.dp),
         )
-
-        Text(
-            text = stringResource(id = R.string.email, email),
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center,
-            modifier =
+        if (email != null) {
+            Text(
+                text = stringResource(id = R.string.email, email),
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center,
+                modifier =
                 Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
                     .testTag(USER_EMAIL_TAG),
-        )
+            )
+        } else {
+            Text(
+                text = stringResource(R.string.connection_error),
+                style = MaterialTheme.typography.bodyLarge,
+                textAlign = TextAlign.Center,
+                modifier =
+                Modifier
+                    .padding(16.dp)
+                    .fillMaxWidth()
+                    .testTag(USER_EMAIL_TAG),
+            )
+        }
+
 
         Button(
             onClick = navigate,
             modifier =
-                Modifier
-                    .padding(8.dp)
-                    .fillMaxWidth(),
+            Modifier
+                .padding(8.dp)
+                .fillMaxWidth(),
         ) {
             Text(text = stringResource(R.string.next_screen))
         }

@@ -1,8 +1,12 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.statistics
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
+import com.natifeuaandroid.domainmodule.features.statistics.StatisticsState
+import kotlinx.collections.immutable.PersistentList
 
 data class StatisticsUiState(
-    val statModel: StatUiModel = StatUiModel.Pending,
-) : UiModel
+    val statModel: PersistentList<Pair<Float, Float>>?,
+)
+
+fun StatisticsState.toUi(): StatisticsUiState {
+    return StatisticsUiState(statModel = statModel)
+}

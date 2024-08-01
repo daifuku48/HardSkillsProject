@@ -7,8 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UiUser
-import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.UserPaginationUiModel
-import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PAGING_PENDING_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.USER_LIST_ITEM_TAG
 import kotlinx.collections.immutable.PersistentList
 
@@ -16,7 +14,6 @@ import kotlinx.collections.immutable.PersistentList
 fun UserListColumn(
     modifier: Modifier = Modifier,
     userList: PersistentList<UiUser>,
-    pagingState: UserPaginationUiModel,
     addUsers: () -> Unit,
     canPaging: Boolean,
 ) {
@@ -29,16 +26,6 @@ fun UserListColumn(
             )
             if (index >= userList.size - 4 && canPaging) {
                 addUsers()
-            }
-        }
-
-        item {
-            when (pagingState) {
-                is UserPaginationUiModel.Paging -> {
-                    PagingPending(modifier = Modifier.testTag(PAGING_PENDING_TAG))
-                }
-
-                is UserPaginationUiModel.Idle -> {}
             }
         }
     }

@@ -17,7 +17,6 @@ fun UserListView(viewModel: UserListViewModelImpl = koinViewModel()) {
         addUsers = viewModel::addUsers,
         backToMain = viewModel::backToMain,
         pagingValue = state.canPaging,
-        pagingState = state.pagingState,
         popBackText = stringResource(id = R.string.back),
         popBack = viewModel::popBackScreen,
         backToMainText = stringResource(id = R.string.back_to_main),

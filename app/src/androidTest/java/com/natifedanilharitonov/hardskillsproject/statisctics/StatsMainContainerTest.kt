@@ -6,7 +6,6 @@ import com.atiurin.ultron.core.compose.createDefaultUltronComposeRule
 import com.atiurin.ultron.extensions.assertIsDisplayed
 import com.atiurin.ultron.extensions.click
 import com.natifedanilharitonov.hardskillsproject.presentation.statistics.components.StatsMainContainer
-import com.natifedanilharitonov.hardskillsproject.presentation.statistics.model.StatUiModel
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.CHART_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PENDING_TAG
 import kotlinx.collections.immutable.persistentListOf
@@ -21,21 +20,18 @@ class StatsMainContainerTest {
     fun testView() {
         rule.setContent {
             StatsMainContainer(
-                stats =
-                    StatUiModel.Model(
-                        persistentListOf(
-                            Pair(0f, 3f),
-                            Pair(1f, 1f),
-                            Pair(2f, 2f),
-                            Pair(3f, 4f),
-                            Pair(4f, 5f),
-                            Pair(5f, 2f),
-                            Pair(6f, 4f),
-                            Pair(7f, 5f),
-                            Pair(8f, 2f),
-                            Pair(9f, 5f),
-                        ),
-                    ),
+                stats = persistentListOf(
+                    Pair(0f, 3f),
+                    Pair(1f, 1f),
+                    Pair(2f, 2f),
+                    Pair(3f, 4f),
+                    Pair(4f, 5f),
+                    Pair(5f, 2f),
+                    Pair(6f, 4f),
+                    Pair(7f, 5f),
+                    Pair(8f, 2f),
+                    Pair(9f, 5f),
+                ),
                 buttonNextScreenText = "navigate",
                 navigateNextScreen = {},
                 popBack = {},
@@ -54,7 +50,7 @@ class StatsMainContainerTest {
     fun testError() {
         rule.setContent {
             StatsMainContainer(
-                stats = StatUiModel.Error,
+                stats = null,
                 buttonNextScreenText = "navigate",
                 navigateNextScreen = {},
                 popBack = {},
@@ -70,7 +66,7 @@ class StatsMainContainerTest {
     fun testPending() {
         rule.setContent {
             StatsMainContainer(
-                stats = StatUiModel.Pending,
+                stats = persistentListOf(),
                 buttonNextScreenText = "navigate",
                 navigateNextScreen = {},
                 popBack = {},

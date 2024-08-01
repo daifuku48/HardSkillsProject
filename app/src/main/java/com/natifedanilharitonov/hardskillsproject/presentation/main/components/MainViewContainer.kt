@@ -6,13 +6,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.natifedanilharitonov.hardskillsproject.presentation.main.model.StateTextUiModel
 import com.natifedanilharitonov.hardskillsproject.ui.theme.HardSkillsProjectTheme
 
 @Composable
 fun MainViewContainer(
     title: String,
-    text: StateTextUiModel,
+    text: String?,
     navigate: () -> Unit,
     buttonText: String,
 ) {
@@ -34,7 +33,7 @@ fun PreviewMainView() {
     HardSkillsProjectTheme {
         MainViewContainer(
             title = "Title",
-            text = StateTextUiModel.Text("text text text text text text text text "),
+            text = "text text text text text text text text ",
             navigate = { },
             buttonText = "navigate",
         )
@@ -47,7 +46,7 @@ fun PreviewMainErrorView() {
     HardSkillsProjectTheme {
         MainViewContainer(
             title = "Title",
-            text = StateTextUiModel.ErrorText,
+            text = ERROR_TEXT,
             navigate = { },
             buttonText = "navigate",
         )
@@ -60,9 +59,12 @@ fun PreviewMainPendingView() {
     HardSkillsProjectTheme {
         MainViewContainer(
             title = "Title",
-            text = StateTextUiModel.Pending,
+            text = PENDING_TEXT,
             navigate = { },
             buttonText = "navigate",
         )
     }
 }
+
+const val PENDING_TEXT = ""
+val ERROR_TEXT = null

@@ -1,22 +1,22 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImageSecond
 
-import com.natifedanilharitonov.core.Reducer
-import com.natifedanilharitonov.core.UseCase
-import com.natifedanilharitonov.domain.features.randomAnimeImageSecond.RandomAnimeImageSecondEvent
-import com.natifedanilharitonov.domain.features.randomAnimeImageSecond.RandomAnimeImageSecondState
-import com.natifedanilharitonov.hardskillsproject.presentation.base.BaseViewModel
-import com.natifedanilharitonov.hardskillsproject.presentation.base.navigation.Navigator
-import com.natifedanilharitonov.hardskillsproject.presentation.base.screens.Screen
+import com.natifedanilharitonov.hardskillsproject.base.BaseViewModel
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Navigator
+import com.natifedanilharitonov.hardskillsproject.base.navigation.Screen
+import com.natifeuaandroid.coremodule.Reducer
+import com.natifeuaandroid.coremodule.UseCase
+import com.natifeuaandroid.domainmodule.features.randomAnimeImageSecond.RandomAnimeImageSecondEvent
+import com.natifeuaandroid.domainmodule.features.randomAnimeImageSecond.RandomAnimeImageSecondState
 
 class RandomAnimeImageSecondViewModelImpl(
-    reducer: Reducer<RandomAnimeImageSecondState, RandomAnimeImageSecondEvent, RandomAnimeImageSecondUiState>,
+    reducer: Reducer<RandomAnimeImageSecondState, RandomAnimeImageSecondEvent>,
     useCases: Set<UseCase<RandomAnimeImageSecondState, RandomAnimeImageSecondEvent>>,
     navigator: Navigator,
 ) : BaseViewModel<RandomAnimeImageSecondState, RandomAnimeImageSecondEvent, RandomAnimeImageSecondUiState>(
-        reducer,
-        useCases,
-        navigator,
-    ),
+    reducer,
+    useCases,
+    navigator,
+),
     RandomAnimeImageSecondViewModel {
     init {
         handleEvent(RandomAnimeImageSecondEvent.GetRandomImageEvent)
@@ -34,5 +34,9 @@ class RandomAnimeImageSecondViewModelImpl(
         popBack()
     }
 
-    override fun createInitState(): RandomAnimeImageSecondState = RandomAnimeImageSecondState()
+    override fun mapToUiModel(state: RandomAnimeImageSecondState): RandomAnimeImageSecondUiState {
+        return state.toUi()
+    }
+
+    override fun handleSpecialEvents(event: RandomAnimeImageSecondEvent) {}
 }

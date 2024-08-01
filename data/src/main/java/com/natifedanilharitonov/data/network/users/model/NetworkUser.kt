@@ -1,7 +1,7 @@
 package com.natifedanilharitonov.data.network.users.model
 
-import android.graphics.Bitmap
 import com.google.gson.annotations.SerializedName
+import com.natifeuaandroid.domainmodule.model.DomainUser
 
 data class NetworkUser(
     @SerializedName("gender")
@@ -16,12 +16,12 @@ data class NetworkUser(
     val picture: NetworkPicture,
 )
 
-fun NetworkUser.toUserWithBitmap(medium: Bitmap): NetworkUserBitmap {
-    return NetworkUserBitmap(
+fun NetworkUser.toDomain() : DomainUser {
+    return DomainUser(
         gender = gender,
-        name = name,
+        name = name.toDomain(),
         email = email,
         phone = phone,
-        picture = picture.toBitmap(medium),
+        picture = picture.toDomain()
     )
 }

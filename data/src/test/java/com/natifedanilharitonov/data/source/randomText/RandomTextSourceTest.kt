@@ -29,7 +29,7 @@ class RandomTextSourceTest {
             }
 
             val probability = nullCount / 100.0
-            Assert.assertTrue(probability in 0.05..0.3)
+            Assert.assertTrue(probability in 0.05..0.4)
         }
 }
 

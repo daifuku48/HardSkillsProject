@@ -1,6 +1,5 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.userList.components
 
-import android.graphics.Bitmap
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -29,7 +28,7 @@ import com.natifedanilharitonov.hardskillsproject.presentation.userList.model.Ui
 @Composable
 fun UserCard(
     modifier: Modifier = Modifier,
-    image: Bitmap?,
+    image: String?,
     name: UiName,
 ) {
     Card(

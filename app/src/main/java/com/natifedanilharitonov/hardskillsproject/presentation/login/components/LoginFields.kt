@@ -19,10 +19,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.BaseButton
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.BaseButton
 import com.natifedanilharitonov.hardskillsproject.presentation.login.LoginView
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.EmailLabelState
-import com.natifedanilharitonov.hardskillsproject.presentation.login.model.PasswordLabelState
+
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.EMAIL_TAG
 import com.natifedanilharitonov.hardskillsproject.utils.TestTags.PASSWORD_TAG
 
@@ -35,8 +34,8 @@ fun LoginFields(
     registerClick: () -> Unit,
     loginClick: () -> Unit,
     loginButtonEnabled: Boolean,
-    emailLabel: EmailLabelState,
-    passwordLabel: PasswordLabelState,
+    emailLabel: Boolean,
+    passwordLabel: Boolean,
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -50,8 +49,7 @@ fun LoginFields(
                     .background(
                         color = colorResource(id = R.color.authCardBackground),
                         shape = RoundedCornerShape(20.dp),
-                    )
-                    .border(
+                    ).border(
                         width = 1.dp,
                         color = colorResource(id = R.color.authBorderCard),
                         shape = RoundedCornerShape(20.dp),
@@ -72,8 +70,8 @@ fun LoginFields(
                             .padding(start = 10.dp, end = 10.dp),
                     text = email,
                     onTextChanged = { email -> emailChanged(email) },
-                    labelText = emailLabel.getLabel(),
-                    colorLabelText = emailLabel.getColor(),
+                    labelText = if (emailLabel) stringResource(id = R.string.email_label) else stringResource(id = R.string.email_error_label),
+                    colorLabelText = if (emailLabel) colorResource(id = R.color.black) else colorResource(id = R.color.red),
                 )
 
                 Spacer(modifier = Modifier.padding(10.dp))
@@ -86,8 +84,8 @@ fun LoginFields(
                             .padding(start = 10.dp, end = 10.dp, bottom = 30.dp),
                     text = password,
                     onTextChanged = { password -> passwordChanged(password) },
-                    labelText = passwordLabel.getLabel(),
-                    colorLabelText = passwordLabel.getColor(),
+                    labelText = if (passwordLabel) stringResource(id = R.string.password_label) else  stringResource(id = R.string.password_error_label),
+                    colorLabelText = if (passwordLabel) colorResource(id = R.color.black) else colorResource(id = R.color.red),
                 )
 
                 BaseButton(

@@ -1,8 +1,11 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImageFirst
 
-import com.natifedanilharitonov.core.UiModel
-import com.natifedanilharitonov.hardskillsproject.presentation.randomAnimeImage.model.AnimeImageUiModel
+import com.natifeuaandroid.domainmodule.features.randomAnimeImageFirst.RandomAnimeImageFirstState
 
 data class RandomAnimeImageFirstUiState(
-    val image: AnimeImageUiModel = AnimeImageUiModel.ImagePending,
-) : UiModel
+    val image: String?,
+)
+
+fun RandomAnimeImageFirstState.toUi(): RandomAnimeImageFirstUiState {
+    return RandomAnimeImageFirstUiState(image = image)
+}

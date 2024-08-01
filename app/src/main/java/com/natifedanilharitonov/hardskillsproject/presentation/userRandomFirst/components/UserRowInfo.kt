@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.natifedanilharitonov.hardskillsproject.R
-import com.natifedanilharitonov.hardskillsproject.presentation.baseComponents.TableCell
+import com.natifedanilharitonov.hardskillsproject.presentation.baseComponentsKit.TableCell
 
 @Composable
 fun UserRowInfo(

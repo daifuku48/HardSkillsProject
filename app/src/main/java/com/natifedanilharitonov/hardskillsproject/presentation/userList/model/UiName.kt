@@ -1,6 +1,7 @@
 package com.natifedanilharitonov.hardskillsproject.presentation.userList.model
 
-import com.natifedanilharitonov.domain.model.DomainName
+import com.natifeuaandroid.domainmodule.model.DomainName
+
 
 data class UiName(
     val title: String,
